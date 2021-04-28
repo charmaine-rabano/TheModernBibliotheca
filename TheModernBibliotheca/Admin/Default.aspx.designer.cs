@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-namespace TheModernBibliotheca
+namespace TheModernBibliotheca.Admin
 {
-    public partial class _Default
+    public partial class Default
     {
     }
 }

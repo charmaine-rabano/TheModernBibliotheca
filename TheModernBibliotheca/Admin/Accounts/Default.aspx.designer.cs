@@ -7,28 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-namespace TheModernBibliotheca
+namespace TheModernBibliotheca.Admin.Accounts
 {
-    public partial class SiteMaster
+
+
+    public partial class Default
     {
 
         /// <summary>
-        /// HeadContent control.
+        /// AccountsGv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
-
-        /// <summary>
-        /// MainContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.GridView AccountsGv;
     }
 }
