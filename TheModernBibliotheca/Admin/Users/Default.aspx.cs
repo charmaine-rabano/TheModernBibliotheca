@@ -12,12 +12,8 @@ namespace TheModernBibliotheca.Admin.Accounts
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Verify Authentication
-            if (!AuthHelper.IsLoggedIn()) { Response.Redirect("/Admin/Login"); }
-            if (AuthHelper.GetUser().UserType != AuthHelper.ADMIN_USER_TYPE) { Response.Redirect("/"); }
-
             // Bind Data
-            AccountsGv.DataSource = AccountsRepository.GetAccounts();
+            AccountsGv.DataSource = UsersRepository.GetUsers();
             AccountsGv.DataBind();
         }
 

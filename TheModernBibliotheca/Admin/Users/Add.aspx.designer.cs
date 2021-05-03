@@ -11,7 +11,7 @@ namespace TheModernBibliotheca.Admin.Accounts
 {
 
 
-    public partial class Modify
+    public partial class Add
     {
 
         /// <summary>
@@ -42,13 +42,13 @@ namespace TheModernBibliotheca.Admin.Accounts
         protected global::System.Web.UI.WebControls.TextBox EmailAddressTb;
 
         /// <summary>
-        /// PasswordTb control.
+        /// EmailAddressCv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PasswordTb;
+        protected global::System.Web.UI.WebControls.CustomValidator EmailAddressCv;
 
         /// <summary>
         /// UserTypeDdl control.
@@ -58,6 +58,15 @@ namespace TheModernBibliotheca.Admin.Accounts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList UserTypeDdl;
+
+        /// <summary>
+        /// PasswordTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PasswordTb;
 
         /// <summary>
         /// ConfirmPasswordTb control.
@@ -76,14 +85,5 @@ namespace TheModernBibliotheca.Admin.Accounts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SubmitBtn;
-
-        /// <summary>
-        /// DeleteBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button DeleteBtn;
     }
 }

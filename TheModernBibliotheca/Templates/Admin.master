@@ -1,6 +1,36 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Templates/Site.Master" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="TheModernBibliotheca.Templates.Admin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
+    <style>
+        .header-group {
+            display: flex;
+            margin-bottom: .4rem;
+            align-items: center;
+        }
+
+            .header-group .header-actions {
+                margin-left: auto;
+            }
+
+            .header-group .header-actions > *{
+                margin-left:5px;
+                margin-right:5px;
+            }
+
+            .header-group .header-actions *:first-child{
+                margin-left:0px;
+                margin-right:5px;
+            }
+
+            .header-group .header-actions *:last-child{
+                margin-left:5px;
+                margin-right:0px;
+            }
+
+        .validation-message {
+            color: red;
+        }
+    </style>
     <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
     </asp:ContentPlaceHolder>
 </asp:Content>

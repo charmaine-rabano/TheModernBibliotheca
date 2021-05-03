@@ -182,9 +182,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\Accounts\Add.aspx" />
-    <Content Include="Admin\Accounts\Default.aspx" />
-    <Content Include="Admin\Accounts\Modify.aspx" />
+    <Content Include="Admin\Users\Add.aspx" />
+    <Content Include="Admin\Users\Default.aspx" />
+    <Content Include="Admin\Users\Modify.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\Login.aspx" />
     <Content Include="Books.aspx" />
@@ -1675,27 +1675,26 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\Accounts\Account.cs" />
-    <Compile Include="Admin\Accounts\AccountsRepository.cs" />
-    <Compile Include="Admin\Accounts\Add.aspx.cs">
+    <Compile Include="Admin\Users\UsersRepository.cs" />
+    <Compile Include="Admin\Users\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Accounts\Add.aspx.designer.cs">
+    <Compile Include="Admin\Users\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Accounts\Default.aspx.cs">
+    <Compile Include="Admin\Users\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Accounts\Default.aspx.designer.cs">
+    <Compile Include="Admin\Users\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Accounts\Modify.aspx.cs">
+    <Compile Include="Admin\Users\Modify.aspx.cs">
       <DependentUpon>Modify.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Accounts\Modify.aspx.designer.cs">
+    <Compile Include="Admin\Users\Modify.aspx.designer.cs">
       <DependentUpon>Modify.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Default.aspx.cs">
