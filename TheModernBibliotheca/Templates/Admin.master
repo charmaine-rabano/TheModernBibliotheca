@@ -2,6 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
     <style>
+        :root {
+            --librarian-primary: #183BF0;
+            --librarian-secondary: #DDE3FD;
+            --administrator-primary: #FE2712;
+            --administrator-secondary: #FFDEDB;
+            --borrower-primary: #66B032;
+            --borrower-secondary: #EBF7E3;
+        }
+
         .header-group {
             display: flex;
             margin-bottom: .4rem;
@@ -12,23 +21,46 @@
                 margin-left: auto;
             }
 
-            .header-group .header-actions > *{
-                margin-left:5px;
-                margin-right:5px;
-            }
+                .header-group .header-actions > * {
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
 
-            .header-group .header-actions *:first-child{
-                margin-left:0px;
-                margin-right:5px;
-            }
+                .header-group .header-actions *:first-child {
+                    margin-left: 0px;
+                    margin-right: 5px;
+                }
 
-            .header-group .header-actions *:last-child{
-                margin-left:5px;
-                margin-right:0px;
-            }
+                .header-group .header-actions *:last-child {
+                    margin-left: 5px;
+                    margin-right: 0px;
+                }
 
-        .validation-message {
-            color: red;
+        .user-type-pill {
+            border-radius: 8px;
+            font-size: .8rem;
+            border: 1px solid black;
+            width: 7rem;
+            text-align: center;
+            padding: 2px 0;
+        }
+
+        .pill-administrator {
+            border-color: var(--administrator-primary);
+            background-color: var(--administrator-secondary);
+            color: var(--administrator-primary);
+        }
+
+        .pill-librarian {
+            border-color: var(--librarian-primary);
+            background-color: var(--librarian-secondary);
+            color: var(--librarian-primary);
+        }
+
+        .pill-borrower {
+            border-color: var(--borrower-primary);
+            background-color: var(--borrower-secondary);
+            color: var(--borrower-primary);
         }
     </style>
     <asp:ContentPlaceHolder ID="HeaderContent" runat="server">

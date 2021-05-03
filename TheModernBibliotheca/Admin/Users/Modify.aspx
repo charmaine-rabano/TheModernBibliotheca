@@ -19,7 +19,7 @@
         <h3>Add User</h3>
         <div class="header-actions">
             <a href="~/Admin/Users" runat="server">
-                <button type="button" class="btn btn-secondary">Cancel</button>
+                <button type="button" class="btn btn-secondary">Back</button>
             </a>
         </div>
     </div>

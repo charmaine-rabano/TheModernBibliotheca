@@ -182,6 +182,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Activity.aspx" />
     <Content Include="Admin\Users\Add.aspx" />
     <Content Include="Admin\Users\Default.aspx" />
     <Content Include="Admin\Users\Modify.aspx" />
@@ -1675,6 +1676,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Activity.aspx.cs">
+      <DependentUpon>Activity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Activity.aspx.designer.cs">
+      <DependentUpon>Activity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ActivityRepository.cs" />
+    <Compile Include="Admin\ActivityViewModel.cs" />
     <Compile Include="Admin\Users\UsersRepository.cs" />
     <Compile Include="Admin\Users\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>

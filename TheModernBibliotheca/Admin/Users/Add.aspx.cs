@@ -14,12 +14,17 @@ namespace TheModernBibliotheca.Admin.Accounts
         protected void Page_Load(object sender, EventArgs e)
         {
             // Verify Authentication
+            string fromHome = Request.QueryString["FromHome"];
+            if (fromHome != null && fromHome == "true") {
+                cancelLink.HRef = "~/Admin";
+            }
         }
 
         protected void SubmitBtn_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) return;
-            UsersRepository.AddAccount(new LibraryUser {
+            UsersRepository.AddAccount(new LibraryUser
+            {
                 FirstName = FirstNameTb.Text,
                 LastName = LastNameTb.Text,
                 AccountPassword = PasswordTb.Text,

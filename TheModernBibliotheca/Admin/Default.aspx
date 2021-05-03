@@ -3,17 +3,26 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <style>
+        :root {
+            
+        }
+
         .menu-group-container > div {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .menu-container {
+            padding: 0 20px;
             display: flex;
             flex-direction: row;
         }
 
         .menu-group-header {
-            margin-bottom: 1.5rem;
+            background-color:lightgray;
+            padding:.4rem .6rem;
+            font-size: 1.7rem;
+            margin-bottom: 1.8rem;
+            font-weight: 600;
         }
 
         .menu-item-container {
@@ -28,7 +37,7 @@
 
             .menu-item p {
                 color: black;
-                font-weight: 600;
+                font-weight: 500;
                 font-size: 1.4rem;
                 margin: 0;
             }
@@ -55,7 +64,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="menu-group-container">
         <div>
-            <h2 class="menu-group-header">Users</h2>
+            <p class="menu-group-header">Users</p>
             <div class="menu-container">
                 <a href="~/Admin/Users" class="menu-item-container" runat="server">
                     <div class="menu-item">
@@ -66,7 +75,7 @@
                     </div>
                 </a>
 
-                <a href="~/Admin/Add" class="menu-item-container" runat="server">
+                <a href="~/Admin/Users/Add?FromHome=true" class="menu-item-container" runat="server">
                     <div class="menu-item">
                         <div class="menu-icon-image">
                             <img src="../Content/bootstrap-icons/person-plus.svg" alt="View Accounts" class="text-success" />
@@ -78,7 +87,7 @@
             </div>
         </div>
         <div>
-            <h2 class="menu-group-header">Monitoring</h2>
+            <p class="menu-group-header">Monitoring</p>
             <div class="menu-container">
                 <a href="~/Admin/Activity" class="menu-item-container" runat="server">
                     <div class="menu-item">
@@ -91,9 +100,9 @@
             </div>
         </div>
         <div>
-            <h2 class="menu-group-header">Navigate</h2>
+            <p class="menu-group-header">Navigate</p>
             <div class="menu-container">
-                <a href="#" class="menu-item-container" runat="server">
+                <a href="~/Librarian" class="menu-item-container" runat="server">
                     <div class="menu-item">
                         <div class="menu-icon-image">
                             <img src="../Content/bootstrap-icons/book.svg" alt="View Accounts" class="text-success" />
@@ -102,7 +111,7 @@
                     </div>
                 </a>
 
-                <a href="#" class="menu-item-container" runat="server">
+                <a href="~/" class="menu-item-container" runat="server">
                     <div class="menu-item">
                         <div class="menu-icon-image">
                             <img src="../Content/bootstrap-icons/house.svg" alt="View Accounts" class="text-success" />

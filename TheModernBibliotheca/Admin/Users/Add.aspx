@@ -19,8 +19,8 @@
     <div class="header-group">
         <h3>Add User</h3>
         <div class="header-actions">
-            <a href="~/Admin/Users" runat="server">
-                <button type="button" class="btn btn-secondary">Cancel</button>
+            <a href="~/Admin/Users" runat="server" id="cancelLink">
+                <button type="button" class="btn btn-secondary">Back</button>
             </a>
         </div>
     </div>

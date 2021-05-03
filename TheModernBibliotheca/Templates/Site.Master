@@ -12,13 +12,17 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <style>
         html, body {
-            padding:0;
-            margin:0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .validation-message, required {
+            color: red;
         }
     </style>
     <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
