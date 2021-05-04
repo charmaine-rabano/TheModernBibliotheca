@@ -4,8 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TheModernBibliotheca._Code.Helper.Auth;
-
 namespace TheModernBibliotheca.Admin
 {
     public partial class Login : System.Web.UI.Page

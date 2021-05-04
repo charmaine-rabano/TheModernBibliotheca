@@ -1683,9 +1683,9 @@
     <Compile Include="Admin\Activity.aspx.designer.cs">
       <DependentUpon>Activity.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\ActivityRepository.cs" />
-    <Compile Include="Admin\ActivityViewModel.cs" />
-    <Compile Include="Admin\Users\UsersRepository.cs" />
+    <Compile Include="_Code\App\Admin\ActivityRepository.cs" />
+    <Compile Include="_Code\App\Admin\ActivityViewModel.cs" />
+    <Compile Include="_Code\App\Admin\UsersRepository.cs" />
     <Compile Include="Admin\Users\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1778,12 +1778,8 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="_Code\Helper\AuthHelper.cs" />
-    <Compile Include="_Code\Auth\AuthRepository.cs" />
-    <Compile Include="_Code\Auth\AuthService.cs" />
-    <Compile Include="_Code\Auth\LoggedInUser.cs" />
-    <Compile Include="_Code\Helper\DbHelper.cs" />
-    <Compile Include="_Code\Helper\NavigationHelper.cs" />
+    <Compile Include="_Code\Lib\DbHelper.cs" />
+    <Compile Include="_Code\Lib\NavigationHelper.cs" />
     <Compile Include="_Code\Model\Book.cs">
       <DependentUpon>TheModernDatabase.tt</DependentUpon>
     </Compile>
@@ -1851,7 +1847,10 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="_Code\App\Borrower\" />
+    <Folder Include="_Code\App\Librarian\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

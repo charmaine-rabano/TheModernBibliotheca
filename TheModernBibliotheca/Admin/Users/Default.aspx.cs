@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TheModernBibliotheca._Code.Helper.Auth;
+using TheModernBibliotheca._Code.App.Admin;
 
 namespace TheModernBibliotheca.Admin.Accounts
 {
@@ -12,7 +12,6 @@ namespace TheModernBibliotheca.Admin.Accounts
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Bind Data
             AccountsGv.DataSource = UsersRepository.GetUsers();
             AccountsGv.DataBind();
         }

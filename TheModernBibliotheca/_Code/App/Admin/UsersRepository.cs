@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using TheModernBibliotheca._Code.Model;
-namespace TheModernBibliotheca.Admin.Accounts
+namespace TheModernBibliotheca._Code.App.Admin
 {
     public static class UsersRepository
     {

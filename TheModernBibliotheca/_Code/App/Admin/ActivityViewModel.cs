@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace TheModernBibliotheca.Admin
+namespace TheModernBibliotheca._Code.App.Admin
 {
     public class ActivityViewModel
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using TheModernBibliotheca._Code.Model;
 
-namespace TheModernBibliotheca.Admin
+namespace TheModernBibliotheca._Code.App.Admin
 {
     public static class ActivityRepository
     {
