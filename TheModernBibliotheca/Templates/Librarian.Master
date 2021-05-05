@@ -1,22 +1,11 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Librarian.master.cs" Inherits="TheModernBibliotheca.Templates.Librarian" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/Templates/Site.Master" AutoEventWireup="true" CodeBehind="Librarian.master.cs" Inherits="TheModernBibliotheca.Templates.Librarian" %>
 
-<!DOCTYPE html>
-
-<html>
-<head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
+    <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
     </asp:ContentPlaceHolder>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            librariaaaaaaaaaaaaan
-        </div>
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-    </form>
-</body>
-</html>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <p>librarian</p>
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
