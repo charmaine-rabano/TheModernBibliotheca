@@ -15,22 +15,31 @@ namespace TheModernBibliotheca.Admin
     {
 
         /// <summary>
-        /// EmailTb control.
+        /// loginCv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EmailTb;
+        protected global::System.Web.UI.WebControls.CustomValidator loginCv;
 
         /// <summary>
-        /// PasswordTb control.
+        /// EmailTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PasswordTb;
+        protected global::System.Web.UI.WebControls.TextBox EmailTxt;
+
+        /// <summary>
+        /// PasswordTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PasswordTxt;
 
         /// <summary>
         /// SubmitBtn control.
