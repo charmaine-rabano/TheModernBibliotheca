@@ -1809,6 +1809,8 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyModel.cs" />
+    <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyRepository.cs" />
     <Compile Include="_Code\Lib\DbHelper.cs" />
     <Compile Include="_Code\Lib\NavigationHelper.cs" />
     <Compile Include="_Code\Model\Book.cs">
@@ -1881,7 +1883,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_Code\App\Borrower\" />
-    <Folder Include="_Code\App\Librarian\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
