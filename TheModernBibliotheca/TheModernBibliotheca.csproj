@@ -168,6 +168,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccountDetails.aspx" />
     <Content Include="Admin\Accounts\Add.aspx" />
     <Content Include="Admin\Accounts\Default.aspx" />
     <Content Include="Admin\Accounts\Modify.aspx" />
@@ -313,6 +314,13 @@
     <Content Include="Templates\Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountDetails.aspx.cs">
+      <DependentUpon>AccountDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccountDetails.aspx.designer.cs">
+      <DependentUpon>AccountDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Accounts\Account.cs" />
     <Compile Include="Admin\Accounts\AccountsRepository.cs" />
     <Compile Include="Admin\Accounts\Add.aspx.cs">
