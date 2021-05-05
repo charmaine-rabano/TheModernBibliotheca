@@ -1551,6 +1551,9 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Librarian\Report\OnShelf.aspx" />
+    <Content Include="Librarian\Report\Overall.aspx" />
+    <Content Include="Librarian\Report\BorrowersWithPenalty.aspx" />
     <Content Include="_Code\Model\TheModernDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TheModernDatabase.Context.cs</LastGenOutput>
@@ -1682,6 +1685,34 @@
     </Compile>
     <Compile Include="Admin\Activity.aspx.designer.cs">
       <DependentUpon>Activity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Librarian.Master.cs">
+      <DependentUpon>Librarian.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Templates\Librarian.Master.designer.cs">
+      <DependentUpon>Librarian.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Report\OnShelf.aspx.cs">
+      <DependentUpon>OnShelf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Report\OnShelf.aspx.designer.cs">
+      <DependentUpon>OnShelf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Report\Overall.aspx.cs">
+      <DependentUpon>Overall.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Report\Overall.aspx.designer.cs">
+      <DependentUpon>Overall.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Report\BorrowersWithPenalty.aspx.cs">
+      <DependentUpon>BorrowersWithPenalty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Report\BorrowersWithPenalty.aspx.designer.cs">
+      <DependentUpon>BorrowersWithPenalty.aspx</DependentUpon>
     </Compile>
     <Compile Include="_Code\App\Admin\ActivityRepository.cs" />
     <Compile Include="_Code\App\Admin\ActivityViewModel.cs" />
@@ -1836,6 +1867,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Templates\Admin.master" />
     <Content Include="Templates\Borrower.master" />
+    <Content Include="Templates\Librarian.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
