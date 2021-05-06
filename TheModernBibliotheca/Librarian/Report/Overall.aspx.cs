@@ -12,21 +12,38 @@ namespace TheModernBibliotheca.Templates
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ddlOverall.Items.Add("ALL");
-
-            var genres = GenreRepository.GetGenres();
-            foreach (GenreModel genre in genres)
+            if (!this.IsPostBack)
             {
-                ddlOverall.Items.Add(genre.Genre);
+                ddlOverall.ClearSelection();
+                ddlOverall.Items.Add("ALL");
+                var genres = GenreRepository.GetGenres();
+                foreach (GenreModel genre in genres)
+                {
+                    ddlOverall.Items.Add(genre.Genre);
+                }
+                viewAllBooks();
             }
+        }
+
+        private void viewAllBooks()
+        {
             gridviewOverall.DataSource = ReportOverallRepository.GetBooks();
             gridviewOverall.DataBind();
-
         }
 
         protected void ddlOverall_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //change what is shown if filter is changed
+            if(ddlOverall.SelectedValue.ToString() == "ALL")
+            {
+                viewAllBooks();
+            }
+            else
+            {
+                gridviewOverall.DataSource = ReportOverallRepository.GetSpecificGenre(ddlOverall.SelectedValue.ToString());
+                gridviewOverall.DataBind();
+            }
         }
+
+
     }
 }

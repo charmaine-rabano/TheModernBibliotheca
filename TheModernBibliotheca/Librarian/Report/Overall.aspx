@@ -23,7 +23,7 @@
         </div>
     </div>
     <div style="margin-top:20px;margin-bottom:20px;">
-        <asp:DropDownList ID="ddlOverall" runat="server" OnSelectedIndexChanged="ddlOverall_SelectedIndexChanged"></asp:DropDownList>
+        <asp:DropDownList ID="ddlOverall" runat="server" OnSelectedIndexChanged="ddlOverall_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
     </div>
     <div class="table-responsive" style="margin-bottom:20px;margin-top:20px;">
         <asp:GridView ID="gridviewOverall" runat="server" class="table w-100" AutoGenerateColumns="false" GridLines="None">
@@ -46,4 +46,5 @@
             </Columns>
         </asp:GridView>
     </div>
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 </asp:Content>

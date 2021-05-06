@@ -26,5 +26,20 @@ namespace TheModernBibliotheca._Code.App.Librarian
                 Status = e.BookStatus
             }).ToList();
         }
+
+        public static IEnumerable<ReportOverallModel> GetSpecificGenre(string specificGenre)
+        {
+            var context = CreateDbContext();
+            return context.Books.Where(e => e.BookInformation.Genre == specificGenre).Select(e => new ReportOverallModel
+            {
+                InstanceID = e.InstanceID,
+                ISBN = e.ISBN,
+                Title = e.BookInformation.Title,
+                Genre = e.BookInformation.Genre,
+                Author = e.BookInformation.Author,
+                Status = e.BookStatus
+            }).ToList();
+        }
+
     }
 }
