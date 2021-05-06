@@ -1527,6 +1527,8 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Librarian\Borrows\Offsite\Approve.aspx" />
+    <Content Include="Librarian\Borrows\Offsite\Pending.aspx" />
     <Content Include="Pictures\searchicon.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -1686,12 +1688,19 @@
     <Compile Include="Admin\Activity.aspx.designer.cs">
       <DependentUpon>Activity.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Templates\Librarian.Master.cs">
-      <DependentUpon>Librarian.Master</DependentUpon>
+    <Compile Include="Librarian\Borrows\Offsite\Approve.aspx.cs">
+      <DependentUpon>Approve.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Templates\Librarian.Master.designer.cs">
-      <DependentUpon>Librarian.Master</DependentUpon>
+    <Compile Include="Librarian\Borrows\Offsite\Approve.aspx.designer.cs">
+      <DependentUpon>Approve.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Offsite\Pending.aspx.cs">
+      <DependentUpon>Pending.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Offsite\Pending.aspx.designer.cs">
+      <DependentUpon>Pending.aspx</DependentUpon>
     </Compile>
     <Compile Include="Librarian\Report\OnShelf.aspx.cs">
       <DependentUpon>OnShelf.aspx</DependentUpon>
@@ -1713,6 +1722,13 @@
     </Compile>
     <Compile Include="Librarian\Report\BorrowersWithPenalty.aspx.designer.cs">
       <DependentUpon>BorrowersWithPenalty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Librarian.master.cs">
+      <DependentUpon>Librarian.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Templates\Librarian.master.designer.cs">
+      <DependentUpon>Librarian.master</DependentUpon>
     </Compile>
     <Compile Include="_Code\App\Admin\ActivityRepository.cs" />
     <Compile Include="_Code\App\Admin\ActivityViewModel.cs" />
@@ -1809,6 +1825,8 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="_Code\App\Librarian\Borrows\ApproveRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\ApproveViewModel.cs" />
     <Compile Include="_Code\Lib\DbHelper.cs" />
     <Compile Include="_Code\Lib\NavigationHelper.cs" />
     <Compile Include="_Code\Model\Book.cs">
@@ -1867,7 +1885,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Templates\Admin.master" />
     <Content Include="Templates\Borrower.master" />
-    <Content Include="Templates\Librarian.Master" />
+    <Content Include="Templates\Librarian.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1881,7 +1899,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_Code\App\Borrower\" />
-    <Folder Include="_Code\App\Librarian\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
