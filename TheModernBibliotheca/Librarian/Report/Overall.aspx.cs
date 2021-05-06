@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TheModernBibliotheca._Code.App.Librarian;
 
 namespace TheModernBibliotheca.Templates
 {
@@ -11,7 +12,18 @@ namespace TheModernBibliotheca.Templates
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ddlOverall.Items.Add("ALL");
 
+            var genres = GenreRepository.GetGenres();
+            foreach (GenreModel genre in genres)
+            {
+                ddlOverall.Items.Add(genre.Genre);
+            }
+        }
+
+        protected void ddlOverall_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //change what is shown if filter is changed
         }
     }
 }
