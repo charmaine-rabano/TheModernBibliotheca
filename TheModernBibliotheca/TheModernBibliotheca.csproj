@@ -1528,7 +1528,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Librarian\Borrows\Offsite\Approve.aspx" />
-    <Content Include="Librarian\Borrows\Offsite\Pending.aspx" />
     <Content Include="Pictures\searchicon.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -1694,13 +1693,6 @@
     </Compile>
     <Compile Include="Librarian\Borrows\Offsite\Approve.aspx.designer.cs">
       <DependentUpon>Approve.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Librarian\Borrows\Offsite\Pending.aspx.cs">
-      <DependentUpon>Pending.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Librarian\Borrows\Offsite\Pending.aspx.designer.cs">
-      <DependentUpon>Pending.aspx</DependentUpon>
     </Compile>
     <Compile Include="Librarian\Report\OnShelf.aspx.cs">
       <DependentUpon>OnShelf.aspx</DependentUpon>

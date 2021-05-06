@@ -22,18 +22,25 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
 
         public static void ApproveRequest(int id)
         {
-            var context = new TheModernDatabaseEntities();
-            var reservation = context.Reservations.FirstOrDefault(r => r.BorrowID == id);
-            reservation.ReservationStatus = "Approved";
-            reservation.Borrow.BorrowState = "Reserved";
-            reservation.DateProcessed = DateTime.Now;
+            using (var context = new TheModernDatabaseEntities())
+            {
+                var reservation = context.Reservations.FirstOrDefault(r => r.BorrowID == id);
+                reservation.ReservationStatus = "Approved";
+                reservation.Borrow.BorrowState = "Reserved";
+                reservation.DateProcessed = DateTime.Now;
+                context.SaveChanges();
+            }
         }
 
         public static void DisapproveRequest(int id)
         {
-            var context = new TheModernDatabaseEntities();
-            var reservation = context.Reservations.FirstOrDefault(r => r.BorrowID == id);
-            reservation.ReservationStatus = "Rejected";
+            using (var context = new TheModernDatabaseEntities())
+            {
+                var reservation = context.Reservations.FirstOrDefault(r => r.BorrowID == id);
+                reservation.ReservationStatus = "Rejected";
+                reservation.DateProcessed = DateTime.Now;
+                context.SaveChanges();
+            }
         }
     }
 }
