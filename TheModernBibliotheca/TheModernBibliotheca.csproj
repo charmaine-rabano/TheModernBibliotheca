@@ -1827,6 +1827,8 @@
     </Compile>
     <Compile Include="_Code\App\Librarian\Borrows\ApproveRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ApproveViewModel.cs" />
+    <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyModel.cs" />
+    <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyRepository.cs" />
     <Compile Include="_Code\Lib\DbHelper.cs" />
     <Compile Include="_Code\Lib\NavigationHelper.cs" />
     <Compile Include="_Code\Model\Book.cs">

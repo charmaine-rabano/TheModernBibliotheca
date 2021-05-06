@@ -23,5 +23,5 @@
             </div>
         </div>
     </div>
-    HAHA ONSHELF
+    <asp:DropDownList ID="onShelfDropDown" runat="server" OnSelectedIndexChanged="onShelfDropDown_SelectedIndexChanged"></asp:DropDownList>
 </asp:Content>

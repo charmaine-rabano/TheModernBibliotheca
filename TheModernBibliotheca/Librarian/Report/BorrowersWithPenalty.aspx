@@ -22,6 +22,15 @@
             </div>
         </div>
     </div>
-    BORROWERS WITH PENALTY
+    <div class="table-responsive">
+        <asp:GridView ID="gridviewBorrowersWithPenalty" runat="server" class="table w-100" AutoGenerateColumns="false" GridLines="None">
+            <Columns>
+                <asp:BoundField DataField="BorrowerName" HeaderText="Borrower Name" />
+                <asp:BoundField DataField="Violation" HeaderText="Violation" />
+                <asp:BoundField DataField="ViolationDate" HeaderText="Violation Date" DataFormatString="{0:MMM dd, yyyy}" />
+                <asp:BoundField DataField="BookTitle" HeaderText="Book Title" />
+            </Columns>
+        </asp:GridView>
+    </div>
 
 </asp:Content>
