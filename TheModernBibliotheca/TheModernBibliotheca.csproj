@@ -1831,6 +1831,12 @@
     <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\PendingRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\PendingViewModel.cs" />
+    <Compile Include="_Code\App\Librarian\GenreModel.cs" />
+    <Compile Include="_Code\App\Librarian\GenreRepository.cs" />
+    <Compile Include="_Code\App\Librarian\ReportOnshelfModel.cs" />
+    <Compile Include="_Code\App\Librarian\ReportOnshelfRepository.cs" />
+    <Compile Include="_Code\App\Librarian\ReportOverallModel.cs" />
+    <Compile Include="_Code\App\Librarian\ReportOverallRepository.cs" />
     <Compile Include="_Code\Lib\DbHelper.cs" />
     <Compile Include="_Code\Lib\NavigationHelper.cs" />
     <Compile Include="_Code\Model\Book.cs">
