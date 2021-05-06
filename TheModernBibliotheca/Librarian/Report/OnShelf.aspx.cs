@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TheModernBibliotheca._Code.App.Librarian;
 
 namespace TheModernBibliotheca.Templates
 {
@@ -11,14 +12,35 @@ namespace TheModernBibliotheca.Templates
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            onShelfDropDown.Items.Add("ALL");
-            //ADD OTHER genre
-            //add data
+            if (!this.IsPostBack)
+            {
+                onShelfDropDown.ClearSelection();
+                onShelfDropDown.Items.Add("ALL");
+                var genres = GenreRepository.GetGenres();
+                foreach (GenreModel genre in genres)
+                {
+                    onShelfDropDown.Items.Add(genre.Genre);
+                }
+                viewAllBooks();
+            }   
+        }
+        private void viewAllBooks()
+        {
+            gridviewOnshelf.DataSource = ReportOnshelfRepository.GetBooks();
+            gridviewOnshelf.DataBind();
         }
 
         protected void onShelfDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //change what is shown if filter is changed
+            if (onShelfDropDown.SelectedValue.ToString() == "ALL")
+            {
+                viewAllBooks();
+            }
+            else
+            {
+                gridviewOnshelf.DataSource = ReportOnshelfRepository.GetSpecificGenre(onShelfDropDown.SelectedValue.ToString());
+                gridviewOnshelf.DataBind();
+            }
         }
 
     }
