@@ -1528,6 +1528,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Librarian\Borrows\Offsite\Approve.aspx" />
+    <Content Include="Librarian\Borrows\Offsite\Pending.aspx" />
     <Content Include="Pictures\searchicon.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -1694,6 +1695,13 @@
     <Compile Include="Librarian\Borrows\Offsite\Approve.aspx.designer.cs">
       <DependentUpon>Approve.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Librarian\Borrows\Offsite\Pending.aspx.cs">
+      <DependentUpon>Pending.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Offsite\Pending.aspx.designer.cs">
+      <DependentUpon>Pending.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Librarian\Report\OnShelf.aspx.cs">
       <DependentUpon>OnShelf.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1821,6 +1829,8 @@
     <Compile Include="_Code\App\Librarian\Borrows\ApproveViewModel.cs" />
     <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyModel.cs" />
     <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\PendingRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\PendingViewModel.cs" />
     <Compile Include="_Code\Lib\DbHelper.cs" />
     <Compile Include="_Code\Lib\NavigationHelper.cs" />
     <Compile Include="_Code\Model\Book.cs">

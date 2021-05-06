@@ -12,11 +12,13 @@ namespace TheModernBibliotheca.Librarian.Borrows.Offsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            { 
-                ApproveGV.DataSource = ApproveRepository.GetRequests();
-                ApproveGV.DataBind();
-            }
+            if (!Page.IsPostBack) { Bind(); }
+        }
+
+        private void Bind()
+        {
+            ApproveGV.DataSource = ApproveRepository.GetRequests();
+            ApproveGV.DataBind();
         }
 
         protected void ApproveGV_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -24,15 +26,13 @@ namespace TheModernBibliotheca.Librarian.Borrows.Offsite
             if (e.CommandName == "Approve")
             {
                 ApproveRepository.ApproveRequest(int.Parse(e.CommandArgument.ToString()));
-                ApproveGV.DataSource = ApproveRepository.GetRequests();
-                ApproveGV.DataBind();
+                Bind();
             }
             
             else if (e.CommandName == "Disapprove")
             {
                 ApproveRepository.DisapproveRequest(int.Parse(e.CommandArgument.ToString()));
-                ApproveGV.DataSource = ApproveRepository.GetRequests();
-                ApproveGV.DataBind();
+                Bind();
             }
         }
     }
