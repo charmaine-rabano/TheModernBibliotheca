@@ -22,5 +22,28 @@
             </div>
         </div>
     </div>
-    <asp:DropDownList ID="ddlOverall" runat="server" OnSelectedIndexChanged="ddlOverall_SelectedIndexChanged"></asp:DropDownList>
+    <div style="margin-top:20px;margin-bottom:20px;">
+        <asp:DropDownList ID="ddlOverall" runat="server" OnSelectedIndexChanged="ddlOverall_SelectedIndexChanged"></asp:DropDownList>
+    </div>
+    <div class="table-responsive" style="margin-bottom:20px;margin-top:20px;">
+        <asp:GridView ID="gridviewOverall" runat="server" class="table w-100" AutoGenerateColumns="false" GridLines="None">
+            <Columns>
+                <asp:BoundField DataField="InstanceID" HeaderText="Instance ID" />
+                <asp:BoundField DataField="ISBN" HeaderText="ISBN" />
+                <asp:BoundField DataField="Title" HeaderText="Book Title" />
+                <asp:BoundField DataField="Genre" HeaderText="Genre" />
+                <asp:BoundField DataField="Author" HeaderText="Author" />
+                <asp:TemplateField HeaderText="Status" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="center-header">
+                    <ItemTemplate>
+                        <div>
+                            <div class='<%#(string) Eval("Status") == "Offshelf" ? "user-type-pill pill-offshelf" : 
+                                   (string) Eval("Status") == "Onshelf" ?  "user-type-pill pill-onshelf" : ""%>'>
+                                <%#Eval("Status")%>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+    </div>
 </asp:Content>

@@ -19,6 +19,9 @@ namespace TheModernBibliotheca.Templates
             {
                 ddlOverall.Items.Add(genre.Genre);
             }
+            gridviewOverall.DataSource = ReportOverallRepository.GetBooks();
+            gridviewOverall.DataBind();
+
         }
 
         protected void ddlOverall_SelectedIndexChanged(object sender, EventArgs e)
