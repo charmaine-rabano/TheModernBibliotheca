@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="table-responsive">
+    <div class="table-responsive" style="margin-bottom:20px;margin-top:20px;">
         <asp:GridView ID="gridviewBorrowersWithPenalty" runat="server" class="table w-100" AutoGenerateColumns="false" GridLines="None">
             <Columns>
                 <asp:BoundField DataField="BorrowerName" HeaderText="Borrower Name" />
