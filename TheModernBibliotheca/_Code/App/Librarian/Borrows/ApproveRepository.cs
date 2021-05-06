@@ -10,14 +10,16 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
     {
         public static IEnumerable<ApproveViewModel> GetRequests()
         {
-            var context = new TheModernDatabaseEntities();
-            return context.Reservations.Where(r => r.ReservationStatus == "Pending").Select(r => new ApproveViewModel
+            using (var context = new TheModernDatabaseEntities())
             {
-                ReservationDate = r.ReservationDate,
-                BookName = r.Borrow.Book.BookInformation.Title,
-                BorrowerName = r.Borrow.LibraryUser.FirstName + " " + r.Borrow.LibraryUser.LastName,
-                BorrowID = r.BorrowID
-            }).ToList();
+                return context.Reservations.Where(r => r.ReservationStatus == "Pending").Select(r => new ApproveViewModel
+                {
+                    ReservationDate = r.ReservationDate,
+                    BookName = r.Borrow.Book.BookInformation.Title,
+                    BorrowerName = r.Borrow.LibraryUser.FirstName + " " + r.Borrow.LibraryUser.LastName,
+                    BorrowID = r.BorrowID
+                }).ToList();
+            }
         }
 
         public static void ApproveRequest(int id)
