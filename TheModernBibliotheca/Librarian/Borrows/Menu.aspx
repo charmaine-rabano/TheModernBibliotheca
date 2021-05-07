@@ -5,22 +5,28 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        .item{
+        .item {
             padding-left: 20px;
             padding-right: 20px;
+        }
+
+        button {
+            padding: 20px 30px 20px 30px;
+            border: none;
+            background: none;
         }
     </style>
 
     <div class="container" style="margin-top: 60px">
         <h3>Offsite Borrowing</h3>
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Librarian/Borrows/Offsite/Approve.aspx" CssClass="item"><img src="/Content/bootstrap-icons/check2-square.svg" width="32" height="32"> Approve Reservations</asp:HyperLink>
-        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Librarian/Borrows/Offsite/Pending.aspx" CssClass="item"><img src="/Content/bootstrap-icons/calendar-event.svg" width="32" height="32"> View Pending Reservations</asp:HyperLink>
+        <a href="/Librarian/Borrows/Offsite/Approve.aspx"><button><img src="/Content/bootstrap-icons/check2-square.svg" width="32" height="32" />&emsp;Approve Reservations</button></a>
+        <a href="/Librarian/Borrows/Offsite/Pending.aspx"><button><img src="/Content/bootstrap-icons/calendar-event.svg" width="32" height="32" />&emsp;View Pending Reservations</button></a>
 
         <h3 style="margin-top: 20px">Onsite Borrowing</h3>
-        <asp:HyperLink ID="HyperLink3" runat="server" CssClass="item"><img src="/Content/bootstrap-icons/person-fill.svg" width="32" height="32"> Create Borrower Account</asp:HyperLink>
-        <asp:HyperLink ID="HyperLink4" runat="server" CssClass="item"><img src="/Content/bootstrap-icons/clipboard.svg" width="32" height="32"> Record Book Borrow</asp:HyperLink>
-        
+        <a href="#"><button><img src="/Content/bootstrap-icons/person-fill.svg" width="32" height="32" />&emsp;Create Borrower Account</button></a>
+        <a href="#"><button><img src="/Content/bootstrap-icons/clipboard.svg" width="32" height="32" />&emsp;Record Book Borrow</button></a>
+
         <h3 style="margin-top: 20px">Book Return</h3>
-        <asp:HyperLink ID="HyperLink5" runat="server" CssClass="item"><img src="/Content/bootstrap-icons/book-half.svg" width="32" height="32"> Record Book Return</asp:HyperLink>
+        <a href="#"><button><img src="/Content/bootstrap-icons/book-half.svg" width="32" height="32" />&emsp;Record Book Return</button></a>
     </div>
 </asp:Content>
