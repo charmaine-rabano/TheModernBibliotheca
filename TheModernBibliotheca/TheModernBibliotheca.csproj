@@ -1847,10 +1847,10 @@
     <Compile Include="_Code\App\Librarian\ReportOverallRepository.cs" />
     <Compile Include="_Code\Lib\DbHelper.cs" />
     <Compile Include="_Code\Lib\NavigationHelper.cs" />
-    <Compile Include="_Code\Model\Book.cs">
+    <Compile Include="_Code\Model\BookInformation.cs">
       <DependentUpon>TheModernDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="_Code\Model\BookInformation.cs">
+    <Compile Include="_Code\Model\BookInstance.cs">
       <DependentUpon>TheModernDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="_Code\Model\Borrow.cs">

@@ -11,8 +11,7 @@ namespace TheModernBibliotheca._Code.Model
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class LibraryUser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,10 +23,7 @@ namespace TheModernBibliotheca._Code.Model
         public int UserID { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
-        [NotMapped]
         public string LastName { get; set; }
-        public string FullName => FirstName + " " + LastName;
-
         public string AccountPassword { get; set; }
         public string UserType { get; set; }
         public System.DateTime DateCreated { get; set; }

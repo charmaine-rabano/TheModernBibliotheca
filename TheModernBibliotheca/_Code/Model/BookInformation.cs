@@ -17,7 +17,7 @@ namespace TheModernBibliotheca._Code.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BookInformation()
         {
-            this.Books = new HashSet<Book>();
+            this.BookInstances = new HashSet<BookInstance>();
         }
     
         public string ISBN { get; set; }
@@ -28,6 +28,6 @@ namespace TheModernBibliotheca._Code.Model
         public string BookCover { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Book> Books { get; set; }
+        public virtual ICollection<BookInstance> BookInstances { get; set; }
     }
 }
