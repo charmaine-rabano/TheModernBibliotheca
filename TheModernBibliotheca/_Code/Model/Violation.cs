@@ -14,6 +14,7 @@ namespace TheModernBibliotheca._Code.Model
     
     public partial class Violation
     {
+        public int ViolationId { get; set; }
         public int BorrowID { get; set; }
         public string ViolationType { get; set; }
     

@@ -15,7 +15,7 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
                 return context.Borrows.Where(b => b.BorrowState == "Reserved").Select(b => new PendingViewModel
                 {
                     ApprovalDate = b.Reservation.DateProcessed,
-                    BookName = b.Book.BookInformation.Title,
+                    BookName = b.BookInstance.BookInformation.Title,
                     BorrowerName = b.LibraryUser.FirstName + " " + b.LibraryUser.LastName,
                     BorrowID = b.BorrowID
                 }).ToList();

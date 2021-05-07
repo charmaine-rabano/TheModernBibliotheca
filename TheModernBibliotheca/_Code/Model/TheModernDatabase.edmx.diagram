@@ -9,8 +9,8 @@
         <EntityTypeShape EntityType="TheModermDatabaseModel.BookInstance" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="TheModermDatabaseModel.Borrow" Width="1.5" PointX="3" PointY="4.125" />
         <EntityTypeShape EntityType="TheModermDatabaseModel.LibraryUser" Width="1.5" PointX="0.75" PointY="4.125" />
-        <EntityTypeShape EntityType="TheModermDatabaseModel.Reservation" Width="1.5" PointX="5.25" PointY="6" />
-        <EntityTypeShape EntityType="TheModermDatabaseModel.UserActivity" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="TheModermDatabaseModel.Reservation" Width="1.5" PointX="5.25" PointY="6.125" />
+        <EntityTypeShape EntityType="TheModermDatabaseModel.UserActivity" Width="1.5" PointX="3" PointY="9.875" />
         <EntityTypeShape EntityType="TheModermDatabaseModel.Violation" Width="1.5" PointX="5.25" PointY="3.625" />
         <AssociationConnector Association="TheModermDatabaseModel.FK__Book__ISBN__75A278F5" />
         <AssociationConnector Association="TheModermDatabaseModel.FK__Borrow__Instance__7D439ABD" />

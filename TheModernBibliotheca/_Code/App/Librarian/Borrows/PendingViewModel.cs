@@ -7,7 +7,7 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
 {
     public class PendingViewModel
     {
-        public DateTime ApprovalDate { get; set; }
+        public DateTime? ApprovalDate { get; set; }
 
         public string BookName { get; set; }
 
