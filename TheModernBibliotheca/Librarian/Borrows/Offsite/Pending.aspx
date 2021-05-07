@@ -4,12 +4,21 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div>
-        <div>
-
+    <div class="container">
+        <div class="row" style="padding-top: 60px; display: flex; align-items: center;">
+            <a href="../Menu.aspx"><img src="/Content/bootstrap-icons/arrow-left.svg" width="25" height="25" style="margin-right: 10px" /></a>
+            <h4 style="margin-right: 20px">Offsite Borrowing</h4>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="Approve.aspx">Approve Reservations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="Pending.aspx" >View Pending Reservations</a>
+                </li>
+            </ul>
         </div>
 
-        <div class="container" style="padding-top: 60px">
+        <div class="row" style="padding-top: 60px">
             <h3>View Pending Reservations</h3>
             <div style="margin-top: 20px" class="table-responsive">
                 <asp:GridView ID="PendingGV" runat="server" AutoGenerateColumns="False" OnRowCommand="PendingGV_RowCommand" CssClass="table table-striped table-hover table-borderless" BorderWidth="0" AllowPaging="True" EmptyDataText="No Pending Reservations">

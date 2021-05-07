@@ -5,11 +5,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        .item {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
         button {
             padding: 20px 30px 20px 30px;
             border: none;
@@ -19,8 +14,8 @@
 
     <div class="container" style="margin-top: 60px">
         <h3>Offsite Borrowing</h3>
-        <a href="/Librarian/Borrows/Offsite/Approve.aspx"><button><img src="/Content/bootstrap-icons/check2-square.svg" width="32" height="32" />&emsp;Approve Reservations</button></a>
-        <a href="/Librarian/Borrows/Offsite/Pending.aspx"><button><img src="/Content/bootstrap-icons/calendar-event.svg" width="32" height="32" />&emsp;View Pending Reservations</button></a>
+        <a href="Offsite/Approve.aspx"><button><img src="/Content/bootstrap-icons/check2-square.svg" width="32" height="32" />&emsp;Approve Reservations</button></a>
+        <a href="Offsite/Pending.aspx"><button><img src="/Content/bootstrap-icons/calendar-event.svg" width="32" height="32" />&emsp;View Pending Reservations</button></a>
 
         <h3 style="margin-top: 20px">Onsite Borrowing</h3>
         <a href="#"><button><img src="/Content/bootstrap-icons/person-fill.svg" width="32" height="32" />&emsp;Create Borrower Account</button></a>
