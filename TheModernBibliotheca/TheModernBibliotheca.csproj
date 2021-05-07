@@ -1856,6 +1856,7 @@
     <Compile Include="_Code\Model\Borrow.cs">
       <DependentUpon>TheModernDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="_Code\Model\Constants.cs" />
     <Compile Include="_Code\Model\LibraryUser.cs">
       <DependentUpon>TheModernDatabase.tt</DependentUpon>
     </Compile>
