@@ -15,9 +15,8 @@ namespace TheModernBibliotheca._Code.Model
     public partial class Reservation
     {
         public int BorrowID { get; set; }
-        public System.DateTime ReservationDate { get; set; }
-        public string ReservationStatus { get; set; }
-        public System.DateTime DateProcessed { get; set; }
+        public Nullable<System.DateTime> DateReserved { get; set; }
+        public Nullable<System.DateTime> DateProcessed { get; set; }
     
         public virtual Borrow Borrow { get; set; }
     }

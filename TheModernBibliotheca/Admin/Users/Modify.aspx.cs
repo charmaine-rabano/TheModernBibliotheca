@@ -62,18 +62,17 @@ namespace TheModernBibliotheca.Admin.Accounts
             {
                 validator.Text = "Another user has already been associated with this email";
                 args.IsValid = false;
-
             }
             else
             {
                 args.IsValid = true;
             }
-
         }
 
         private bool IsEmailUnique(int id, string email)
         {
             return UsersRepository.IsEmailUniqueExceptSelf(id, email);
         }
+
     }
 }

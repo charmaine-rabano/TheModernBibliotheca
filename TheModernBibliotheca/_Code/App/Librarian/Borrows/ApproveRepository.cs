@@ -12,10 +12,10 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
         {
             using (var context = new TheModernDatabaseEntities())
             {
-                return context.Reservations.Where(r => r.ReservationStatus == "Pending").Select(r => new ApproveViewModel
+                return context.Reservations.Where(r => r.Borrow.BorrowState == Constants.Borrow.REQUESTED_STATE).Select(r => new ApproveViewModel
                 {
-                    ReservationDate = r.ReservationDate,
-                    BookName = r.Borrow.Book.BookInformation.Title,
+                    ReservationDate = r.DateReserved,
+                    BookName = r.Borrow.BookInstance.BookInformation.Title,
                     BorrowerName = r.Borrow.LibraryUser.FirstName + " " + r.Borrow.LibraryUser.LastName,
                     BorrowID = r.BorrowID
                 }).ToList();
@@ -27,8 +27,7 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
             using (var context = new TheModernDatabaseEntities())
             {
                 var reservation = context.Reservations.FirstOrDefault(r => r.BorrowID == id);
-                reservation.ReservationStatus = "Approved";
-                reservation.Borrow.BorrowState = "Reserved";
+                reservation.Borrow.BorrowState = Constants.Borrow.APPROVED_STATE;
                 reservation.DateProcessed = DateTime.Now;
                 context.SaveChanges();
             }
@@ -39,7 +38,7 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
             using (var context = new TheModernDatabaseEntities())
             {
                 var reservation = context.Reservations.FirstOrDefault(r => r.BorrowID == id);
-                reservation.ReservationStatus = "Rejected";
+                reservation.Borrow.BorrowState = Constants.Borrow.REJECTED_STATE;
                 reservation.DateProcessed = DateTime.Now;
                 context.SaveChanges();
             }

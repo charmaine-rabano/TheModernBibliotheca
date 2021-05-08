@@ -5,14 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TheModermDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Book">
-          <Key>
-            <PropertyRef Name="InstanceID" />
-          </Key>
-          <Property Name="InstanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ISBN" Type="nvarchar" MaxLength="13" />
-          <Property Name="BookStatus" Type="nvarchar" MaxLength="30" Nullable="false" />
-        </EntityType>
         <EntityType Name="BookInformation">
           <Key>
             <PropertyRef Name="ISBN" />
@@ -24,6 +16,14 @@
           <Property Name="Summary" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="BookCover" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="BookInstance">
+          <Key>
+            <PropertyRef Name="InstanceID" />
+          </Key>
+          <Property Name="InstanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ISBN" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="InCirculation" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Borrow">
           <Key>
             <PropertyRef Name="BorrowID" />
@@ -31,8 +31,8 @@
           <Property Name="BorrowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="InstanceID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="DateBorrowed" Type="datetime" Nullable="false" />
-          <Property Name="DateReturned" Type="datetime" Nullable="false" />
+          <Property Name="DateBorrowed" Type="datetime" />
+          <Property Name="DateReturned" Type="datetime" />
           <Property Name="SiteType" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="BorrowState" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
@@ -54,46 +54,43 @@
           <Key>
             <PropertyRef Name="BorrowID" />
           </Key>
-          <Property Name="BorrowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ReservationDate" Type="datetime" Nullable="false" />
-          <Property Name="ReservationStatus" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="DateProcessed" Type="datetime" Nullable="false" />
+          <Property Name="BorrowID" Type="int" Nullable="false" />
+          <Property Name="DateReserved" Type="datetime" />
+          <Property Name="DateProcessed" Type="datetime" />
         </EntityType>
         <EntityType Name="UserActivity">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="TransactionDate" Type="datetime" Nullable="false" />
           <Property Name="Remarks" Type="nvarchar" MaxLength="30" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Violation">
           <Key>
-            <PropertyRef Name="BorrowID" />
-            <PropertyRef Name="ViolationType" />
+            <PropertyRef Name="ViolationId" />
           </Key>
-          <Property Name="BorrowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ViolationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BorrowID" Type="int" Nullable="false" />
           <Property Name="ViolationType" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <Association Name="FK__Book__ISBN__75A278F5">
-          <End Role="BookInformation" Type="Self.BookInformation" Multiplicity="0..1" />
-          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <End Role="BookInformation" Type="Self.BookInformation" Multiplicity="1" />
+          <End Role="BookInstance" Type="Self.BookInstance" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BookInformation">
               <PropertyRef Name="ISBN" />
             </Principal>
-            <Dependent Role="Book">
+            <Dependent Role="BookInstance">
               <PropertyRef Name="ISBN" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Borrow__Instance__7D439ABD">
-          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="BookInstance" Type="Self.BookInstance" Multiplicity="1" />
           <End Role="Borrow" Type="Self.Borrow" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Book">
+            <Principal Role="BookInstance">
               <PropertyRef Name="InstanceID" />
             </Principal>
             <Dependent Role="Borrow">
@@ -113,7 +110,7 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reservati__Borro__09A971A2">
+        <Association Name="FK__Reservati__Borro__1AD3FDA4">
           <End Role="Borrow" Type="Self.Borrow" Multiplicity="1" />
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -125,7 +122,7 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserActiv__UserI__0E6E26BF">
+        <Association Name="FK__UserActiv__UserI__17F790F9">
           <End Role="LibraryUser" Type="Self.LibraryUser" Multiplicity="1" />
           <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -150,35 +147,30 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TheModermDatabaseModelStoreContainer">
-          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BookInformation" EntityType="Self.BookInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookInstance" EntityType="Self.BookInstance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Borrow" EntityType="Self.Borrow" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LibraryUser" EntityType="Self.LibraryUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserActivity" EntityType="Self.UserActivity" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Violation" EntityType="Self.Violation" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Violation].[BorrowID] AS [BorrowID], 
-    [Violation].[ViolationType] AS [ViolationType]
-    FROM [dbo].[Violation] AS [Violation]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Violation" EntityType="Self.Violation" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Book__ISBN__75A278F5" Association="Self.FK__Book__ISBN__75A278F5">
             <End Role="BookInformation" EntitySet="BookInformation" />
-            <End Role="Book" EntitySet="Book" />
+            <End Role="BookInstance" EntitySet="BookInstance" />
           </AssociationSet>
           <AssociationSet Name="FK__Borrow__Instance__7D439ABD" Association="Self.FK__Borrow__Instance__7D439ABD">
-            <End Role="Book" EntitySet="Book" />
+            <End Role="BookInstance" EntitySet="BookInstance" />
             <End Role="Borrow" EntitySet="Borrow" />
           </AssociationSet>
           <AssociationSet Name="FK__Borrow__UserID__04E4BC85" Association="Self.FK__Borrow__UserID__04E4BC85">
             <End Role="LibraryUser" EntitySet="LibraryUser" />
             <End Role="Borrow" EntitySet="Borrow" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reservati__Borro__09A971A2" Association="Self.FK__Reservati__Borro__09A971A2">
+          <AssociationSet Name="FK__Reservati__Borro__1AD3FDA4" Association="Self.FK__Reservati__Borro__1AD3FDA4">
             <End Role="Borrow" EntitySet="Borrow" />
             <End Role="Reservation" EntitySet="Reservation" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserActiv__UserI__0E6E26BF" Association="Self.FK__UserActiv__UserI__0E6E26BF">
+          <AssociationSet Name="FK__UserActiv__UserI__17F790F9" Association="Self.FK__UserActiv__UserI__17F790F9">
             <End Role="LibraryUser" EntitySet="LibraryUser" />
             <End Role="UserActivity" EntitySet="UserActivity" />
           </AssociationSet>
@@ -192,8 +184,8 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
     <edmx:ConceptualModels>
       <Schema Namespace="TheModermDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TheModernDatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Books" EntityType="TheModermDatabaseModel.Book" />
           <EntitySet Name="BookInformations" EntityType="TheModermDatabaseModel.BookInformation" />
+          <EntitySet Name="BookInstances" EntityType="TheModermDatabaseModel.BookInstance" />
           <EntitySet Name="Borrows" EntityType="TheModermDatabaseModel.Borrow" />
           <EntitySet Name="LibraryUsers" EntityType="TheModermDatabaseModel.LibraryUser" />
           <EntitySet Name="Reservations" EntityType="TheModermDatabaseModel.Reservation" />
@@ -201,17 +193,17 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
           <EntitySet Name="Violations" EntityType="TheModermDatabaseModel.Violation" />
           <AssociationSet Name="FK__Book__ISBN__75A278F5" Association="TheModermDatabaseModel.FK__Book__ISBN__75A278F5">
             <End Role="BookInformation" EntitySet="BookInformations" />
-            <End Role="Book" EntitySet="Books" />
+            <End Role="BookInstance" EntitySet="BookInstances" />
           </AssociationSet>
           <AssociationSet Name="FK__Borrow__Instance__7D439ABD" Association="TheModermDatabaseModel.FK__Borrow__Instance__7D439ABD">
-            <End Role="Book" EntitySet="Books" />
+            <End Role="BookInstance" EntitySet="BookInstances" />
             <End Role="Borrow" EntitySet="Borrows" />
           </AssociationSet>
           <AssociationSet Name="FK__Borrow__UserID__04E4BC85" Association="TheModermDatabaseModel.FK__Borrow__UserID__04E4BC85">
             <End Role="LibraryUser" EntitySet="LibraryUsers" />
             <End Role="Borrow" EntitySet="Borrows" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reservati__Borro__09A971A2" Association="TheModermDatabaseModel.FK__Reservati__Borro__09A971A2">
+          <AssociationSet Name="FK__Reservati__Borro__1AD3FDA4" Association="TheModermDatabaseModel.FK__Reservati__Borro__1AD3FDA4">
             <End Role="Borrow" EntitySet="Borrows" />
             <End Role="Reservation" EntitySet="Reservations" />
           </AssociationSet>
@@ -219,21 +211,11 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
             <End Role="Borrow" EntitySet="Borrows" />
             <End Role="Violation" EntitySet="Violations" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserActiv__UserI__0E6E26BF" Association="TheModermDatabaseModel.FK__UserActiv__UserI__0E6E26BF">
+          <AssociationSet Name="FK__UserActiv__UserI__17F790F9" Association="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9">
             <End Role="LibraryUser" EntitySet="LibraryUsers" />
             <End Role="UserActivity" EntitySet="UserActivities" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Book">
-          <Key>
-            <PropertyRef Name="InstanceID" />
-          </Key>
-          <Property Name="InstanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ISBN" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
-          <Property Name="BookStatus" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BookInformation" Relationship="TheModermDatabaseModel.FK__Book__ISBN__75A278F5" FromRole="Book" ToRole="BookInformation" />
-          <NavigationProperty Name="Borrows" Relationship="TheModermDatabaseModel.FK__Borrow__Instance__7D439ABD" FromRole="Book" ToRole="Borrow" />
-        </EntityType>
         <EntityType Name="BookInformation">
           <Key>
             <PropertyRef Name="ISBN" />
@@ -244,7 +226,17 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
           <Property Name="Author" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Summary" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="BookCover" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Books" Relationship="TheModermDatabaseModel.FK__Book__ISBN__75A278F5" FromRole="BookInformation" ToRole="Book" />
+          <NavigationProperty Name="BookInstances" Relationship="TheModermDatabaseModel.FK__Book__ISBN__75A278F5" FromRole="BookInformation" ToRole="BookInstance" />
+        </EntityType>
+        <EntityType Name="BookInstance">
+          <Key>
+            <PropertyRef Name="InstanceID" />
+          </Key>
+          <Property Name="InstanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISBN" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="InCirculation" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BookInformation" Relationship="TheModermDatabaseModel.FK__Book__ISBN__75A278F5" FromRole="BookInstance" ToRole="BookInformation" />
+          <NavigationProperty Name="Borrows" Relationship="TheModermDatabaseModel.FK__Borrow__Instance__7D439ABD" FromRole="BookInstance" ToRole="Borrow" />
         </EntityType>
         <EntityType Name="Borrow">
           <Key>
@@ -253,13 +245,13 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
           <Property Name="BorrowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="InstanceID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="DateBorrowed" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DateReturned" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateBorrowed" Type="DateTime" Precision="3" />
+          <Property Name="DateReturned" Type="DateTime" Precision="3" />
           <Property Name="SiteType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="BorrowState" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Book" Relationship="TheModermDatabaseModel.FK__Borrow__Instance__7D439ABD" FromRole="Borrow" ToRole="Book" />
+          <NavigationProperty Name="BookInstance" Relationship="TheModermDatabaseModel.FK__Borrow__Instance__7D439ABD" FromRole="Borrow" ToRole="BookInstance" />
           <NavigationProperty Name="LibraryUser" Relationship="TheModermDatabaseModel.FK__Borrow__UserID__04E4BC85" FromRole="Borrow" ToRole="LibraryUser" />
-          <NavigationProperty Name="Reservation" Relationship="TheModermDatabaseModel.FK__Reservati__Borro__09A971A2" FromRole="Borrow" ToRole="Reservation" />
+          <NavigationProperty Name="Reservation" Relationship="TheModermDatabaseModel.FK__Reservati__Borro__1AD3FDA4" FromRole="Borrow" ToRole="Reservation" />
           <NavigationProperty Name="Violations" Relationship="TheModermDatabaseModel.FK__Violation__Borro__114A936A" FromRole="Borrow" ToRole="Violation" />
         </EntityType>
         <EntityType Name="LibraryUser">
@@ -276,53 +268,52 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
           <Property Name="SessionId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="SessionExpiry" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Borrows" Relationship="TheModermDatabaseModel.FK__Borrow__UserID__04E4BC85" FromRole="LibraryUser" ToRole="Borrow" />
-          <NavigationProperty Name="UserActivity" Relationship="TheModermDatabaseModel.FK__UserActiv__UserI__0E6E26BF" FromRole="LibraryUser" ToRole="UserActivity" />
+          <NavigationProperty Name="UserActivity" Relationship="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9" FromRole="LibraryUser" ToRole="UserActivity" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
             <PropertyRef Name="BorrowID" />
           </Key>
-          <Property Name="BorrowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ReservationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ReservationStatus" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="DateProcessed" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Borrow" Relationship="TheModermDatabaseModel.FK__Reservati__Borro__09A971A2" FromRole="Reservation" ToRole="Borrow" />
+          <Property Name="BorrowID" Type="Int32" Nullable="false" />
+          <Property Name="DateReserved" Type="DateTime" Precision="3" />
+          <Property Name="DateProcessed" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Borrow" Relationship="TheModermDatabaseModel.FK__Reservati__Borro__1AD3FDA4" FromRole="Reservation" ToRole="Borrow" />
         </EntityType>
         <EntityType Name="UserActivity">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Remarks" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="LibraryUser" Relationship="TheModermDatabaseModel.FK__UserActiv__UserI__0E6E26BF" FromRole="UserActivity" ToRole="LibraryUser" />
+          <NavigationProperty Name="LibraryUser" Relationship="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9" FromRole="UserActivity" ToRole="LibraryUser" />
         </EntityType>
         <EntityType Name="Violation">
           <Key>
-            <PropertyRef Name="BorrowID" />
-            <PropertyRef Name="ViolationType" />
+            <PropertyRef Name="ViolationId" />
           </Key>
-          <Property Name="BorrowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ViolationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BorrowID" Type="Int32" Nullable="false" />
           <Property Name="ViolationType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Borrow" Relationship="TheModermDatabaseModel.FK__Violation__Borro__114A936A" FromRole="Violation" ToRole="Borrow" />
         </EntityType>
         <Association Name="FK__Book__ISBN__75A278F5">
-          <End Type="TheModermDatabaseModel.BookInformation" Role="BookInformation" Multiplicity="0..1" />
-          <End Type="TheModermDatabaseModel.Book" Role="Book" Multiplicity="*" />
+          <End Type="TheModermDatabaseModel.BookInformation" Role="BookInformation" Multiplicity="1" />
+          <End Type="TheModermDatabaseModel.BookInstance" Role="BookInstance" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BookInformation">
               <PropertyRef Name="ISBN" />
             </Principal>
-            <Dependent Role="Book">
+            <Dependent Role="BookInstance">
               <PropertyRef Name="ISBN" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Borrow__Instance__7D439ABD">
-          <End Type="TheModermDatabaseModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="TheModermDatabaseModel.BookInstance" Role="BookInstance" Multiplicity="1" />
           <End Type="TheModermDatabaseModel.Borrow" Role="Borrow" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Book">
+            <Principal Role="BookInstance">
               <PropertyRef Name="InstanceID" />
             </Principal>
             <Dependent Role="Borrow">
@@ -342,7 +333,7 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reservati__Borro__09A971A2">
+        <Association Name="FK__Reservati__Borro__1AD3FDA4">
           <End Type="TheModermDatabaseModel.Borrow" Role="Borrow" Multiplicity="1" />
           <End Type="TheModermDatabaseModel.Reservation" Role="Reservation" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -366,7 +357,7 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserActiv__UserI__0E6E26BF">
+        <Association Name="FK__UserActiv__UserI__17F790F9">
           <End Type="TheModermDatabaseModel.LibraryUser" Role="LibraryUser" Multiplicity="1" />
           <End Type="TheModermDatabaseModel.UserActivity" Role="UserActivity" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -378,21 +369,12 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TheModermDatabaseModelStoreContainer" CdmEntityContainer="TheModernDatabaseEntities">
-          <EntitySetMapping Name="Books">
-            <EntityTypeMapping TypeName="TheModermDatabaseModel.Book">
-              <MappingFragment StoreEntitySet="Book">
-                <ScalarProperty Name="BookStatus" ColumnName="BookStatus" />
-                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
-                <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="BookInformations">
             <EntityTypeMapping TypeName="TheModermDatabaseModel.BookInformation">
               <MappingFragment StoreEntitySet="BookInformation">
@@ -402,6 +384,15 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
                 <ScalarProperty Name="Genre" ColumnName="Genre" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookInstances">
+            <EntityTypeMapping TypeName="TheModermDatabaseModel.BookInstance">
+              <MappingFragment StoreEntitySet="BookInstance">
+                <ScalarProperty Name="InCirculation" ColumnName="InCirculation" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -437,8 +428,7 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
             <EntityTypeMapping TypeName="TheModermDatabaseModel.Reservation">
               <MappingFragment StoreEntitySet="Reservation">
                 <ScalarProperty Name="DateProcessed" ColumnName="DateProcessed" />
-                <ScalarProperty Name="ReservationStatus" ColumnName="ReservationStatus" />
-                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+                <ScalarProperty Name="DateReserved" ColumnName="DateReserved" />
                 <ScalarProperty Name="BorrowID" ColumnName="BorrowID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -457,6 +447,7 @@ warning 6002: The table/view 'themodernbibliotheca.dbo.Violation' does not have 
               <MappingFragment StoreEntitySet="Violation">
                 <ScalarProperty Name="ViolationType" ColumnName="ViolationType" />
                 <ScalarProperty Name="BorrowID" ColumnName="BorrowID" />
+                <ScalarProperty Name="ViolationId" ColumnName="ViolationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

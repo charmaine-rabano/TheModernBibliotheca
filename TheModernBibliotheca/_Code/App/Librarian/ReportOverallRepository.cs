@@ -16,28 +16,28 @@ namespace TheModernBibliotheca._Code.App.Librarian
         public static IEnumerable<ReportOverallModel> GetBooks()
         {
             var context = CreateDbContext();
-            return context.Books.Select(e => new ReportOverallModel
+            return context.BookInstances.Select(e => new ReportOverallModel
             {
                 InstanceID = e.InstanceID,
                 ISBN = e.ISBN,
                 Title = e.BookInformation.Title,
                 Genre = e.BookInformation.Genre,
                 Author = e.BookInformation.Author,
-                Status = e.BookStatus
+                Status = e.InCirculation ? "In Circulation" : "Not In Circulation"
             }).ToList();
         }
 
         public static IEnumerable<ReportOverallModel> GetSpecificGenre(string specificGenre)
         {
             var context = CreateDbContext();
-            return context.Books.Where(e => e.BookInformation.Genre == specificGenre).Select(e => new ReportOverallModel
+            return context.BookInstances.Where(e => e.BookInformation.Genre == specificGenre).Select(e => new ReportOverallModel
             {
                 InstanceID = e.InstanceID,
                 ISBN = e.ISBN,
                 Title = e.BookInformation.Title,
                 Genre = e.BookInformation.Genre,
                 Author = e.BookInformation.Author,
-                Status = e.BookStatus
+                Status = e.InCirculation ? "In Circulation" : "Not In Circulation"
             }).ToList();
         }
 

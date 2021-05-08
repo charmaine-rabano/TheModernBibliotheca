@@ -23,12 +23,12 @@ namespace TheModernBibliotheca._Code.Model
         public int BorrowID { get; set; }
         public int InstanceID { get; set; }
         public int UserID { get; set; }
-        public System.DateTime DateBorrowed { get; set; }
-        public System.DateTime DateReturned { get; set; }
+        public Nullable<System.DateTime> DateBorrowed { get; set; }
+        public Nullable<System.DateTime> DateReturned { get; set; }
         public string SiteType { get; set; }
         public string BorrowState { get; set; }
     
-        public virtual Book Book { get; set; }
+        public virtual BookInstance BookInstance { get; set; }
         public virtual LibraryUser LibraryUser { get; set; }
         public virtual Reservation Reservation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

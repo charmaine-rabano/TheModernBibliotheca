@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Admin.master" AutoEventWireup="true" CodeBehind="Modify.aspx.cs" Inherits="TheModernBibliotheca.Admin.Accounts.Modify" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
     <style>
         input, select {
@@ -6,11 +7,11 @@
         }
 
         .form-action {
-            display:flex;
+            display: flex;
         }
 
         .primary-action {
-            margin-left:auto;
+            margin-left: auto;
         }
     </style>
 </asp:Content>
@@ -74,6 +75,8 @@
         </div>
     </div>
     <div class="form-action">
+        <asp:Button Text="Delete" runat="server" ID="DeleteBtn" OnClick="DeleteBtn_Click" CssClass="btn btn-danger alternative-action" />
+
         <asp:Button Text="Submit" runat="server" ID="SubmitBtn" OnClick="SubmitBtn_Click" CssClass="btn btn-primary primary-action" />
     </div>
 </asp:Content>
