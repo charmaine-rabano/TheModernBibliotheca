@@ -21,7 +21,7 @@
         <div class="row" style="padding-top: 60px">
             <h3>Approve Reservations</h3>
             <div style="margin-top: 20px" class="table-responsive">
-                <asp:GridView ID="ApproveGV" runat="server" AutoGenerateColumns="False" OnRowCommand="ApproveGV_RowCommand" CssClass="table table-striped table-hover table-borderless" BorderWidth="0" AllowPaging="True" EmptyDataText="No Reservation Requests to Approve">
+                <asp:GridView ID="ApproveGV" runat="server" AutoGenerateColumns="False" OnRowCommand="ApproveGV_RowCommand" CssClass="table table-striped table-hover" BorderWidth="0" EmptyDataText="No Reservation Requests to Approve" GridLines="None">
                     <EmptyDataRowStyle Font-Size="Large" HorizontalAlign="Center" />
                     <Columns>
                         <asp:BoundField DataField="ReservationDate" HeaderText="Reservation Date" DataFormatString="{0:MMM dd, yyyy}" />

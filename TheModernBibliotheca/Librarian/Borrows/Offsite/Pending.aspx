@@ -21,7 +21,7 @@
         <div class="row" style="padding-top: 60px">
             <h3>View Pending Reservations</h3>
             <div style="margin-top: 20px" class="table-responsive">
-                <asp:GridView ID="PendingGV" runat="server" AutoGenerateColumns="False" OnRowCommand="PendingGV_RowCommand" CssClass="table table-striped table-hover table-borderless" BorderWidth="0" AllowPaging="True" EmptyDataText="No Pending Reservations">
+                <asp:GridView ID="PendingGV" runat="server" AutoGenerateColumns="False" OnRowCommand="PendingGV_RowCommand" CssClass="table table-striped table-hover" BorderWidth="0" EmptyDataText="No Pending Reservations" GridLines="None">
                     <EmptyDataRowStyle Font-Size="Large" HorizontalAlign="Center" />
                     <Columns>
                         <asp:BoundField DataField="ApprovalDate" HeaderText="Approval Date" DataFormatString="{0:MMM dd, yyyy}" />
