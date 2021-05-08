@@ -10,7 +10,6 @@ namespace TheModernBibliotheca._Code.App.Admin
         public string Email { get; set; }
         public string UserType { get; set; }
         public DateTime TimeStamp { get; set; }
-
         public string Description { get; set; }
     }
 }

@@ -10,11 +10,11 @@
             <PropertyRef Name="ISBN" />
           </Key>
           <Property Name="ISBN" Type="nvarchar" MaxLength="13" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Genre" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Author" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Summary" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="BookCover" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Genre" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Author" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="BookCover" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="BookInstance">
           <Key>
@@ -41,14 +41,16 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="AccountPassword" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="AccountPassword" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="UserType" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
           <Property Name="SessionId" Type="nvarchar" MaxLength="200" />
           <Property Name="SessionExpiry" Type="datetime" />
+          <Property Name="AccountStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="257" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
@@ -221,11 +223,11 @@
             <PropertyRef Name="ISBN" />
           </Key>
           <Property Name="ISBN" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Genre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Author" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Summary" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="BookCover" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Genre" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Author" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BookCover" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BookInstances" Relationship="TheModermDatabaseModel.FK__Book__ISBN__75A278F5" FromRole="BookInformation" ToRole="BookInstance" />
         </EntityType>
         <EntityType Name="BookInstance">
@@ -259,16 +261,18 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="AccountPassword" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="AccountPassword" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UserType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SessionId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="SessionExpiry" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Borrows" Relationship="TheModermDatabaseModel.FK__Borrow__UserID__04E4BC85" FromRole="LibraryUser" ToRole="Borrow" />
           <NavigationProperty Name="UserActivity" Relationship="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9" FromRole="LibraryUser" ToRole="UserActivity" />
+          <Property Name="AccountStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="257" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
@@ -412,6 +416,8 @@
           <EntitySetMapping Name="LibraryUsers">
             <EntityTypeMapping TypeName="TheModermDatabaseModel.LibraryUser">
               <MappingFragment StoreEntitySet="LibraryUser">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
                 <ScalarProperty Name="SessionExpiry" ColumnName="SessionExpiry" />
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />

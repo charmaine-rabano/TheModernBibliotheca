@@ -13,13 +13,13 @@ namespace TheModernBibliotheca._Code.App.Admin
         public static IEnumerable<LibraryUser> GetUsers()
         {
             using (var context = new TheModernDatabaseEntities())
-                return context.LibraryUsers.ToList();
+                return context.LibraryUsers.Where(e => e.AccountStatus == Constants.LibraryUser.ACTIVE_STATUS).ToList();
         }
 
         public static LibraryUser GetUser(int id)
         {
             using (var context = new TheModernDatabaseEntities())
-                return context.LibraryUsers.FirstOrDefault(e => e.UserID == id); ;
+                return context.LibraryUsers.FirstOrDefault(e => e.UserID == id && e.AccountStatus != Constants.LibraryUser.DEACTIVATED_STATUS);
         }
 
         public static void AddAccount(LibraryUser account)
@@ -31,17 +31,19 @@ namespace TheModernBibliotheca._Code.App.Admin
             }
         }
 
-
         public static void ModifyAccount(int userId, LibraryUser modifiedUser, bool passwordChanged)
         {
             using (var context = new TheModernDatabaseEntities())
             {
-                var user = context.LibraryUsers.FirstOrDefault(e => e.UserID == userId);
+                var user = context.LibraryUsers.FirstOrDefault(e => e.UserID == userId && e.AccountStatus != Constants.LibraryUser.DEACTIVATED_STATUS);
+
+                if (user == null) throw new InvalidOperationException("Invalid user id");
 
                 user.FirstName = modifiedUser.FirstName;
                 user.LastName = modifiedUser.LastName;
                 user.Email = modifiedUser.Email;
                 user.UserType = modifiedUser.UserType;
+
                 if (passwordChanged)
                 {
                     user.AccountPassword = modifiedUser.AccountPassword;
@@ -60,11 +62,16 @@ namespace TheModernBibliotheca._Code.App.Admin
 
                 if (libraryUser == null) throw new Exception("Invalid user id");
 
-                context.LibraryUsers.Remove(libraryUser);
+                libraryUser.AccountStatus = Constants.LibraryUser.DEACTIVATED_STATUS;
                 context.SaveChanges();
             }
         }
 
+        /// <summary>
+        /// Will still check if email has been used in deactivated accounts
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         internal static bool IsEmailUnique(string email)
         {
             using (var context = new TheModernDatabaseEntities())

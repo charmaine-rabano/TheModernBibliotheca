@@ -11,8 +11,7 @@ namespace TheModernBibliotheca._Code.Model
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class LibraryUser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +19,7 @@ namespace TheModernBibliotheca._Code.Model
         {
             this.Borrows = new HashSet<Borrow>();
         }
-
-        [NotMapped]
-        public string FullName => FirstName + " " + LastName;
-
+    
         public int UserID { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
@@ -33,6 +29,8 @@ namespace TheModernBibliotheca._Code.Model
         public System.DateTime DateCreated { get; set; }
         public string SessionId { get; set; }
         public Nullable<System.DateTime> SessionExpiry { get; set; }
+        public string AccountStatus { get; set; }
+        public string FullName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Borrow> Borrows { get; set; }

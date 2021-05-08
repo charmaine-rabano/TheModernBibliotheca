@@ -31,6 +31,10 @@ namespace TheModernBibliotheca._Code.Model
             public const string ADMIN_TYPE = "Admin";
             public const string BORROWER_TYPE = "Borrower";
 
+            public const string ACTIVE_STATUS = "Active";
+            public const string DEACTIVATED_STATUS = "Deactivated";
+
+
         }
 
 
