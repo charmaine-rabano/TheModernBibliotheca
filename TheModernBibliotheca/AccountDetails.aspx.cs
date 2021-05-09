@@ -15,5 +15,20 @@ namespace TheModernBibliotheca
         }
 
         public bool isRepeater = true;
+
+        protected void SaveNameBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void SavePasswordBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void DeactivateAccount_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

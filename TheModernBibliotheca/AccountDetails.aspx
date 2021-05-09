@@ -4,102 +4,77 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <br />
-        <h1 style="font-size: 60px;">Account Details</h1>
-        <br />
-        <br />
-        <div class="col-6">
-            <div style="display: flex;">
-                <div class="col-6" style="font-size: 21px;">
-                    <asp:Label runat="server">Complete Name</asp:Label>
+
+        <h1 style="font-size: 45px;">Account Details</h1>
+
+        <div class="row" style="margin-left: auto;">
+            <div class="col-sm-6 col-12" style="margin-top: 50px;">
+                <h1 style="font-size: 25px;">Name</h1>
+                <br />
+                <%-- First Name --%>
+                <div class="form-group">
+                    <asp:Label Text="First Name" runat="server" />
+                    <asp:TextBox ID="FirstNameTxt" runat="server" CssClass="form-control" type="text" MaxLength="100" />
+                    <asp:RequiredFieldValidator ErrorMessage="Please enter your Email" ControlToValidate="FirstNameTxt" runat="server" CssClass="validation-message" Display="Dynamic" />
                 </div>
-                <div class="col-6">
-                    <asp:TextBox class="form-control" ID="txtCompleteName" ReadOnly="true" runat="server" Width="250"></asp:TextBox>
+
+                <%-- Last Name --%>
+                <div class="form-group">
+                    <asp:Label Text="Last Name" runat="server" />
+                    <asp:TextBox ID="LastNameTxt" runat="server" CssClass="form-control" type="text" MaxLength="100" />
+                    <asp:RequiredFieldValidator ErrorMessage="Please enter your password" ControlToValidate="LastNameTxt" runat="server" CssClass="validation-message" Display="Dynamic" />
+                </div>
+
+                <%-- Submit Button --%>
+                <div style="display: flex; flex-direction: row;">
+                    <asp:Button ID="SaveNameBtn" Text="Save Changes" runat="server" CssClass="submit-btn btn btn-primary" OnClick="SaveNameBtn_Click" />
                 </div>
             </div>
-            <br />
-            <div style="display: flex;">
-                <div class="col-6" style="font-size: 21px;">
-                    <asp:Label runat="server">E-mail</asp:Label>
+
+            <div class="col-sm-6 col-12" style="margin-top: 50px;">
+                <h1 style="font-size: 25px;">Change Password</h1>
+                <br />
+                <%-- Current Password --%>
+                <div class="form-group">
+                    <asp:Label Text="Current Password" runat="server" />
+                    <asp:TextBox ID="CurrPasswordTxt" runat="server" CssClass="form-control" type="password" MaxLength="100" />
+                    <asp:RequiredFieldValidator ErrorMessage="Please enter your current password" ControlToValidate="CurrPasswordTxt" runat="server" CssClass="validation-message" Display="Dynamic" />
                 </div>
-                <div class="col-6">
-                    <asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" runat="server" Width="250"></asp:TextBox>
+
+                <%-- New Password --%>
+                <div class="form-group">
+                    <asp:Label Text="New Password" runat="server" />
+                    <asp:TextBox ID="NewPasswordTxt" runat="server" CssClass="form-control" type="password" MaxLength="100" />
+                    <asp:RequiredFieldValidator ErrorMessage="Please enter your new password" ControlToValidate="NewPasswordTxt" runat="server" CssClass="validation-message" Display="Dynamic" />
                 </div>
-            </div>
-            <br />
-            <div style="display: flex;">
-                <div class="col-6" style="font-size: 21px;">
-                    <asp:Label runat="server">Password</asp:Label>
+
+                <%-- Confirm Password --%>
+                <div class="form-group">
+                    <asp:Label Text="Confirm Password" runat="server" />
+                    <asp:TextBox runat="server" ID="ConfirmPasswordTb" CssClass="form-control" TextMode="Password" MaxLength="255" />
+                    <asp:RequiredFieldValidator ErrorMessage="This is a required field" ControlToValidate="ConfirmPasswordTb" runat="server" CssClass="validation-message" Display="Dynamic" />
+                    <asp:CompareValidator ErrorMessage="Passwords need to match" ControlToValidate="ConfirmPasswordTb" runat="server" ControlToCompare="NewPasswordTxt" CssClass="validation-message" Display="Dynamic" Operator="Equal" />
                 </div>
-                <div class="col-6">
-                    <asp:TextBox class="form-control" ID="txtPassword" ReadOnly="true" type="password" runat="server" Width="250"></asp:TextBox>
+
+                <%-- Submit Button --%>
+                <div style="display: flex; flex-direction: row;">
+                    <asp:Button ID="SavePasswordBtn" Text="Save Changes" runat="server" CssClass="submit-btn btn btn-primary" OnClick="SavePasswordBtn_Click" />
                 </div>
             </div>
         </div>
 
-        <br />
-        <br />
-
-        <div>
-            <h1 style="font-size: 60px;">Reservation Details</h1>
-            <br />
-            <br />
-            <% if (isRepeater)
-                {%>
-
-            <div style="background-color: #E1D9D9">
+        <div class="row" style="margin-left: auto;">
+            <div class="col-sm-6 col-12">
                 <br />
-                <p style="font-style: italic; text-align: center;">You have not made any reservations.</p>
                 <br />
+                <h1 style="font-size: 25px;">Deactivate Account</h1>
+                <br />
+                <%-- Submit Button --%>
+                <div style="display: flex; flex-direction: row;">
+                    <asp:Button ID="DeactivateAccount" Text="Deactivate Account" runat="server" CssClass="submit-btn btn btn-danger" OnClick="DeactivateAccount_Click" />
+                </div>
             </div>
-
-            <%}%>
-            <%else
-                {%>
-
-            
-
-            <%} %>
         </div>
 
-        <br />
-        <br />
-
-        <div>
-            <h1 style="font-size: 60px;">Borrowed Books</h1>
-            <br />
-            <br />
-            <% if (isRepeater)
-                {%>
-
-            <div style="background-color: #E1D9D9">
-                <br />
-                <p style="font-style: italic; text-align: center;">You have not borrowed any books.</p>
-                <br />
-            </div>
-
-            <%}%>
-            <%else
-                {%>
-
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">ISBN</th>
-                        <th scope="col">Date Reserved</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody style="background-color: #E1D9D9;">
-                    <tr>
-                        <td>123412341234</td>
-                        <td>Educational</td>
-                        <td>Off-shelf</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <%} %>
-        </div>
     </div>
 </asp:Content>
