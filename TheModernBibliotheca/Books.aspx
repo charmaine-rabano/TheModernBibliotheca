@@ -15,17 +15,12 @@
         </div>
         <div class="col-9">
             <h2>
-                <asp:Label ID="txtTitle" runat="server">Tekken 7: Frame Data Guide</asp:Label></h2>
+                <asp:Label ID="txtTitle" runat="server"><%=model.Title%></asp:Label></h2>
             <h4>
-                <asp:Label ID="txtAuthor" runat="server">Mark Anthony Mamauag</asp:Label></h4>
+                <asp:Label ID="txtAuthor" runat="server"><%=model.Author%></asp:Label></h4>
             <br />
             <h5>Summary</h5>
-            <asp:Label ID="txtSummary" style="font-weight: 400;" runat="server">Lorem ipsum dolor sit amet, 
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </asp:Label>
+            <asp:Label ID="txtSummary" style="font-weight: 400;" runat="server"><%=model.Summary%></asp:Label>
             <br />
             <br />
             <table class="table">
@@ -36,11 +31,11 @@
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
-                <tbody style="background-color: burlywood;">
+                <tbody style="background-color: #E1D9D9;">
                     <tr>
-                        <td>123412341234</td>
-                        <td>Educational</td>
-                        <td>Off-shelf</td>
+                        <td><%=model.ISBN%></td>
+                        <td><%=model.Genre%></td>
+                        <td>Available</td>
                     </tr>
                 </tbody>
             </table>

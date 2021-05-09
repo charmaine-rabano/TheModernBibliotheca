@@ -200,6 +200,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccountDetails.aspx" />
     <Content Include="Admin\Activity.aspx" />
     <Content Include="Admin\Users\Add.aspx" />
     <Content Include="Admin\Users\Default.aspx" />
@@ -1700,6 +1701,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountDetails.aspx.cs">
+      <DependentUpon>AccountDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccountDetails.aspx.designer.cs">
+      <DependentUpon>AccountDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Activity.aspx.cs">
       <DependentUpon>Activity.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1752,13 +1760,6 @@
     <Compile Include="Librarian\Report\BorrowersWithPenalty.aspx.designer.cs">
       <DependentUpon>BorrowersWithPenalty.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Templates\Librarian.master.cs">
-      <DependentUpon>Librarian.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Templates\Librarian.master.designer.cs">
-      <DependentUpon>Librarian.master</DependentUpon>
-    </Compile>
     <Compile Include="_Code\App\Admin\ActivityRepository.cs" />
     <Compile Include="_Code\App\Admin\ActivityViewModel.cs" />
     <Compile Include="_Code\App\Admin\UsersRepository.cs" />
@@ -1806,8 +1807,6 @@
     <Compile Include="Books.aspx.designer.cs">
       <DependentUpon>Books.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Borrower\BookInformation.cs" />
-    <Compile Include="Borrower\BookInformationRespository.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1854,8 +1853,7 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="_Code\App\Librarian\Borrows\ApproveRepository.cs" />
-    <Compile Include="_Code\App\Librarian\Borrows\ApproveViewModel.cs" />
+    <Compile Include="_Code\App\Borrower\BooksRepository.cs" />
     <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyModel.cs" />
     <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\PendingRepository.cs" />
@@ -1938,9 +1936,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="_Code\App\Borrower\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
