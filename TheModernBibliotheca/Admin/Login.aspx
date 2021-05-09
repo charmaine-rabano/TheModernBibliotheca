@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Admin.master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TheModernBibliotheca.Admin.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Site.master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TheModernBibliotheca.Admin.Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
     <style>
@@ -33,6 +33,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="signin-form">
+
         <%-- Brand Logo --%>
         <asp:Image ImageUrl="~/Content/Images/lokal_logo_puzzle_O.png" runat="server" CssClass="login-brand-logo" Style="width: 220px; height: auto; margin: 40px;" />
 
@@ -40,9 +41,9 @@
         <div class="login-header">
             <h3 class="my-3">Admin Sign In</h3>
         </div>
-
-        <%-- Error Message --%>
-        <asp:CustomValidator ErrorMessage="Error Message" ControlToValidate="EmailTxt" runat="server" ID="loginCv" CssClass="validation-message" />
+        <div id="loginMessageDiv" class="alert alert-danger" role="alert" runat="server" visible="false">
+            Please check your email and password
+        </div>
 
         <%-- Email --%>
         <div class="form-group">

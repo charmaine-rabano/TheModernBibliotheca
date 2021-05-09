@@ -80,11 +80,11 @@
                             <a class="nav-link dropdown-toggle" href="~/Account/Collection" id="navbarDropdown"
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server"
                                 style="font-weight: 600; font-size: 17px;">
-                                <span><%= "Username" %></span>
+                                <span><%= AuthenticationHelper.GetAdminAuth().GetUser().Email %></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="~/Account/Signout" runat="server">Logout</a>
+                                <asp:LinkButton Text="Sign Out" runat="server" ID="SignoutLb" OnClick="SignoutLb_Click" CssClass="dropdown-item"/>
                             </div>
 
                         </li>

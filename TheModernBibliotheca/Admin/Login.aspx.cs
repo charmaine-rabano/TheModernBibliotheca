@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TheModernBibliotheca.App_Start.Authentication;
+using TheModernBibliotheca._Code.Lib.Authentication;
 
 namespace TheModernBibliotheca.Admin
 {
@@ -12,10 +12,6 @@ namespace TheModernBibliotheca.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (AuthenticationHelper.GetAdminAuth().IsLoggedIn())
-            {
-                Response.Write(AuthenticationHelper.GetAdminAuth().GetUser().Email);
-            }
         }
 
         protected void SubmitBtn_Click(object sender, EventArgs e)
@@ -24,12 +20,13 @@ namespace TheModernBibliotheca.Admin
 
             if (AuthenticationHelper.GetAdminAuth().Authenticate(EmailTxt.Text, PasswordTxt.Text))
             {
-                Response.Write("Authentication Success");
+                Response.Redirect("~/Admin");
             }
             else
             {
-                Response.Write("Authentication Fail");
+                loginMessageDiv.Visible = true;
             }
+            
         }
     }
 }

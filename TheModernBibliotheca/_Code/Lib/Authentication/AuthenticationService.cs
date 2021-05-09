@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using TheModernBibliotheca._Code.Model;
 
-namespace TheModernBibliotheca.App_Start.Authentication
+namespace TheModernBibliotheca._Code.Lib.Authentication
 {
     public class AuthenticationService
     {
@@ -58,6 +58,7 @@ namespace TheModernBibliotheca.App_Start.Authentication
                         .FirstOrDefault();
                 user.SessionExpiry = null;
                 user.SessionId = null;
+                context.SaveChanges();
             }
         }
 

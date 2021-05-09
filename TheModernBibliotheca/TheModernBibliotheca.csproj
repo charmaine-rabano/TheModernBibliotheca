@@ -1707,8 +1707,8 @@
     <Compile Include="Admin\Activity.aspx.designer.cs">
       <DependentUpon>Activity.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\Authentication\AuthenticationHelper.cs" />
-    <Compile Include="App_Start\Authentication\AuthenticationService.cs" />
+    <Compile Include="_Code\Lib\Authentication\AuthenticationHelper.cs" />
+    <Compile Include="_Code\Lib\Authentication\AuthenticationService.cs" />
     <Compile Include="App_Start\FileSystemHelper.cs" />
     <Compile Include="Librarian\Borrows\Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
@@ -1867,6 +1867,7 @@
     <Compile Include="_Code\App\Librarian\ReportOverallModel.cs" />
     <Compile Include="_Code\App\Librarian\ReportOverallRepository.cs" />
     <Compile Include="_Code\Lib\DbHelper.cs" />
+    <Compile Include="_Code\Lib\Logging\LoggingService.cs" />
     <Compile Include="_Code\Lib\NavigationHelper.cs" />
     <Compile Include="_Code\Model\BookInformation.cs">
       <DependentUpon>TheModernDatabase.tt</DependentUpon>

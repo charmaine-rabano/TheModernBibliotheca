@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using TheModernBibliotheca._Code.Model;
 
-namespace TheModernBibliotheca.App_Start.Authentication
+namespace TheModernBibliotheca._Code.Lib.Authentication
 {
 
     public class AuthenticationHelper
@@ -80,6 +80,11 @@ namespace TheModernBibliotheca.App_Start.Authentication
         public bool IsLoggedIn()
         {
             return AuthenticationService.IsValidSession(SessionId);
+        }
+
+        public void Signout()
+        {
+            AuthenticationService.ClearSession(GetUser().UserID);
         }
     }
 }

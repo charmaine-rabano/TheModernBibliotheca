@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Admin;
+using TheModernBibliotheca._Code.Lib.Authentication;
 
 namespace TheModernBibliotheca.Admin.Accounts
 {
@@ -12,6 +13,11 @@ namespace TheModernBibliotheca.Admin.Accounts
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!AuthenticationHelper.GetAdminAuth().IsLoggedIn())
+            {
+                Response.Redirect("~/Admin/Login");
+            }
+
             AccountsGv.DataSource = UsersRepository.GetUsers();
             AccountsGv.DataBind();
         }

@@ -15,13 +15,13 @@ namespace TheModernBibliotheca.Admin
     {
 
         /// <summary>
-        /// loginCv control.
+        /// loginMessageDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator loginCv;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl loginMessageDiv;
 
         /// <summary>
         /// EmailTxt control.
