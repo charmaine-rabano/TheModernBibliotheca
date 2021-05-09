@@ -46,15 +46,20 @@
             <br />
             <% if (isRepeater)
                 {%>
-                
-                    <p>hello</p>
-                
-                <%}%>
-            <%else {%> 
 
-                    <p>goodbye</p>
-                
-                <%} %>
+            <div style="background-color: #E1D9D9">
+                <br />
+                <p style="font-style: italic; text-align: center;">You have not made any reservations.</p>
+                <br />
+            </div>
+
+            <%}%>
+            <%else
+                {%>
+
+            
+
+            <%} %>
         </div>
 
         <br />
@@ -66,15 +71,35 @@
             <br />
             <% if (isRepeater)
                 {%>
-                
-                    <p>hello</p>
-                
-                <%}%>
-            <%else {%> 
 
-                    <p>goodbye</p>
-                
-                <%} %>
+            <div style="background-color: #E1D9D9">
+                <br />
+                <p style="font-style: italic; text-align: center;">You have not borrowed any books.</p>
+                <br />
+            </div>
+
+            <%}%>
+            <%else
+                {%>
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Date Reserved</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody style="background-color: #E1D9D9;">
+                    <tr>
+                        <td>123412341234</td>
+                        <td>Educational</td>
+                        <td>Off-shelf</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <%} %>
         </div>
     </div>
 </asp:Content>

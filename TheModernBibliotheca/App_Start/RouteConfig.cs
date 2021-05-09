@@ -18,7 +18,7 @@ namespace TheModernBibliotheca
 
         public static void RegisterCustomRoutes(RouteCollection routes) {
             routes.MapPageRoute("ModifyAccount", "Admin/Users/{id}/Modify", "~/Admin/Users/Modify.aspx");
-
+            routes.MapPageRoute("Books", "Books/{id}", "~/Books.aspx");
 
         }
     }

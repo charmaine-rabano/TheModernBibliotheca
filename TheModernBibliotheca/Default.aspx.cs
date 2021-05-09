@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TheModernBibliotheca._Code.App.Borrower;
+using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca
 {
@@ -11,52 +13,35 @@ namespace TheModernBibliotheca
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Repeater1.DataSource = new List<object> {
-                new
-                {
-                    ID = 1,
-                    Cover = "cover1.png",
-                    Title = "title1"
-                },
-                new
-                {
-                    ID = 2,
-                    Cover = "cover2.png",
-                    Title = "title2"
-                },
-                new
-                {
-                    ID = 3,
-                    Cover = "cover3.png",
-                    Title = "title3"
-                },
-                new
-                {
-                    ID = 4,
-                    Cover = "cover4.png",
-                    Title = "title4"
-                },
-                new
-                {
-                    ID = 5,
-                    Cover = "cover5.png",
-                    Title = "title5"
-                },
-                new
-                {
-                    ID = 6,
-                    Cover = "cover6.png",
-                    Title = "title6"
-                }
+            string searchKey = Request.QueryString["search"];
+            string statusKey = Request.QueryString["status"];
+            IEnumerable<BookInformation> books;
 
-            };
-
+            if (searchKey != null)
+            {
+                books = BooksRepository.GetSearchedBooks(searchKey);
+            }
+            else if (statusKey == "onshelf")
+            {
+                books = BooksRepository.GetAvailableBooks(statusKey);
+            }
+            else
+            {
+                books = BooksRepository.GetBooks();
+            }
+            Repeater1.DataSource = books;
             Repeater1.DataBind();
         }
 
         protected void SeeAvailable_Click(object sender, EventArgs e)
         {
-            // SQL Query (SELECT Available Books)
+            string statusAvailable = "onshelf";
+            Response.Redirect($"~/Default.aspx?status={statusAvailable}");
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"~/Default.aspx?search={HttpUtility.UrlEncode(txtSearch.Text)}");
         }
     }
 }
