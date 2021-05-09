@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Admin;
 using TheModernBibliotheca._Code.Helper;
+using TheModernBibliotheca._Code.Lib.Authentication;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca.Admin.Accounts
@@ -15,6 +16,11 @@ namespace TheModernBibliotheca.Admin.Accounts
         public int Id => int.Parse(NavigationHelper.GetRouteValue("id"));
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!AuthenticationHelper.GetAdminAuth().IsLoggedIn())
+            {
+                Response.Redirect("~/Admin/Login");
+            }
+
             if (!Page.IsPostBack)
             {
                 InitializeFormValues();

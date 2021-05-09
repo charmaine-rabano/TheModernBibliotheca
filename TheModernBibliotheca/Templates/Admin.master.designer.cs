@@ -33,6 +33,15 @@ namespace TheModernBibliotheca.Templates
         protected global::System.Web.UI.HtmlControls.HtmlAnchor navbarDropdown;
 
         /// <summary>
+        /// SignoutLb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton SignoutLb;
+
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>
