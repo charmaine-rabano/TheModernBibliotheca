@@ -8,19 +8,16 @@ namespace TheModernBibliotheca._Code.App.Admin
 {
     public static class ActivityRepository
     {
-        private static TheModernDatabaseEntities CreateDbContext()
-        {
-            return new TheModernDatabaseEntities();
-        }
         public static IEnumerable<ActivityViewModel> GetActivities()
         {
-            var context = CreateDbContext();
-            return context.UserActivities.Select( e => new ActivityViewModel {
-                Email = e.LibraryUser.Email,
-                Description = e.Remarks,
-                TimeStamp = e.TransactionDate,
-                UserType = e.LibraryUser.UserType
-            }).ToList();
+            using (var context = new TheModernDatabaseEntities())
+                return context.UserActivities.Select(e => new ActivityViewModel
+                {
+                    Email = e.LibraryUser.Email,
+                    Description = e.Remarks,
+                    TimeStamp = e.TransactionDate,
+                    UserType = e.LibraryUser.UserType
+                }).ToList();
         }
     }
 }

@@ -7,29 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TheModernBibliotheca.Templates
+namespace TheModernBibliotheca.Librarian.Borrows.Offsite
 {
 
 
-    public partial class WebForm1
+    public partial class Approve
     {
 
         /// <summary>
-        /// onShelfDropDown control.
+        /// ApproveGV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList onShelfDropDown;
-
-        /// <summary>
-        /// gridviewOnshelf control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridviewOnshelf;
+        protected global::System.Web.UI.WebControls.GridView ApproveGV;
     }
 }

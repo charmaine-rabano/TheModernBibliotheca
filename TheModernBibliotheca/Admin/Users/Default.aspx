@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Admin.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TheModernBibliotheca.Admin.Accounts.Default" %>
+﻿<%@ Page Title="Users" Language="C#" MasterPageFile="~/Templates/Admin.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TheModernBibliotheca.Admin.Accounts.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
     <style>
@@ -11,13 +11,13 @@
 
     <div class="header">
         <div class="header-group">
-            <h3>Accounts</h3>
+            <h3>Users</h3>
             <div class="header-actions">
-                <a class="" href="~/Admin/Users/Add" runat="server">
-                    <button type="button" class="btn btn-success">Add A New User</button>
+                <a class="btn btn-success" href="~/Admin/Users/Add" runat="server">
+                    Add A New User
                 </a>
-                <a class="" href="~/Admin/" runat="server">
-                    <button type="button" class="btn btn-secondary">Back</button>
+                <a class="btn btn-secondary" href="~/Admin/" runat="server">
+                    Back
                 </a>
             </div>
         </div>
@@ -42,8 +42,8 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Action" HeaderStyle-CssClass="center-header" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                        <a class="" href='<%#$"~/Admin/Users/{Eval("UserId")}/Modify"%>' runat="server">
-                            <button type="button" class="btn btn-primary">Modify</button>
+                        <a class="btn btn-primary" href='<%#$"~/Admin/Users/{Eval("UserId")}/Modify"%>' runat="server">
+                            Modify
                         </a>
 
                     </ItemTemplate>

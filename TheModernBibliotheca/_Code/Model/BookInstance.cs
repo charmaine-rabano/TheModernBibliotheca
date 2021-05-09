@@ -12,17 +12,17 @@ namespace TheModernBibliotheca._Code.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Book
+    public partial class BookInstance
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Book()
+        public BookInstance()
         {
             this.Borrows = new HashSet<Borrow>();
         }
     
         public int InstanceID { get; set; }
         public string ISBN { get; set; }
-        public string BookStatus { get; set; }
+        public bool InCirculation { get; set; }
     
         public virtual BookInformation BookInformation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

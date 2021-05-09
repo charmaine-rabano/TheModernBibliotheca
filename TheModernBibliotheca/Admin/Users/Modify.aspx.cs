@@ -24,6 +24,13 @@ namespace TheModernBibliotheca.Admin.Accounts
         private void InitializeFormValues()
         {
             var user = UsersRepository.GetUser(Id);
+
+            // Redirect to home if user does not exist
+            if (user == null) {
+                Response.Redirect("~/Admin/Users");
+            }
+
+            // Bind data to view
             FirstNameTb.Text = user.FirstName;
             LastNameTb.Text = user.LastName;
             EmailAddressTb.Text = user.Email;
@@ -62,18 +69,32 @@ namespace TheModernBibliotheca.Admin.Accounts
             {
                 validator.Text = "Another user has already been associated with this email";
                 args.IsValid = false;
-
             }
             else
             {
                 args.IsValid = true;
             }
-
         }
 
         private bool IsEmailUnique(int id, string email)
         {
             return UsersRepository.IsEmailUniqueExceptSelf(id, email);
+        }
+
+        protected void ConfirmPasswordCv_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            bool isValid = true;
+
+            if (PasswordTb.Text == "" && ConfirmPasswordCv.Text == "")
+            {
+                isValid = true;
+            }
+            else if(PasswordTb.Text != ConfirmPasswordTb.Text)
+            {
+                isValid = false;
+            }
+
+            args.IsValid = isValid;
         }
     }
 }

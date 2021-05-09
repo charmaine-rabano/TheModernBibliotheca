@@ -1,10 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Admin.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TheModernBibliotheca.Admin.Default" %>
+﻿<%@ Page Title="Admin" Language="C#" MasterPageFile="~/Templates/Admin.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TheModernBibliotheca.Admin.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <style>
         :root {
-            
         }
 
         .menu-group-container > div {
@@ -15,27 +14,29 @@
             padding: 0 20px;
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
         }
 
         .menu-group-header {
-            background-color:lightgray;
-            padding:.4rem .6rem;
-            font-size: 1.7rem;
-            margin-bottom: 1.8rem;
+            background-color: lightgray;
+            padding: .6rem 1rem;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
             font-weight: 600;
         }
 
         .menu-item-container {
-            margin-right: 5rem;
+            margin-right: 3rem;
         }
 
         .menu-item {
+            margin-top: 20px;
             display: flex;
             flex-direction: row;
             align-items: center;
         }
 
-            .menu-item p {
+            .menu-item span {
                 color: black;
                 font-weight: 500;
                 font-size: 1.4rem;
@@ -71,7 +72,7 @@
                         <div class="menu-icon-image">
                             <img src="../Content/bootstrap-icons/people.svg" alt="View Accounts" class="text-success" />
                         </div>
-                        <p>View Users</p>
+                        <span>View Users</span>
                     </div>
                 </a>
 
@@ -80,7 +81,7 @@
                         <div class="menu-icon-image">
                             <img src="../Content/bootstrap-icons/person-plus.svg" alt="View Accounts" class="text-success" />
                         </div>
-                        <p>Add User</p>
+                        <span>Add User</span>
                     </div>
                 </a>
 
@@ -94,7 +95,7 @@
                         <div class="menu-icon-image">
                             <img src="../Content/bootstrap-icons/journal-text.svg" alt="View Accounts" class="text-success" />
                         </div>
-                        <p>View Activity</p>
+                        <span>View Activity</span>
                     </div>
                 </a>
             </div>
@@ -107,7 +108,7 @@
                         <div class="menu-icon-image">
                             <img src="../Content/bootstrap-icons/book.svg" alt="View Accounts" class="text-success" />
                         </div>
-                        <p>Librarian Interface</p>
+                        <span>Librarian Interface</span>
                     </div>
                 </a>
 
@@ -116,7 +117,7 @@
                         <div class="menu-icon-image">
                             <img src="../Content/bootstrap-icons/house.svg" alt="View Accounts" class="text-success" />
                         </div>
-                        <p>Website Home</p>
+                        <span>Website Home</span>
                     </div>
                 </a>
             </div>

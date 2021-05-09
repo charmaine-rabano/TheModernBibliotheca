@@ -24,6 +24,15 @@ namespace TheModernBibliotheca.Templates
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeaderContent;
 
         /// <summary>
+        /// navbarDropdown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navbarDropdown;
+
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

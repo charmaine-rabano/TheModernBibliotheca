@@ -1528,6 +1528,9 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Librarian\Borrows\Menu.aspx" />
+    <Content Include="Librarian\Borrows\Offsite\Approve.aspx" />
+    <Content Include="Librarian\Borrows\Offsite\Pending.aspx" />
     <Content Include="Pictures\searchicon.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -1680,12 +1683,61 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountDetails.aspx.cs">
-      <DependentUpon>AccountDetails.aspx</DependentUpon>
+    <Compile Include="Admin\Activity.aspx.cs">
+      <DependentUpon>Activity.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AccountDetails.aspx.designer.cs">
-      <DependentUpon>AccountDetails.aspx</DependentUpon>
+    <Compile Include="Admin\Activity.aspx.designer.cs">
+      <DependentUpon>Activity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Offsite\Approve.aspx.cs">
+      <DependentUpon>Approve.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Offsite\Approve.aspx.designer.cs">
+      <DependentUpon>Approve.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Offsite\Pending.aspx.cs">
+      <DependentUpon>Pending.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Offsite\Pending.aspx.designer.cs">
+      <DependentUpon>Pending.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Report\OnShelf.aspx.cs">
+      <DependentUpon>OnShelf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Report\OnShelf.aspx.designer.cs">
+      <DependentUpon>OnShelf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Report\Overall.aspx.cs">
+      <DependentUpon>Overall.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Report\Overall.aspx.designer.cs">
+      <DependentUpon>Overall.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Report\BorrowersWithPenalty.aspx.cs">
+      <DependentUpon>BorrowersWithPenalty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Report\BorrowersWithPenalty.aspx.designer.cs">
+      <DependentUpon>BorrowersWithPenalty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_Code\App\Admin\ActivityRepository.cs" />
+    <Compile Include="_Code\App\Admin\ActivityViewModel.cs" />
+    <Compile Include="_Code\App\Admin\UsersRepository.cs" />
+    <Compile Include="Admin\Users\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Users\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
@@ -1773,23 +1825,28 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="_Code\App\Admin\ActivityRepository.cs" />
-    <Compile Include="_Code\App\Admin\ActivityViewModel.cs" />
-    <Compile Include="_Code\App\Admin\UsersRepository.cs" />
-    <Compile Include="_Code\App\Borrower\BooksRepository.cs" />
     <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyModel.cs" />
     <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\PendingRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\PendingViewModel.cs" />
+    <Compile Include="_Code\App\Librarian\GenreModel.cs" />
+    <Compile Include="_Code\App\Librarian\GenreRepository.cs" />
+    <Compile Include="_Code\App\Librarian\ReportOnshelfModel.cs" />
+    <Compile Include="_Code\App\Librarian\ReportOnshelfRepository.cs" />
+    <Compile Include="_Code\App\Librarian\ReportOverallModel.cs" />
+    <Compile Include="_Code\App\Librarian\ReportOverallRepository.cs" />
     <Compile Include="_Code\Lib\DbHelper.cs" />
     <Compile Include="_Code\Lib\NavigationHelper.cs" />
-    <Compile Include="_Code\Model\Book.cs">
+    <Compile Include="_Code\Model\BookInformation.cs">
       <DependentUpon>TheModernDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="_Code\Model\BookInformation.cs">
+    <Compile Include="_Code\Model\BookInstance.cs">
       <DependentUpon>TheModernDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="_Code\Model\Borrow.cs">
       <DependentUpon>TheModernDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="_Code\Model\Constants.cs" />
     <Compile Include="_Code\Model\LibraryUser.cs">
       <DependentUpon>TheModernDatabase.tt</DependentUpon>
     </Compile>
@@ -1837,7 +1894,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Templates\Admin.master" />
     <Content Include="Templates\Borrower.master" />
-    <Content Include="Templates\Librarian.Master" />
+    <Content Include="Templates\Librarian.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

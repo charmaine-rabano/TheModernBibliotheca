@@ -18,10 +18,10 @@ namespace TheModernBibliotheca._Code.App.Librarian
             var context = CreateDbContext();
             return context.Violations.Select(e => new BorrowersWithPenaltyModel
             {
-                //BorrowerName = e.LibraryUser.FullName,
+                BorrowerName = e.Borrow.LibraryUser.FirstName + " " + e.Borrow.LibraryUser.LastName,
                 Violation = e.ViolationType,
                 ViolationDate = e.Borrow.DateReturned,
-                //BookTitle = e.BookInformation.Title
+                BookTitle = e.Borrow.BookInstance.BookInformation.Title,
             }).ToList();
         }
     }

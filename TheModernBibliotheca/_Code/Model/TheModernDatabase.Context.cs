@@ -25,8 +25,8 @@ namespace TheModernBibliotheca._Code.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<BookInformation> BookInformations { get; set; }
+        public virtual DbSet<BookInstance> BookInstances { get; set; }
         public virtual DbSet<Borrow> Borrows { get; set; }
         public virtual DbSet<LibraryUser> LibraryUsers { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }

@@ -11,25 +11,25 @@ namespace TheModernBibliotheca.Templates
 {
 
 
-    public partial class WebForm1
+    public partial class Librarian
     {
 
         /// <summary>
-        /// onShelfDropDown control.
+        /// HeaderContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList onShelfDropDown;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeaderContent;
 
         /// <summary>
-        /// gridviewOnshelf control.
+        /// MainContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridviewOnshelf;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
     }
 }
