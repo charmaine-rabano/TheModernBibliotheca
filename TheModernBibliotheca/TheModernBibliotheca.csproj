@@ -1683,6 +1683,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountDetails.aspx.cs">
+      <DependentUpon>AccountDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccountDetails.aspx.designer.cs">
+      <DependentUpon>AccountDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Activity.aspx.cs">
       <DependentUpon>Activity.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1825,6 +1832,7 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="_Code\App\Borrower\BooksRepository.cs" />
     <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyModel.cs" />
     <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\PendingRepository.cs" />
