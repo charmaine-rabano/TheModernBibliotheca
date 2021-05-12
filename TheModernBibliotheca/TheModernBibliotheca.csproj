@@ -1717,6 +1717,13 @@
     <Compile Include="Admin\Activity.aspx.designer.cs">
       <DependentUpon>Activity.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Templates\Librarian.master.cs">
+      <DependentUpon>Librarian.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Templates\Librarian.master.designer.cs">
+      <DependentUpon>Librarian.master</DependentUpon>
+    </Compile>
     <Compile Include="_Code\Lib\Authentication\AuthenticationHelper.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationService.cs" />
     <Compile Include="App_Start\FileSystemHelper.cs" />
