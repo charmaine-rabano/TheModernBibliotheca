@@ -33,7 +33,7 @@ namespace TheModernBibliotheca._Code.App.Borrower
             return context.BookInformations.Where(e => e.Title.ToLower().Contains(searchText)).ToList();
         }
 
-        public static IEnumerable<BookInformation> GetAvailableBooks(string statusText)
+        public static IEnumerable<BookInformation> GetAvailableBooks(bool statusText)
         {
             var context = CreateDbContext();
             return context.BookInformations.Where(e => e.BookInstances.Any(f => f.InCirculation)).ToList();

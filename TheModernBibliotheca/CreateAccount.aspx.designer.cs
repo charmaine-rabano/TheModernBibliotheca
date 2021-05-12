@@ -11,53 +11,53 @@ namespace TheModernBibliotheca
 {
 
 
-    public partial class AccountDetails
+    public partial class CreateAccount
     {
 
         /// <summary>
-        /// FirstNameTxt control.
+        /// FirstNameTb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FirstNameTxt;
+        protected global::System.Web.UI.WebControls.TextBox FirstNameTb;
 
         /// <summary>
-        /// LastNameTxt control.
+        /// LastNameTb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox LastNameTxt;
+        protected global::System.Web.UI.WebControls.TextBox LastNameTb;
 
         /// <summary>
-        /// SaveNameBtn control.
+        /// EmailAddressTb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SaveNameBtn;
+        protected global::System.Web.UI.WebControls.TextBox EmailAddressTb;
 
         /// <summary>
-        /// CurrPasswordTxt control.
+        /// EmailAddressCv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CurrPasswordTxt;
+        protected global::System.Web.UI.WebControls.CustomValidator EmailAddressCv;
 
         /// <summary>
-        /// NewPasswordTxt control.
+        /// PasswordTb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox NewPasswordTxt;
+        protected global::System.Web.UI.WebControls.TextBox PasswordTb;
 
         /// <summary>
         /// ConfirmPasswordTb control.
@@ -69,21 +69,21 @@ namespace TheModernBibliotheca
         protected global::System.Web.UI.WebControls.TextBox ConfirmPasswordTb;
 
         /// <summary>
-        /// SavePasswordBtn control.
+        /// CreateBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SavePasswordBtn;
+        protected global::System.Web.UI.WebControls.Button CreateBtn;
 
         /// <summary>
-        /// DeactivateAccount control.
+        /// loginLinkBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button DeactivateAccount;
+        protected global::System.Web.UI.WebControls.LinkButton loginLinkBtn;
     }
 }

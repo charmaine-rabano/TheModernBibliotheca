@@ -21,9 +21,10 @@ namespace TheModernBibliotheca
             {
                 books = BooksRepository.GetSearchedBooks(searchKey);
             }
-            else if (statusKey == "onshelf")
+            else if (statusKey == "True")
             {
-                books = BooksRepository.GetAvailableBooks(statusKey);
+                bool key = true;
+                books = BooksRepository.GetAvailableBooks(key);
             }
             else
             {
@@ -35,7 +36,7 @@ namespace TheModernBibliotheca
 
         protected void SeeAvailable_Click(object sender, EventArgs e)
         {
-            string statusAvailable = "onshelf";
+            bool statusAvailable = true;
             Response.Redirect($"~/Default.aspx?status={statusAvailable}");
         }
 

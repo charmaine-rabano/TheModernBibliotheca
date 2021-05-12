@@ -1544,12 +1544,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CreateAccount.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Librarian\Borrows\Menu.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Approve.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Pending.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Pictures\searchicon.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -1731,6 +1733,13 @@
     <Compile Include="_Code\Lib\Authentication\AuthenticationHelper.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationService.cs" />
     <Compile Include="App_Start\FileSystemHelper.cs" />
+    <Compile Include="CreateAccount.aspx.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateAccount.aspx.designer.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Librarian\Borrows\Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1772,6 +1781,13 @@
     </Compile>
     <Compile Include="Librarian\Report\BorrowersWithPenalty.aspx.designer.cs">
       <DependentUpon>BorrowersWithPenalty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="_Code\App\Admin\ActivityRepository.cs" />
     <Compile Include="_Code\App\Admin\ActivityViewModel.cs" />
@@ -1869,6 +1885,8 @@
     <Compile Include="_Code\App\Borrower\BooksRepository.cs" />
     <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyModel.cs" />
     <Compile Include="_Code\App\Librarian\BorrowersWithPenaltyRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\ApproveRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\ApproveViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\PendingRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\PendingViewModel.cs" />
     <Compile Include="_Code\App\Librarian\GenreModel.cs" />
