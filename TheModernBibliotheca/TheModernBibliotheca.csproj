@@ -1550,6 +1550,7 @@
     <Content Include="Librarian\Borrows\Menu.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Approve.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Pending.aspx" />
+    <Content Include="Librarian\Borrows\Return.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Pictures\searchicon.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -1717,6 +1718,13 @@
     <Compile Include="Admin\Activity.aspx.designer.cs">
       <DependentUpon>Activity.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Librarian\Borrows\Return.aspx.cs">
+      <DependentUpon>Return.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Return.aspx.designer.cs">
+      <DependentUpon>Return.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Templates\Librarian.master.cs">
       <DependentUpon>Librarian.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1724,6 +1732,8 @@
     <Compile Include="Templates\Librarian.master.designer.cs">
       <DependentUpon>Librarian.master</DependentUpon>
     </Compile>
+    <Compile Include="_Code\App\Librarian\Borrows\ReturnRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\ReturnViewModel.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationHelper.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationService.cs" />
     <Compile Include="App_Start\FileSystemHelper.cs" />
