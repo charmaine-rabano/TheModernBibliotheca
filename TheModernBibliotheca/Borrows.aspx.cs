@@ -16,7 +16,7 @@ namespace TheModernBibliotheca
         protected void Page_Load(object sender, EventArgs e)
         {
             //int userId = AuthenticationHelper.GetBorrowerAuth().GetUser().UserID;
-            int userId = 20;
+            int userId = 6;
 
             model = BorrowsRepository.GetCurrentlyBorrowedModel(userId);
             itemModels = BorrowsRepository.GetBorrowsHistory(userId);

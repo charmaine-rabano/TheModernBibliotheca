@@ -21,7 +21,7 @@ namespace TheModernBibliotheca._Code.App.Borrower
                         Title = e.BookInstance.BookInformation.Title,
                         Isbn = e.BookInstance.BookInformation.ISBN,
                         Image = e.BookInstance.BookInformation.BookCover,
-                        ReturnDate = (DateTime)e.DateReturned,
+                        ReturnDate = (DateTime)e.ReturnDate,
                         Status = e.BorrowState,
                     })
                     .FirstOrDefault();
@@ -33,17 +33,15 @@ namespace TheModernBibliotheca._Code.App.Borrower
         internal static IEnumerable<BorrowHistoryItemModel> GetBorrowsHistory(int userId)
         {
             using (var context = new TheModernDatabaseEntities())
-                return
-                    context.Borrows
+                return context.Borrows
                    .Where(e => e.UserID == userId && (
-                        e.BorrowState != Constants.Borrow.REJECTED_STATE ||
-                        e.BorrowState != Constants.Borrow.REQUESTED_STATE))
-                    .OrderByDescending(e => e.DateBorrowed ?? e.Reservation.DateReserved)
+                        e.BorrowState == Constants.Borrow.RETURNED_STATE))
+                    .OrderByDescending(e => e.DateBorrowed)
                     .Select(e => new BorrowHistoryItemModel()
                     {
                         Author = e.BookInstance.BookInformation.Author,
-                        DateBorrowed = (DateTime)e.DateBorrowed,
-                        DateReturned = (DateTime)e.DateReturned,
+                        DateBorrowed = (DateTime) e.DateBorrowed,
+                        DateReturned = (DateTime) e.DateReturned,
                         Isbn = e.BookInstance.BookInformation.ISBN,
                         Title = e.BookInstance.BookInformation.Title
                     })
