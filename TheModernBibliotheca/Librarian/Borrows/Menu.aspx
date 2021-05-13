@@ -22,6 +22,6 @@
         <a href="#"><button><img src="/Content/bootstrap-icons/clipboard.svg" width="32" height="32" />&emsp;Record Book Borrow</button></a>
 
         <h3 style="margin-top: 20px">Book Return</h3>
-        <a href="#"><button><img src="/Content/bootstrap-icons/book-half.svg" width="32" height="32" />&emsp;Record Book Return</button></a>
+        <a href="Return.aspx"><button><img src="/Content/bootstrap-icons/book-half.svg" width="32" height="32" />&emsp;Record Book Return</button></a>
     </div>
 </asp:Content>

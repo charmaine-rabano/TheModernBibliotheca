@@ -208,6 +208,7 @@
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\Login.aspx" />
     <Content Include="Books.aspx" />
+    <Content Include="Borrows.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-icons\alarm-fill.svg" />
@@ -1550,6 +1551,8 @@
     <Content Include="Librarian\Borrows\Menu.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Approve.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Pending.aspx" />
+    <Content Include="Librarian\Borrows\Onsite\Create.aspx" />
+    <Content Include="Librarian\Borrows\Return.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Pictures\searchicon.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -1717,6 +1720,41 @@
     <Compile Include="Admin\Activity.aspx.designer.cs">
       <DependentUpon>Activity.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Borrows.aspx.cs">
+      <DependentUpon>Borrows.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Borrows.aspx.designer.cs">
+      <DependentUpon>Borrows.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Onsite\Create.aspx.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Onsite\Create.aspx.designer.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_Code\App\Borrower\BorrowHistoryItemModel.cs" />
+    <Compile Include="_Code\App\Borrower\BorrowsRepository.cs" />
+    <Compile Include="_Code\App\Borrower\CurrentBorrowViewModel.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\ApproveRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\ApproveViewModel.cs" />
+    <Compile Include="Librarian\Borrows\Return.aspx.cs">
+      <DependentUpon>Return.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Return.aspx.designer.cs">
+      <DependentUpon>Return.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Librarian.master.cs">
+      <DependentUpon>Librarian.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Templates\Librarian.master.designer.cs">
+      <DependentUpon>Librarian.master</DependentUpon>
+    </Compile>
+    <Compile Include="_Code\App\Librarian\Borrows\ReturnRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\ReturnViewModel.cs" />
     <Compile Include="_Code\App\Borrower\BorrowerRepository.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationHelper.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationService.cs" />
