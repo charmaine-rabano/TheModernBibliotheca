@@ -8,20 +8,15 @@ namespace TheModernBibliotheca._Code.App.Librarian
 {
     public class GenreRepository
     {
-        private static TheModernDatabaseEntities CreateDbContext()
-        {
-            return new TheModernDatabaseEntities();
-        }
-
-        public static IEnumerable<GenreModel> GetGenres()
-        {
-            var context = CreateDbContext();
-
-            return context.BookInformations.Select(e => new GenreModel
+        public static IEnumerable<GenreViewModel> GetGenres()
+        {             
+            using (var context = new TheModernDatabaseEntities())
             {
-                Genre = e.Genre
-
-            }).ToList();
+                return context.BookInformations.Select(e => new GenreViewModel
+                {
+                    Genre = e.Genre
+                }).ToList();
+            }
         }
     }
 }

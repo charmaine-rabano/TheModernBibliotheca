@@ -6,25 +6,20 @@ using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca._Code.App.Librarian
 {
-    public class ReportOverallRepository
+    public class ReportInCirculationRepository
     {
-        private static TheModernDatabaseEntities CreateDbContext()
-        {
-            return new TheModernDatabaseEntities();
-        }
-
         public static IEnumerable<ReportViewModel> GetBooks()
         {
             using (var context = new TheModernDatabaseEntities())
             {
-                return context.BookInstances.Select(e => new ReportViewModel
+                return context.BookInstances.Where(e => e.InCirculation).Select(e => new ReportViewModel
                 {
                     InstanceID = e.InstanceID,
                     ISBN = e.ISBN,
                     Title = e.BookInformation.Title,
                     Genre = e.BookInformation.Genre,
-                    Author = e.BookInformation.Author,
-                    Status = e.InCirculation ? "In Circulation" : "Not In Circulation"
+                    Author = e.BookInformation.Author
+
                 }).ToList();
             }
         }
@@ -33,18 +28,15 @@ namespace TheModernBibliotheca._Code.App.Librarian
         {
             using (var context = new TheModernDatabaseEntities())
             {
-                return context.BookInstances.Where(e => e.BookInformation.Genre == specificGenre).Select(e => new ReportViewModel
+                return context.BookInstances.Where(e => e.BookInformation.Genre == specificGenre && e.InCirculation).Select(e => new ReportViewModel
                 {
                     InstanceID = e.InstanceID,
                     ISBN = e.ISBN,
                     Title = e.BookInformation.Title,
                     Genre = e.BookInformation.Genre,
-                    Author = e.BookInformation.Author,
-                    Status = e.InCirculation ? "In Circulation" : "Not In Circulation"
+                    Author = e.BookInformation.Author
                 }).ToList();
-            }
-            
+            }  
         }
-
     }
 }

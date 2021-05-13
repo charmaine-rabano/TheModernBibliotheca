@@ -8,21 +8,18 @@ namespace TheModernBibliotheca._Code.App.Librarian
 {
     public class BorrowersWithPenaltyRepository
     {
-        private static TheModernDatabaseEntities CreateDbContext()
+        public static IEnumerable<BorrowersWithPenaltyViewModel> GetBorrowersWithPenalty()
         {
-            return new TheModernDatabaseEntities();
-        }
-
-        public static IEnumerable<BorrowersWithPenaltyModel> GetBorrowersWithPenalty()
-        {
-            var context = CreateDbContext();
-            return context.Violations.Select(e => new BorrowersWithPenaltyModel
+            using (var context = new TheModernDatabaseEntities())
             {
-                BorrowerName = e.Borrow.LibraryUser.FirstName + " " + e.Borrow.LibraryUser.LastName,
-                Violation = e.ViolationType,
-                ViolationDate = e.Borrow.DateReturned,
-                BookTitle = e.Borrow.BookInstance.BookInformation.Title,
-            }).ToList();
+                return context.Violations.Select(e => new BorrowersWithPenaltyViewModel
+                {
+                    BorrowerName = e.Borrow.LibraryUser.FirstName + " " + e.Borrow.LibraryUser.LastName,
+                    Violation = e.ViolationType,
+                    ViolationDate = (DateTime)e.Borrow.DateReturned,
+                    BookTitle = e.Borrow.BookInstance.BookInformation.Title,
+                }).ToList();
+            }
         }
     }
 }

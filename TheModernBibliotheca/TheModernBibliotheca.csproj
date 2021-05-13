@@ -1909,17 +1909,16 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
     <Compile Include="_Code\App\Borrower\BooksRepository.cs" />
-    <Compile Include="_Code\App\Librarian\Report\BorrowersWithPenaltyModel.cs" />
+    <Compile Include="_Code\App\Librarian\Report\BorrowersWithPenaltyViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Report\BorrowersWithPenaltyRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ApproveRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ApproveViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\PendingRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\PendingViewModel.cs" />
-    <Compile Include="_Code\App\Librarian\Report\GenreModel.cs" />
+    <Compile Include="_Code\App\Librarian\Report\GenreViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Report\GenreRepository.cs" />
-    <Compile Include="_Code\App\Librarian\Report\ReportOnshelfModel.cs" />
-    <Compile Include="_Code\App\Librarian\Report\ReportOnshelfRepository.cs" />
-    <Compile Include="_Code\App\Librarian\Report\ReportOverallModel.cs" />
+    <Compile Include="_Code\App\Librarian\Report\ReportViewModel.cs" />
+    <Compile Include="_Code\App\Librarian\Report\ReportInCirculationRepository.cs" />
     <Compile Include="_Code\App\Librarian\Report\ReportOverallRepository.cs" />
     <Compile Include="_Code\Lib\DbHelper.cs" />
     <Compile Include="_Code\Lib\Logging\LoggingService.cs" />
