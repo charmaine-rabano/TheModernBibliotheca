@@ -18,7 +18,8 @@ namespace TheModernBibliotheca.Admin.Accounts
                 Response.Redirect("~/Admin/Login");
             }
 
-            AccountsGv.DataSource = UsersRepository.GetUsers();
+            int loggedInUserId = AuthenticationHelper.GetAdminAuth().GetUser().UserID;
+            AccountsGv.DataSource = UsersRepository.GetUsers(loggedInUserId);
             AccountsGv.DataBind();
         }
 

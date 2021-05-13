@@ -16,7 +16,10 @@ namespace TheModernBibliotheca
         public int currentID => AuthenticationHelper.GetBorrowerAuth().GetUser().UserID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!AuthenticationHelper.GetBorrowerAuth().IsLoggedIn())
+            {
+                Response.Redirect("~/Login");
+            }
         }
 
         protected void SaveNameBtn_Click(object sender, EventArgs e)

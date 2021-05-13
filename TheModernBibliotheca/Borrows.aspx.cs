@@ -15,8 +15,13 @@ namespace TheModernBibliotheca
         public IEnumerable<BorrowHistoryItemModel> itemModels;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //int userId = AuthenticationHelper.GetBorrowerAuth().GetUser().UserID;
-            int userId = 6;
+            if (!AuthenticationHelper.GetBorrowerAuth().IsLoggedIn())
+            {
+                Response.Redirect("~/Login");
+            }
+
+
+            int userId = AuthenticationHelper.GetBorrowerAuth().GetUser().UserID;
 
             model = BorrowsRepository.GetCurrentlyBorrowedModel(userId);
             itemModels = BorrowsRepository.GetBorrowsHistory(userId);
