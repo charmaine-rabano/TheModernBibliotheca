@@ -1578,7 +1578,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Librarian\Report\OnShelf.aspx" />
+    <Content Include="Librarian\Report\InCirculation.aspx" />
     <Content Include="Librarian\Report\Overall.aspx" />
     <Content Include="Librarian\Report\BorrowersWithPenalty.aspx" />
     <Content Include="_Code\Model\TheModernDatabase.Context.tt">
@@ -1787,12 +1787,12 @@
     <Compile Include="Librarian\Borrows\Offsite\Pending.aspx.designer.cs">
       <DependentUpon>Pending.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Librarian\Report\OnShelf.aspx.cs">
-      <DependentUpon>OnShelf.aspx</DependentUpon>
+    <Compile Include="Librarian\Report\InCirculation.aspx.cs">
+      <DependentUpon>InCirculation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Librarian\Report\OnShelf.aspx.designer.cs">
-      <DependentUpon>OnShelf.aspx</DependentUpon>
+    <Compile Include="Librarian\Report\InCirculation.aspx.designer.cs">
+      <DependentUpon>InCirculation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Librarian\Report\Overall.aspx.cs">
       <DependentUpon>Overall.aspx</DependentUpon>

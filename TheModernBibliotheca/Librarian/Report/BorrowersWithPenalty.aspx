@@ -10,20 +10,20 @@
             <div class="col-xs-6">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link" href="OnShelf.aspx">ON-SHELF</a>
+                        <a class="nav-link" href="InCirculation.aspx">In Circulation</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="Overall.aspx">OVERALL</a>
+                      <a class="nav-link" href="Overall.aspx">Overall</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active" href="BorrowersWithPenalty.aspx" >BORROWERS WITH PENALTY</a>
+                      <a class="nav-link active" href="BorrowersWithPenalty.aspx" >Borrowers with Penalty</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="table-responsive" style="margin-bottom:20px;margin-top:20px;">
-        <asp:GridView ID="gridviewBorrowersWithPenalty" runat="server" class="table w-100" AutoGenerateColumns="false" GridLines="None">
+    <div class="table-responsive" style="margin-bottom:20px;margin-top:50px;">
+        <asp:GridView ID="gridviewBorrowersWithPenalty" runat="server" class="table w-100" AutoGenerateColumns="false" EmptyDataText="No Borrowers with Penalty" GridLines="None">
             <Columns>
                 <asp:BoundField DataField="BorrowerName" HeaderText="Borrower Name" />
                 <asp:BoundField DataField="Violation" HeaderText="Violation" />

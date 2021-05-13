@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Librarian.Master" AutoEventWireup="true" CodeBehind="OnShelf.aspx.cs" Inherits="TheModernBibliotheca.Templates.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Librarian.Master" AutoEventWireup="true" CodeBehind="InCirculation.aspx.cs" Inherits="TheModernBibliotheca.Templates.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
 </asp:Content>
@@ -11,20 +11,20 @@
             <div class="col-xs-6">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="OnShelf.aspx">ON-SHELF</a>
+                        <a class="nav-link active" href="InCirculation.aspx">In Circulation</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="Overall.aspx">OVERALL</a>
+                      <a class="nav-link" href="Overall.aspx">Overall</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="BorrowersWithPenalty.aspx" >BORROWERS WITH PENALTY</a>
+                      <a class="nav-link" href="BorrowersWithPenalty.aspx" >Borrowers with Penalty</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
     <div style="margin-top:20px;margin-bottom:20px;">
-            <asp:DropDownList ID="onShelfDropDown" runat="server" OnSelectedIndexChanged="onShelfDropDown_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+            <asp:DropDownList ID="onShelfDropDown" runat="server" OnSelectedIndexChanged="onShelfDropDown_SelectedIndexChanged" EmptyDataText="No Books are in Circulation" AutoPostBack="true"></asp:DropDownList>
     </div>
     <div class="table-responsive" style="margin-bottom:20px;margin-top:20px;">
         <asp:GridView ID="gridviewOnshelf" runat="server" class="table w-100" AutoGenerateColumns="false" GridLines="None">

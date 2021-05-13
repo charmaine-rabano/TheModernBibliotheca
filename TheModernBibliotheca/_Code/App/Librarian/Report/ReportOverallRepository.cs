@@ -8,11 +8,7 @@ namespace TheModernBibliotheca._Code.App.Librarian
 {
     public class ReportOverallRepository
     {
-        private static TheModernDatabaseEntities CreateDbContext()
-        {
-            return new TheModernDatabaseEntities();
-        }
-
+     
         public static IEnumerable<ReportViewModel> GetBooks()
         {
             using (var context = new TheModernDatabaseEntities())
