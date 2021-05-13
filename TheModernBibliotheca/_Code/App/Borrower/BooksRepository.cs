@@ -36,7 +36,7 @@ namespace TheModernBibliotheca._Code.App.Borrower
         public static IEnumerable<BookInformation> GetAvailableBooks(bool statusText)
         {
             var context = CreateDbContext();
-            return context.BookInformations.Where(e => e.BookInstances.Any(f => f.InCirculation == statusText)).ToList();
+            return context.BookInformations.Where(e => e.BookInstances.Any(f => f.InCirculation)).ToList();
         }
 
         private static TheModernDatabaseEntities CreateDbContext()

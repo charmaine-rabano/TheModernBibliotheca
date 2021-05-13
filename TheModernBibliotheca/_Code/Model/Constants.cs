@@ -23,6 +23,8 @@ namespace TheModernBibliotheca._Code.Model
             public const string APPROVED_STATE = "Approved";
             public const string REJECTED_STATE = "Rejected";
             public const string BORROWED_STATE = "Borrowed";
+            public const string RETURNED_STATE = "Returned";
+
         }
 
         public static class LibraryUser
