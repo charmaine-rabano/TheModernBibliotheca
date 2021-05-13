@@ -1755,6 +1755,7 @@
     </Compile>
     <Compile Include="_Code\App\Librarian\Borrows\ReturnRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ReturnViewModel.cs" />
+    <Compile Include="_Code\App\Borrower\BorrowerRepository.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationHelper.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationService.cs" />
     <Compile Include="App_Start\FileSystemHelper.cs" />

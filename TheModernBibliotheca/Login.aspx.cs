@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TheModernBibliotheca._Code.Lib.Authentication;
 
 namespace TheModernBibliotheca
 {
@@ -16,11 +17,16 @@ namespace TheModernBibliotheca
 
         protected void SubmitBtn_Click(object sender, EventArgs e)
         {
-            // code to validate credentials
-            // --
-            // --
-            // --
-            // Response.Redirect("~/Default.aspx");
+            if (!Page.IsValid) { return; }
+
+            if (AuthenticationHelper.GetBorrowerAuth().Authenticate(EmailTxt.Text, PasswordTxt.Text))
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+            else
+            {
+                loginMessageDiv.Visible = true;
+            }
         }
 
         protected void CreateAccount_Click(object sender, EventArgs e)

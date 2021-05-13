@@ -46,6 +46,12 @@
     <br />
 
     <div class="signin-form col-sm-6 col-12">
+
+        <%-- Login Header --%>
+        <div id="loginMessageDiv" class="alert alert-danger" role="alert" runat="server" visible="false">
+            Please check your email and password
+        </div>
+
         <%-- Error Message --%>
         <asp:CustomValidator ErrorMessage="Error Message" ControlToValidate="EmailTxt" runat="server" ID="loginCv" CssClass="validation-message" />
 
