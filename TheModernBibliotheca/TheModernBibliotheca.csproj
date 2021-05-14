@@ -1584,6 +1584,7 @@
     <Content Include="Librarian\Books\Default.aspx" />
     <Content Include="Librarian\Books\Book.aspx" />
     <Content Include="Librarian\Books\Add.aspx" />
+    <Content Include="Librarian\Books\Instances.aspx" />
     <Content Include="_Code\Model\TheModernDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TheModernDatabase.Context.cs</LastGenOutput>
@@ -1758,9 +1759,18 @@
     <Compile Include="Librarian\Books\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Librarian\Books\Instances.aspx.cs">
+      <DependentUpon>Instances.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Books\Instances.aspx.designer.cs">
+      <DependentUpon>Instances.aspx</DependentUpon>
+    </Compile>
     <Compile Include="_Code\App\Borrower\BorrowHistoryItemModel.cs" />
     <Compile Include="_Code\App\Borrower\BorrowsRepository.cs" />
     <Compile Include="_Code\App\Borrower\CurrentBorrowViewModel.cs" />
+    <Compile Include="_Code\App\Librarian\Books\InstancesRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Books\InstancesViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Books\ManageBooksRepository.cs" />
     <Compile Include="_Code\App\Librarian\Books\ManageBooksViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ApproveRepository.cs" />

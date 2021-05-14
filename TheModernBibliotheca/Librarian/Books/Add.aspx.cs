@@ -13,5 +13,10 @@ namespace TheModernBibliotheca.Templates
         {
 
         }
+
+        protected void btnAddBook_Click(object sender, EventArgs e)
+        {
+            //
+        }
     }
 }
