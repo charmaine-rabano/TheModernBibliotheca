@@ -30,7 +30,7 @@ namespace TheModernBibliotheca._Code.Lib.Authentication
             {
                 var user = context
                         .LibraryUsers
-                        .Where(e => e.Email.ToLower() == email && e.AccountPassword == password && e.UserType == userType)
+                        .Where(e => e.Email.ToLower() == email && e.AccountPassword == password && e.UserType == userType && e.AccountStatus == Constants.LibraryUser.ACTIVE_STATUS)
                         .FirstOrDefault();
 
                 // If user didn't find user, then user is invalid, 

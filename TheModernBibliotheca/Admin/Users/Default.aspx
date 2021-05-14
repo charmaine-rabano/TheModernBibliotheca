@@ -32,7 +32,7 @@
                 <asp:TemplateField HeaderText="User Type" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="center-header">
                     <ItemTemplate>
                         <div>
-                            <div class='<%#(string) Eval("UserType") == "Administrator" ? "user-type-pill pill-administrator" : 
+                            <div class='<%#(string) Eval("UserType") == "Admin" ? "user-type-pill pill-administrator" : 
                                    (string) Eval("UserType") == "Librarian" ? "user-type-pill pill-librarian" : 
                                    (string) Eval("UserType") == "Borrower" ?  "user-type-pill pill-borrower" : ""%>'>
                                 <%#Eval("UserType")%>

@@ -18,7 +18,6 @@ namespace TheModernBibliotheca.Admin
                 Response.Redirect("~/Admin/Login");
             }
 
-
             UserActivityGv.DataSource = ActivityRepository.GetActivities();
             UserActivityGv.DataBind();
         }

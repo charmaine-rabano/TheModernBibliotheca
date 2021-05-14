@@ -10,10 +10,14 @@ namespace TheModernBibliotheca._Code.App.Admin
     public static class UsersRepository
     {
 
-        public static IEnumerable<LibraryUser> GetUsers()
+        public static IEnumerable<LibraryUser> GetUsers(int loggedInUserId)
         {
             using (var context = new TheModernDatabaseEntities())
-                return context.LibraryUsers.Where(e => e.AccountStatus == Constants.LibraryUser.ACTIVE_STATUS).ToList();
+                return context.LibraryUsers
+                    .Where(e => 
+                        e.AccountStatus == Constants.LibraryUser.ACTIVE_STATUS &&
+                        e.UserID != loggedInUserId)
+                    .ToList();
         }
 
         public static LibraryUser GetUser(int id)

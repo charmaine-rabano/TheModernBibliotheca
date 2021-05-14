@@ -37,6 +37,7 @@ namespace TheModernBibliotheca.Admin.Accounts
                 DateCreated = DateTime.Now,
                 Email = EmailAddressTb.Text,
                 UserType = UserTypeDdl.SelectedValue,
+                AccountStatus = Constants.LibraryUser.ACTIVE_STATUS,
             });
             Response.Redirect("~/Admin/Users");
         }

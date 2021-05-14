@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TheModernBibliotheca._Code.App.Admin;
+using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca
 {
@@ -16,16 +18,37 @@ namespace TheModernBibliotheca
 
         protected void CreateBtn_Click(object sender, EventArgs e)
         {
-            // code to validate credentials
-            // --
-            // --
-            // --
+            if (!Page.IsValid) return;
+            UsersRepository.AddAccount(new LibraryUser
+            {
+                FirstName = FirstNameTb.Text,
+                LastName = LastNameTb.Text,
+                AccountPassword = PasswordTb.Text,
+                DateCreated = DateTime.Now,
+                Email = EmailAddressTb.Text,
+                UserType = Constants.LibraryUser.BORROWER_TYPE,
+                AccountStatus = Constants.LibraryUser.ACTIVE_STATUS,
+            });
             Response.Redirect("~/Login.aspx");
         }
 
         protected void EmailAddressCv_ServerValidate(object source, ServerValidateEventArgs args)
         {
+            var validator = (CustomValidator)source;
+            if (IsEmailUnique(EmailAddressTb.Text))
+            {
+                validator.Text = "Another user has already been associated with this email";
+                args.IsValid = false;
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+        }
 
+        private bool IsEmailUnique(string email)
+        {
+            return UsersRepository.IsEmailUnique(email);
         }
 
         protected void loginLinkBtn_Click(object sender, EventArgs e)

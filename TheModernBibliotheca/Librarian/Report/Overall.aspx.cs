@@ -17,7 +17,7 @@ namespace TheModernBibliotheca.Templates
                 ddlOverall.ClearSelection();
                 ddlOverall.Items.Add("ALL");
                 var genres = GenreRepository.GetGenres();
-                foreach (GenreModel genre in genres)
+                foreach (GenreViewModel genre in genres)
                 {
                     ddlOverall.Items.Add(genre.Genre);
                 }

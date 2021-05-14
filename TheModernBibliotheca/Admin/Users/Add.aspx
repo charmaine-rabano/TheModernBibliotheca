@@ -61,6 +61,7 @@
             <asp:DropDownList runat="server" ID="UserTypeDdl" CssClass="form-control">
                 <asp:ListItem Text="Borrower" />
                 <asp:ListItem Text="Librarian" />
+                <asp:ListItem Text="Admin" />
             </asp:DropDownList>
             <asp:RequiredFieldValidator ErrorMessage="This is a required field" ControlToValidate="UserTypeDdl" runat="server" CssClass="validation-message" Display="Dynamic" />
         </div>

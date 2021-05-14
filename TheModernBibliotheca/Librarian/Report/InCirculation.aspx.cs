@@ -17,7 +17,7 @@ namespace TheModernBibliotheca.Templates
                 onShelfDropDown.ClearSelection();
                 onShelfDropDown.Items.Add("ALL");
                 var genres = GenreRepository.GetGenres();
-                foreach (GenreModel genre in genres)
+                foreach (GenreViewModel genre in genres)
                 {
                     onShelfDropDown.Items.Add(genre.Genre);
                 }
@@ -26,7 +26,7 @@ namespace TheModernBibliotheca.Templates
         }
         private void viewAllBooks()
         {
-            gridviewOnshelf.DataSource = ReportOnshelfRepository.GetBooks();
+            gridviewOnshelf.DataSource = ReportInCirculationRepository.GetBooks();
             gridviewOnshelf.DataBind();
         }
 
@@ -38,7 +38,7 @@ namespace TheModernBibliotheca.Templates
             }
             else
             {
-                gridviewOnshelf.DataSource = ReportOnshelfRepository.GetSpecificGenre(onShelfDropDown.SelectedValue.ToString());
+                gridviewOnshelf.DataSource = ReportInCirculationRepository.GetSpecificGenre(onShelfDropDown.SelectedValue.ToString());
                 gridviewOnshelf.DataBind();
             }
         }
