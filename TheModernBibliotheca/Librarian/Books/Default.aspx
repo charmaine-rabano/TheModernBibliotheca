@@ -10,8 +10,7 @@
         <div style="display: flex; margin-bottom:30px; margin-top:10px;">
             <h4>Manage Books</h4>
             <div style="display: flex; margin-left: auto; justify-content: right; align-items: center;">
-                <a href="Add.aspx"  class="btn btn-primary btn-block"/>Add New Book</a>
-
+                <a href="Add.aspx"  class="btn btn-primary btn-block">Add New Book </a>
             </div>
         </div>
 
@@ -38,6 +37,10 @@
             </ItemTemplate>
         </asp:Repeater>
     </div>
+        </div>
+    <div id="noResultsMessage" style="font-size:xx-large; text-align:center; padding-top:2em;"  runat="server" visible="false">
+            No Results Found.
+        </div>
 </asp:Content>
 
 

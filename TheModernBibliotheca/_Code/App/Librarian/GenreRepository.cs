@@ -15,7 +15,7 @@ namespace TheModernBibliotheca._Code.App.Librarian
                 return context.BookInformations.Select(e => new GenreViewModel
                 {
                     Genre = e.Genre
-                }).ToList();
+                }).Distinct().ToList();
             }
         }
     }

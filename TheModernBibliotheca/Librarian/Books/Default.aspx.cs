@@ -24,28 +24,27 @@ namespace TheModernBibliotheca.Templates
                 {
                     bookGenreDropDown.Items.Add(genre.Genre);
                 }
-                viewAllBooks();
-            }
-            /*
-            string searchKey = Request.QueryString["search"];
-            string statusKey = Request.QueryString["status"];
-            IEnumerable<BookInformation> books;
+                string searchKey = Request.QueryString["search"];
 
-            if (searchKey != null)
-            {
-                books = BooksRepository.GetSearchedBooks(searchKey);
+                
+                if (searchKey != null)
+                {
+                    var content = BooksRepository.GetSearchedBooks(searchKey);
+
+                    if (content != null && content.Any())
+                    {
+                        bookRepeater.DataSource = BooksRepository.GetSearchedBooks(searchKey);
+                        bookRepeater.DataBind();
+                    }
+                    else noResultsMessage.Visible = true;
+
+
+
+                }
+                else { viewAllBooks(); }
             }
-            else if (statusKey == "True")
-            {
-                bool key = true;
-                books = BooksRepository.GetAvailableBooks(key);
-            }
-            else
-            {
-                books = BooksRepository.GetBooks();
-            }
-            Repeater1.DataSource = books;
-            Repeater1.DataBind();*/
+
+            
 
         }
         private void viewAllBooks()
@@ -55,25 +54,22 @@ namespace TheModernBibliotheca.Templates
         }
         protected void bookGenreDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
+            noResultsMessage.Visible = false;
             if (bookGenreDropDown.SelectedValue.ToString() == "ALL")
             {
                 viewAllBooks();
             }
             else
             {
-                //gridviewOnshelf.DataSource = ReportInCirculationRepository.GetSpecificGenre(onShelfDropDown.SelectedValue.ToString());
-                //gridviewOnshelf.DataBind();
+                bookRepeater.DataSource = ManageBooksRepository.GetSpecificGenre(bookGenreDropDown.SelectedValue.ToString());
+                bookRepeater.DataBind();
             }
         }
-        /*protected void SeeAvailable_Click(object sender, EventArgs e)
-        {
-           bool statusAvailable = true;
-           Response.Redirect($"~/Default.aspx?status={statusAvailable}");
-        }*/
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-           //Response.Redirect($"~/Default.aspx?search={HttpUtility.UrlEncode(txtSearch.Text)}");
+            noResultsMessage.Visible = false;
+            Response.Redirect($"/Librarian/Books/Default.aspx?search={HttpUtility.UrlEncode(txtSearch.Text)}");
         }
     }
 }
