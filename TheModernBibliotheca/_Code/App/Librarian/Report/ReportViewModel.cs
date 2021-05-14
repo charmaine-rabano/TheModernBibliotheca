@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TheModernBibliotheca._Code.App.Librarian
 {
-    public class ReportOverallModel
+    public class ReportViewModel
     {
         public int InstanceID { get; set; }
         public string ISBN { get; set; }
@@ -13,6 +13,5 @@ namespace TheModernBibliotheca._Code.App.Librarian
         public string Genre { get; set; }
         public string Author { get; set; }
         public string Status { get; set; }
-
     }
 }

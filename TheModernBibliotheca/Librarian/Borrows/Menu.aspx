@@ -18,8 +18,8 @@
         <a href="Offsite/Pending.aspx"><button><img src="/Content/bootstrap-icons/calendar-event.svg" width="32" height="32" />&emsp;View Pending Reservations</button></a>
 
         <h3 style="margin-top: 20px">Onsite Borrowing</h3>
-        <a href="#"><button><img src="/Content/bootstrap-icons/person-fill.svg" width="32" height="32" />&emsp;Create Borrower Account</button></a>
-        <a href="#"><button><img src="/Content/bootstrap-icons/clipboard.svg" width="32" height="32" />&emsp;Record Book Borrow</button></a>
+        <a href="Onsite/Create.aspx"><button><img src="/Content/bootstrap-icons/person-fill.svg" width="32" height="32" />&emsp;Create Borrower Account</button></a>
+        <a href="Onsite/Borrow.aspx"><button><img src="/Content/bootstrap-icons/clipboard.svg" width="32" height="32" />&emsp;Record Book Borrow</button></a>
 
         <h3 style="margin-top: 20px">Book Return</h3>
         <a href="Return.aspx"><button><img src="/Content/bootstrap-icons/book-half.svg" width="32" height="32" />&emsp;Record Book Return</button></a>
