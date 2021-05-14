@@ -29,7 +29,6 @@ namespace TheModernBibliotheca.Librarian.Borrows.Onsite
             {
                 args.IsValid = true;
             }
-
         }
 
         private bool IsEmailUnique(string email)
@@ -39,6 +38,8 @@ namespace TheModernBibliotheca.Librarian.Borrows.Onsite
 
         protected void CreateBtn_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid) return;
+
             UsersRepository.AddAccount(new LibraryUser
             {
                 FirstName = FirstNameTb.Text,

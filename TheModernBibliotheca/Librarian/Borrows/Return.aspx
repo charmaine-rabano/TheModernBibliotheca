@@ -6,8 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row" style="padding-top: 60px; display: flex; align-items: center;">
-            <a href="../Menu.aspx"><img src="/Content/bootstrap-icons/arrow-left.svg" width="25" height="25" style="margin-right: 10px" /></a>
-            <h4 style="margin-right: 20px">Book Return</h4>
+            <a href="Menu.aspx"><img src="/Content/bootstrap-icons/arrow-left.svg" width="25" height="25" style="margin-right: 10px" /></a>
         </div>
 
         <div class="row" style="padding-top: 60px">
