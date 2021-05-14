@@ -1551,6 +1551,7 @@
     <Content Include="Librarian\Borrows\Menu.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Approve.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Pending.aspx" />
+    <Content Include="Librarian\Borrows\Onsite\Borrow.aspx" />
     <Content Include="Librarian\Borrows\Onsite\Create.aspx" />
     <Content Include="Librarian\Borrows\Return.aspx" />
     <Content Include="Login.aspx" />
@@ -1731,6 +1732,13 @@
     <Compile Include="Borrows.aspx.designer.cs">
       <DependentUpon>Borrows.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Librarian\Borrows\Onsite\Borrow.aspx.cs">
+      <DependentUpon>Borrow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\Onsite\Borrow.aspx.designer.cs">
+      <DependentUpon>Borrow.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Librarian\Borrows\Onsite\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1789,6 +1797,7 @@
     <Compile Include="Templates\Librarian.master.designer.cs">
       <DependentUpon>Librarian.master</DependentUpon>
     </Compile>
+    <Compile Include="_Code\App\Librarian\Borrows\BorrowRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ReturnRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ReturnViewModel.cs" />
     <Compile Include="_Code\App\Borrower\BorrowerRepository.cs" />

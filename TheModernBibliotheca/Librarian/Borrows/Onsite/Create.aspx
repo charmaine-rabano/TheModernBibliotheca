@@ -17,7 +17,7 @@
                 <a class="nav-link active" href="Create.aspx">Create Borrower Account</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Record Book Borrow</a>
+                <a class="nav-link" href="Borrow.aspx">Record Book Borrow</a>
             </li>
         </ul>   
     </div>
