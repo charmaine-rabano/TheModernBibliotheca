@@ -1,0 +1,67 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Templates/Site.Master" AutoEventWireup="true" CodeBehind="Librarian.master.cs" Inherits="TheModernBibliotheca.Templates.Librarian" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
+    <style>
+        :root {
+            --offshelf-primary: #FE2712;
+            --offshelf-secondary: #FFDEDB;
+            --onshelf-primary: #66B032;
+            --onshelf-secondary: #EBF7E3;
+        }
+
+        .header-group {
+            display: flex;
+            margin-bottom: .4rem;
+            align-items: center;
+        }
+
+            .header-group .header-actions {
+                margin-left: auto;
+            }
+
+                .header-group .header-actions > * {
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
+
+                .header-group .header-actions *:first-child {
+                    margin-left: 0px;
+                    margin-right: 5px;
+                }
+
+                .header-group .header-actions *:last-child {
+                    margin-left: 5px;
+                    margin-right: 0px;
+                }
+
+        .user-type-pill {
+            border-radius: 8px;
+            font-size: .8rem;
+            border: 1px solid black;
+            width: 7rem;
+            text-align: center;
+            padding: 2px 0;
+        }
+
+        .pill-offshelf {
+            border-color: var(--offshelf-primary);
+            background-color: var(--offshelf-secondary);
+            color: var(--offshelf-primary);
+        }
+
+        .pill-onshelf {
+            border-color: var(--onshelf-primary);
+            background-color: var(--onshelf-secondary);
+            color: var(--onshelf-primary);
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="container">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+</asp:Content>

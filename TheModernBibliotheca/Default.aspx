@@ -1,42 +1,32 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TheModernBibliotheca._Default" %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Templates/Borrower.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TheModernBibliotheca.Default" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <br />
+    <div style="display: flex">
+        <h1 style="font-size: 60px;">Browse Items</h1>
+        <div style="display: flex; margin-left: auto; justify-content: right; align-items: center;">
+            <asp:TextBox class="form-control" ID="txtSearch" placeholder="Search" runat="server"></asp:TextBox>&nbsp;
+            <asp:Button ID="btnSearch" class="btn btn-secondary" Text="Search" runat="server" OnClick="btnSearch_Click"/>
+        </div>
     </div>
-
+    <br />
+    <div class="container">
+        <asp:Button class="btn btn-primary" ID="SeeAvailable" runat="server" Text="See Available Books" OnClick="SeeAvailable_Click"/>
+    </div>
     <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
+        <asp:Repeater ID="Repeater1" runat="server">
+            <ItemTemplate>
+                <div class="card col-3 m-5" style="width: 18rem">
+                    <br />
+                    <img class="card-img-top" src='<%# Eval("BookCover")%>' alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title"><%# Eval("Title")%></h5>
+                        <a href='Books?ID=<%# Eval("ISBN")%>' class="btn btn-secondary" style="background-color: burlywood">Details</a>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
     </div>
-
 </asp:Content>

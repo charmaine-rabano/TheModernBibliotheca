@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TheModermDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BookInformation">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="ISBN" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Genre" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Author" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="BookCover" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="BookInstance">
+          <Key>
+            <PropertyRef Name="InstanceID" />
+          </Key>
+          <Property Name="InstanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ISBN" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="InCirculation" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Borrow">
+          <Key>
+            <PropertyRef Name="BorrowID" />
+          </Key>
+          <Property Name="BorrowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InstanceID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateBorrowed" Type="datetime" />
+          <Property Name="DateReturned" Type="datetime" />
+          <Property Name="SiteType" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="BorrowState" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ReturnDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LibraryUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="AccountPassword" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="SessionId" Type="nvarchar" MaxLength="200" />
+          <Property Name="SessionExpiry" Type="datetime" />
+          <Property Name="AccountStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="257" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="BorrowID" />
+          </Key>
+          <Property Name="BorrowID" Type="int" Nullable="false" />
+          <Property Name="DateReserved" Type="datetime" />
+          <Property Name="DateProcessed" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserActivity">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Violation">
+          <Key>
+            <PropertyRef Name="ViolationId" />
+          </Key>
+          <Property Name="ViolationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BorrowID" Type="int" Nullable="false" />
+          <Property Name="ViolationType" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Book__ISBN__75A278F5">
+          <End Role="BookInformation" Type="Self.BookInformation" Multiplicity="1" />
+          <End Role="BookInstance" Type="Self.BookInstance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookInformation">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="BookInstance">
+              <PropertyRef Name="ISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Borrow__Instance__7D439ABD">
+          <End Role="BookInstance" Type="Self.BookInstance" Multiplicity="1" />
+          <End Role="Borrow" Type="Self.Borrow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookInstance">
+              <PropertyRef Name="InstanceID" />
+            </Principal>
+            <Dependent Role="Borrow">
+              <PropertyRef Name="InstanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Borrow__UserID__04E4BC85">
+          <End Role="LibraryUser" Type="Self.LibraryUser" Multiplicity="1" />
+          <End Role="Borrow" Type="Self.Borrow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LibraryUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Borrow">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__Borro__1AD3FDA4">
+          <End Role="Borrow" Type="Self.Borrow" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Borrow">
+              <PropertyRef Name="BorrowID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="BorrowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserActiv__UserI__17F790F9">
+          <End Role="LibraryUser" Type="Self.LibraryUser" Multiplicity="1" />
+          <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LibraryUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserActivity">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Violation__Borro__114A936A">
+          <End Role="Borrow" Type="Self.Borrow" Multiplicity="1" />
+          <End Role="Violation" Type="Self.Violation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Borrow">
+              <PropertyRef Name="BorrowID" />
+            </Principal>
+            <Dependent Role="Violation">
+              <PropertyRef Name="BorrowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TheModermDatabaseModelStoreContainer">
+          <EntitySet Name="BookInformation" EntityType="Self.BookInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookInstance" EntityType="Self.BookInstance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Borrow" EntityType="Self.Borrow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LibraryUser" EntityType="Self.LibraryUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserActivity" EntityType="Self.UserActivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Violation" EntityType="Self.Violation" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Book__ISBN__75A278F5" Association="Self.FK__Book__ISBN__75A278F5">
+            <End Role="BookInformation" EntitySet="BookInformation" />
+            <End Role="BookInstance" EntitySet="BookInstance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Borrow__Instance__7D439ABD" Association="Self.FK__Borrow__Instance__7D439ABD">
+            <End Role="BookInstance" EntitySet="BookInstance" />
+            <End Role="Borrow" EntitySet="Borrow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Borrow__UserID__04E4BC85" Association="Self.FK__Borrow__UserID__04E4BC85">
+            <End Role="LibraryUser" EntitySet="LibraryUser" />
+            <End Role="Borrow" EntitySet="Borrow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__Borro__1AD3FDA4" Association="Self.FK__Reservati__Borro__1AD3FDA4">
+            <End Role="Borrow" EntitySet="Borrow" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserActiv__UserI__17F790F9" Association="Self.FK__UserActiv__UserI__17F790F9">
+            <End Role="LibraryUser" EntitySet="LibraryUser" />
+            <End Role="UserActivity" EntitySet="UserActivity" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Violation__Borro__114A936A" Association="Self.FK__Violation__Borro__114A936A">
+            <End Role="Borrow" EntitySet="Borrow" />
+            <End Role="Violation" EntitySet="Violation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TheModermDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TheModernDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BookInformations" EntityType="TheModermDatabaseModel.BookInformation" />
+          <EntitySet Name="BookInstances" EntityType="TheModermDatabaseModel.BookInstance" />
+          <EntitySet Name="Borrows" EntityType="TheModermDatabaseModel.Borrow" />
+          <EntitySet Name="LibraryUsers" EntityType="TheModermDatabaseModel.LibraryUser" />
+          <EntitySet Name="Reservations" EntityType="TheModermDatabaseModel.Reservation" />
+          <EntitySet Name="UserActivities" EntityType="TheModermDatabaseModel.UserActivity" />
+          <EntitySet Name="Violations" EntityType="TheModermDatabaseModel.Violation" />
+          <AssociationSet Name="FK__Book__ISBN__75A278F5" Association="TheModermDatabaseModel.FK__Book__ISBN__75A278F5">
+            <End Role="BookInformation" EntitySet="BookInformations" />
+            <End Role="BookInstance" EntitySet="BookInstances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Borrow__Instance__7D439ABD" Association="TheModermDatabaseModel.FK__Borrow__Instance__7D439ABD">
+            <End Role="BookInstance" EntitySet="BookInstances" />
+            <End Role="Borrow" EntitySet="Borrows" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Borrow__UserID__04E4BC85" Association="TheModermDatabaseModel.FK__Borrow__UserID__04E4BC85">
+            <End Role="LibraryUser" EntitySet="LibraryUsers" />
+            <End Role="Borrow" EntitySet="Borrows" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__Borro__1AD3FDA4" Association="TheModermDatabaseModel.FK__Reservati__Borro__1AD3FDA4">
+            <End Role="Borrow" EntitySet="Borrows" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Violation__Borro__114A936A" Association="TheModermDatabaseModel.FK__Violation__Borro__114A936A">
+            <End Role="Borrow" EntitySet="Borrows" />
+            <End Role="Violation" EntitySet="Violations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserActiv__UserI__17F790F9" Association="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9">
+            <End Role="LibraryUser" EntitySet="LibraryUsers" />
+            <End Role="UserActivity" EntitySet="UserActivities" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BookInformation">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="ISBN" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Genre" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Author" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BookCover" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookInstances" Relationship="TheModermDatabaseModel.FK__Book__ISBN__75A278F5" FromRole="BookInformation" ToRole="BookInstance" />
+        </EntityType>
+        <EntityType Name="BookInstance">
+          <Key>
+            <PropertyRef Name="InstanceID" />
+          </Key>
+          <Property Name="InstanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISBN" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="InCirculation" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BookInformation" Relationship="TheModermDatabaseModel.FK__Book__ISBN__75A278F5" FromRole="BookInstance" ToRole="BookInformation" />
+          <NavigationProperty Name="Borrows" Relationship="TheModermDatabaseModel.FK__Borrow__Instance__7D439ABD" FromRole="BookInstance" ToRole="Borrow" />
+        </EntityType>
+        <EntityType Name="Borrow">
+          <Key>
+            <PropertyRef Name="BorrowID" />
+          </Key>
+          <Property Name="BorrowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateBorrowed" Type="DateTime" Precision="3" />
+          <Property Name="DateReturned" Type="DateTime" Precision="3" />
+          <Property Name="SiteType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BorrowState" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookInstance" Relationship="TheModermDatabaseModel.FK__Borrow__Instance__7D439ABD" FromRole="Borrow" ToRole="BookInstance" />
+          <NavigationProperty Name="LibraryUser" Relationship="TheModermDatabaseModel.FK__Borrow__UserID__04E4BC85" FromRole="Borrow" ToRole="LibraryUser" />
+          <NavigationProperty Name="Reservation" Relationship="TheModermDatabaseModel.FK__Reservati__Borro__1AD3FDA4" FromRole="Borrow" ToRole="Reservation" />
+          <NavigationProperty Name="Violations" Relationship="TheModermDatabaseModel.FK__Violation__Borro__114A936A" FromRole="Borrow" ToRole="Violation" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="LibraryUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="AccountPassword" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SessionId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SessionExpiry" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Borrows" Relationship="TheModermDatabaseModel.FK__Borrow__UserID__04E4BC85" FromRole="LibraryUser" ToRole="Borrow" />
+          <NavigationProperty Name="UserActivity" Relationship="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9" FromRole="LibraryUser" ToRole="UserActivity" />
+          <Property Name="AccountStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="257" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="BorrowID" />
+          </Key>
+          <Property Name="BorrowID" Type="Int32" Nullable="false" />
+          <Property Name="DateReserved" Type="DateTime" Precision="3" />
+          <Property Name="DateProcessed" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Borrow" Relationship="TheModermDatabaseModel.FK__Reservati__Borro__1AD3FDA4" FromRole="Reservation" ToRole="Borrow" />
+        </EntityType>
+        <EntityType Name="UserActivity">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LibraryUser" Relationship="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9" FromRole="UserActivity" ToRole="LibraryUser" />
+        </EntityType>
+        <EntityType Name="Violation">
+          <Key>
+            <PropertyRef Name="ViolationId" />
+          </Key>
+          <Property Name="ViolationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BorrowID" Type="Int32" Nullable="false" />
+          <Property Name="ViolationType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Borrow" Relationship="TheModermDatabaseModel.FK__Violation__Borro__114A936A" FromRole="Violation" ToRole="Borrow" />
+        </EntityType>
+        <Association Name="FK__Book__ISBN__75A278F5">
+          <End Type="TheModermDatabaseModel.BookInformation" Role="BookInformation" Multiplicity="1" />
+          <End Type="TheModermDatabaseModel.BookInstance" Role="BookInstance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookInformation">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="BookInstance">
+              <PropertyRef Name="ISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Borrow__Instance__7D439ABD">
+          <End Type="TheModermDatabaseModel.BookInstance" Role="BookInstance" Multiplicity="1" />
+          <End Type="TheModermDatabaseModel.Borrow" Role="Borrow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookInstance">
+              <PropertyRef Name="InstanceID" />
+            </Principal>
+            <Dependent Role="Borrow">
+              <PropertyRef Name="InstanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Borrow__UserID__04E4BC85">
+          <End Type="TheModermDatabaseModel.LibraryUser" Role="LibraryUser" Multiplicity="1" />
+          <End Type="TheModermDatabaseModel.Borrow" Role="Borrow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LibraryUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Borrow">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__Borro__1AD3FDA4">
+          <End Type="TheModermDatabaseModel.Borrow" Role="Borrow" Multiplicity="1" />
+          <End Type="TheModermDatabaseModel.Reservation" Role="Reservation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Borrow">
+              <PropertyRef Name="BorrowID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="BorrowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Violation__Borro__114A936A">
+          <End Type="TheModermDatabaseModel.Borrow" Role="Borrow" Multiplicity="1" />
+          <End Type="TheModermDatabaseModel.Violation" Role="Violation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Borrow">
+              <PropertyRef Name="BorrowID" />
+            </Principal>
+            <Dependent Role="Violation">
+              <PropertyRef Name="BorrowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserActiv__UserI__17F790F9">
+          <End Type="TheModermDatabaseModel.LibraryUser" Role="LibraryUser" Multiplicity="1" />
+          <End Type="TheModermDatabaseModel.UserActivity" Role="UserActivity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LibraryUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserActivity">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TheModermDatabaseModelStoreContainer" CdmEntityContainer="TheModernDatabaseEntities">
+          <EntitySetMapping Name="BookInformations">
+            <EntityTypeMapping TypeName="TheModermDatabaseModel.BookInformation">
+              <MappingFragment StoreEntitySet="BookInformation">
+                <ScalarProperty Name="BookCover" ColumnName="BookCover" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookInstances">
+            <EntityTypeMapping TypeName="TheModermDatabaseModel.BookInstance">
+              <MappingFragment StoreEntitySet="BookInstance">
+                <ScalarProperty Name="InCirculation" ColumnName="InCirculation" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Borrows">
+            <EntityTypeMapping TypeName="TheModermDatabaseModel.Borrow">
+              <MappingFragment StoreEntitySet="Borrow">
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="BorrowState" ColumnName="BorrowState" />
+                <ScalarProperty Name="SiteType" ColumnName="SiteType" />
+                <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
+                <ScalarProperty Name="DateBorrowed" ColumnName="DateBorrowed" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+                <ScalarProperty Name="BorrowID" ColumnName="BorrowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LibraryUsers">
+            <EntityTypeMapping TypeName="TheModermDatabaseModel.LibraryUser">
+              <MappingFragment StoreEntitySet="LibraryUser">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+                <ScalarProperty Name="SessionExpiry" ColumnName="SessionExpiry" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="AccountPassword" ColumnName="AccountPassword" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="TheModermDatabaseModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="DateProcessed" ColumnName="DateProcessed" />
+                <ScalarProperty Name="DateReserved" ColumnName="DateReserved" />
+                <ScalarProperty Name="BorrowID" ColumnName="BorrowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserActivities">
+            <EntityTypeMapping TypeName="TheModermDatabaseModel.UserActivity">
+              <MappingFragment StoreEntitySet="UserActivity">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Violations">
+            <EntityTypeMapping TypeName="TheModermDatabaseModel.Violation">
+              <MappingFragment StoreEntitySet="Violation">
+                <ScalarProperty Name="ViolationType" ColumnName="ViolationType" />
+                <ScalarProperty Name="BorrowID" ColumnName="BorrowID" />
+                <ScalarProperty Name="ViolationId" ColumnName="ViolationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

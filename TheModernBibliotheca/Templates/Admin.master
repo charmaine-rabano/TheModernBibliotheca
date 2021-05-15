@@ -1,0 +1,101 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Templates/Site.Master" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="TheModernBibliotheca.Templates.Admin" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
+    <style>
+        :root {
+            --librarian-primary: #183BF0;
+            --librarian-secondary: #DDE3FD;
+            --administrator-primary: #FE2712;
+            --administrator-secondary: #FFDEDB;
+            --borrower-primary: #66B032;
+            --borrower-secondary: #EBF7E3;
+        }
+
+        .header-group {
+            display: flex;
+            margin-bottom: .4rem;
+            align-items: center;
+        }
+
+            .header-group .header-actions {
+                margin-left: auto;
+            }
+
+                .header-group .header-actions > * {
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
+
+                .header-group .header-actions *:first-child {
+                    margin-left: 0px;
+                    margin-right: 5px;
+                }
+
+                .header-group .header-actions *:last-child {
+                    margin-left: 5px;
+                    margin-right: 0px;
+                }
+
+        .user-type-pill {
+            border-radius: 8px;
+            font-size: .8rem;
+            border: 1px solid black;
+            width: 7rem;
+            text-align: center;
+            padding: 2px 0;
+        }
+
+        .pill-administrator {
+            border-color: var(--administrator-primary);
+            background-color: var(--administrator-secondary);
+            color: var(--administrator-primary);
+        }
+
+        .pill-librarian {
+            border-color: var(--librarian-primary);
+            background-color: var(--librarian-secondary);
+            color: var(--librarian-primary);
+        }
+
+        .pill-borrower {
+            border-color: var(--borrower-primary);
+            background-color: var(--borrower-secondary);
+            color: var(--borrower-primary);
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <a class="navbar-brand" href="/Admin">The Modern Bibliotheca</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="ml-auto">
+                <div>
+                    <ul class="navbar-nav ml-auto mr-xl-2 mt-sm-1 mb-md-1">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="~/Account/Collection" id="navbarDropdown"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server"
+                                style="font-weight: 600; font-size: 17px;">
+                                <span><%= AuthenticationHelper.GetAdminAuth().GetUser().Email %></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <asp:LinkButton Text="Sign Out" runat="server" ID="SignoutLb" OnClick="SignoutLb_Click" CssClass="dropdown-item"/>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+
+</asp:Content>
