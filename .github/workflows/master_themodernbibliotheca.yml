@@ -53,4 +53,4 @@ jobs:
         app-name: 'themodernbibliotheca'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_dfb269f945bb4e538574107b668edc59 }}
-        package: .
+        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/_build'
