@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Services;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Admin;
@@ -20,6 +22,13 @@ namespace TheModernBibliotheca.Admin
 
             UserActivityGv.DataSource = ActivityRepository.GetActivities();
             UserActivityGv.DataBind();
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
+        public static IEnumerable<ActivityViewModel> Json()
+        {
+            return ActivityRepository.GetActivities();
         }
     }
 }
