@@ -20,7 +20,6 @@ namespace TheModernBibliotheca
                 Response.Redirect("~/Login");
             }
 
-
             int userId = AuthenticationHelper.GetBorrowerAuth().GetUser().UserID;
 
             model = BorrowsRepository.GetCurrentlyBorrowedModel(userId);
