@@ -28,6 +28,30 @@ namespace TheModernBibliotheca._Code.App.Borrower
             }
         }
 
+        internal static void CreateReservation(int instanceID, int userID)
+        {
+            using (var context = new TheModernDatabaseEntities())
+            {
+                Borrow borrow = new Borrow()
+                {
+                    InstanceID = instanceID,
+                    UserID = userID,
+                    SiteType = Constants.Borrow.OFFSITE_SITE_TYPE,
+                    BorrowState = Constants.Borrow.REQUESTED_STATE
+                };
+                context.Borrows.Add(borrow);
+                context.SaveChanges();
+
+                Reservation reservation = new Reservation()
+                {
+                    BorrowID = borrow.BorrowID,
+                    DateReserved = DateTime.Now
+                };
+                context.Reservations.Add(reservation);
+                context.SaveChanges();
+            }
+        }
+
         public static void ModifyPassword(int userId, LibraryUser modifiedUser, bool passwordChanged)
         {
             using (var context = new TheModernDatabaseEntities())

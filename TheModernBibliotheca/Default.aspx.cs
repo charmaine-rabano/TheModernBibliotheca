@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Borrower;
+using TheModernBibliotheca._Code.Lib.Authentication;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca
@@ -13,25 +14,32 @@ namespace TheModernBibliotheca
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string searchKey = Request.QueryString["search"];
-            string statusKey = Request.QueryString["status"];
-            IEnumerable<BookInformation> books;
+            if (AuthenticationHelper.GetBorrowerAuth().IsLoggedIn())
+            {
+                string searchKey = Request.QueryString["search"];
+                string statusKey = Request.QueryString["status"];
+                IEnumerable<BookInformation> books;
 
-            if (searchKey != null)
-            {
-                books = BooksRepository.GetSearchedBooks(searchKey);
-            }
-            else if (statusKey == "True")
-            {
-                bool key = true;
-                books = BooksRepository.GetAvailableBooks(key);
+                if (searchKey != null)
+                {
+                    books = BooksRepository.GetSearchedBooks(searchKey);
+                }
+                else if (statusKey == "True")
+                {
+                    bool key = true;
+                    books = BooksRepository.GetAvailableBooks(key);
+                }
+                else
+                {
+                    books = BooksRepository.GetBooks();
+                }
+                Repeater1.DataSource = books;
+                Repeater1.DataBind();
             }
             else
             {
-                books = BooksRepository.GetBooks();
+                Response.Redirect("~/Login.aspx");
             }
-            Repeater1.DataSource = books;
-            Repeater1.DataBind();
         }
 
         protected void SeeAvailable_Click(object sender, EventArgs e)
