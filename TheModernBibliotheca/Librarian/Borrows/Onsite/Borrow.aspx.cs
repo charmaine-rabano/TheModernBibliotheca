@@ -93,7 +93,8 @@ namespace TheModernBibliotheca.Librarian.Borrows.Onsite
                 UserID = borrowerUserID,
                 DateBorrowed = DateTime.Now,
                 SiteType = Constants.Borrow.ONSITE_SITE_TYPE,
-                BorrowState = Constants.Borrow.BORROWED_STATE
+                BorrowState = Constants.Borrow.BORROWED_STATE,
+                ReturnDate = DateTime.Now.AddDays(7)
             });
 
             AlertISBN.Text = BookISBNTb.Text;

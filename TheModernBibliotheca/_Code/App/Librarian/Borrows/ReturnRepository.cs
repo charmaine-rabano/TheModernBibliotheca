@@ -16,7 +16,8 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
                 {
                     BorrowDate = b.DateBorrowed,
                     BookName = b.BookInstance.BookInformation.Title,
-                    BorrowerName = b.LibraryUser.FirstName + " " + b.LibraryUser.LastName,
+                    BorrowerName = b.LibraryUser.FirstName + " " + b.LibraryUser.LastName + " (" + b.LibraryUser.Email + ")",
+                    DeadlineDate = b.ReturnDate,
                     BorrowID = b.BorrowID
                 }).ToList();
             }
