@@ -14,41 +14,40 @@ namespace TheModernBibliotheca.Templates
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string ISBN = Request.QueryString["ISBN"];
             
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        protected void backButton_Click(object sender, EventArgs e)
         {
             string ISBN = Request.QueryString["ISBN"];
-            Response.Redirect("Book?ISBN=" + ISBN);
+            Response.Redirect($"/Librarian/Books/Book.aspx?ISBN={ISBN}");
         }
 
-        protected void LinkButton2_Click(object sender, EventArgs e)
+        protected void instanceButton_Click(object sender, EventArgs e)
         {
-            Panel1.Visible = true;
-            Panel2.Visible = false;
-            Panel3.Visible = false;
+            instancePanel.Visible = true;
+            notInCirculationPanel.Visible = false;
+            inCirculationPanel.Visible = false;
         }
 
-        protected void LinkButton3_Click(object sender, EventArgs e)
+        protected void notInCirculation_Click(object sender, EventArgs e)
         {
             string ISBN = Request.QueryString["ISBN"];
-            Panel1.Visible = false;
-            Panel2.Visible = true;
-            Panel3.Visible = false;
+            instancePanel.Visible = false;
+            notInCirculationPanel.Visible = true;
+            inCirculationPanel.Visible = false;
 
             gvNotInCirculation.DataSource = InstancesRepository.GetNotInCirculation(ISBN);
             gvNotInCirculation.DataBind();
         }
 
-        protected void LinkButton4_Click(object sender, EventArgs e)
+        protected void inCirculationButton_Click(object sender, EventArgs e)
         {
             string ISBN = Request.QueryString["ISBN"];
 
-            Panel1.Visible = false;
-            Panel2.Visible = false;
-            Panel3.Visible = true;
+            instancePanel.Visible = false;
+            notInCirculationPanel.Visible = false;
+            inCirculationPanel.Visible = true;
 
             gvInCirculation.DataSource = InstancesRepository.GetInCirculation(ISBN);
             gvInCirculation.DataBind();
@@ -63,7 +62,9 @@ namespace TheModernBibliotheca.Templates
                 ISBN = ISBN,
                 InCirculation = true
             });
-            /// add saved message
+            txtQuantity.Text = "1";
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "$('#modalEdit').modal('show')", true);
+
         }
 
         protected void gvInCirculation_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -74,6 +75,17 @@ namespace TheModernBibliotheca.Templates
                 InstancesRepository.RemoveInCirculation(int.Parse(e.CommandArgument.ToString()));
                 gvInCirculation.DataSource =  InstancesRepository.GetInCirculation(ISBN);
                 gvInCirculation.DataBind();
+            }
+        }
+
+        protected void gvNotInCirculation_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string ISBN = Request.QueryString["ISBN"];
+            if (e.CommandName == "ADD")
+            {
+                InstancesRepository.AddInCirculation(int.Parse(e.CommandArgument.ToString()));
+                gvNotInCirculation.DataSource = InstancesRepository.GetNotInCirculation(ISBN);
+                gvNotInCirculation.DataBind();
             }
         }
     }

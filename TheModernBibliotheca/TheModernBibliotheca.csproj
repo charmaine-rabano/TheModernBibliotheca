@@ -1777,6 +1777,10 @@
     <Compile Include="_Code\App\Borrower\BorrowHistoryItemModel.cs" />
     <Compile Include="_Code\App\Borrower\BorrowsRepository.cs" />
     <Compile Include="_Code\App\Borrower\CurrentBorrowViewModel.cs" />
+    <Compile Include="_Code\App\Librarian\Books\AddBookRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Books\AddBookViewModel.cs" />
+    <Compile Include="_Code\App\Librarian\Books\BookRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Books\BookViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Books\InstancesRepository.cs" />
     <Compile Include="_Code\App\Librarian\Books\InstancesViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Books\ManageBooksRepository.cs" />

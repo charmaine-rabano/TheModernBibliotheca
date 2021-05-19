@@ -56,5 +56,14 @@ namespace TheModernBibliotheca._Code.App.Librarian.Books
                 context.SaveChanges();
             }
         }
+        public static void AddInCirculation(int instanceid)
+        {
+            using (var context = new TheModernDatabaseEntities())
+            {
+                var borrow = context.BookInstances.FirstOrDefault(b => b.InstanceID == instanceid);
+                borrow.InCirculation = true;
+                context.SaveChanges();
+            }
+        }
     }
 }

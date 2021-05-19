@@ -51,6 +51,15 @@ namespace TheModernBibliotheca.Templates
         protected global::System.Web.UI.WebControls.TextBox txtISBN;
 
         /// <summary>
+        /// cvISBN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvISBN;
+
+        /// <summary>
         /// txtTitle control.
         /// </summary>
         /// <remarks>
@@ -60,13 +69,22 @@ namespace TheModernBibliotheca.Templates
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
 
         /// <summary>
-        /// ddlGenre control.
+        /// txtGenre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGenre;
+        protected global::System.Web.UI.WebControls.TextBox txtGenre;
+
+        /// <summary>
+        /// genres control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl genres;
 
         /// <summary>
         /// txtAuthor control.
