@@ -23,5 +23,8 @@
 
         <h3 style="margin-top: 20px">Book Return</h3>
         <a href="Return.aspx"><button><img src="/Content/bootstrap-icons/book-half.svg" width="32" height="32" />&emsp;Record Book Return</button></a>
+        
+        <h3 style="margin-top: 20px">Borrow History</h3>
+        <a href="History.aspx"><button><img src="/Content/bootstrap-icons/inboxes-fill.svg" width="32" height="32" />&emsp;View Borrow History</button></a>
     </div>
 </asp:Content>

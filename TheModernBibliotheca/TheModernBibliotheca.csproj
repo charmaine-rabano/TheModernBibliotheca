@@ -1548,6 +1548,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Librarian\Borrows\History.aspx" />
     <Content Include="Librarian\Borrows\Menu.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Approve.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Pending.aspx" />
@@ -1732,6 +1733,13 @@
     <Compile Include="Borrows.aspx.designer.cs">
       <DependentUpon>Borrows.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Librarian\Borrows\History.aspx.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\History.aspx.designer.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Librarian\Borrows\Onsite\Borrow.aspx.cs">
       <DependentUpon>Borrow.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1798,6 +1806,8 @@
       <DependentUpon>Librarian.master</DependentUpon>
     </Compile>
     <Compile Include="_Code\App\Librarian\Borrows\BorrowRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\HistoryRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\HistoryViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ReturnRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ReturnViewModel.cs" />
     <Compile Include="_Code\App\Borrower\BorrowerRepository.cs" />
