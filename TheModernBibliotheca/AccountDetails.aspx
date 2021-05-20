@@ -52,7 +52,7 @@
                 <div class="form-group">
                     <asp:Label Text="Confirm Password" runat="server" />
                     <asp:TextBox runat="server" ID="ConfirmPasswordTb" CssClass="form-control" TextMode="Password" MaxLength="255" />
-                    <asp:RequiredFieldValidator ErrorMessage="This is a required field" ControlToValidate="ConfirmPasswordTb" runat="server" CssClass="validation-message" Display="Dynamic" />
+                    <asp:RequiredFieldValidator ErrorMessage="This is a required field" ControlToValidate="ConfirmPasswordTb" ValidationGroup="PasswordGroup" runat="server" CssClass="validation-message" Display="Dynamic" />
                     <asp:CompareValidator ErrorMessage="Passwords need to match" ControlToValidate="ConfirmPasswordTb" ValidationGroup="PasswordGroup" runat="server" ControlToCompare="NewPasswordTxt" CssClass="validation-message" Display="Dynamic" Operator="Equal" />
                 </div>
 
