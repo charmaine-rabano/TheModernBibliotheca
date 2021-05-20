@@ -17,18 +17,12 @@ namespace TheModernBibliotheca.Templates
         {
             if (!this.IsPostBack)
             {
-                bookGenreDropDown.ClearSelection();
-                bookGenreDropDown.Items.Add("ALL");
-                var genres = GenreRepository.GetGenres();
-                foreach (GenreViewModel genre in genres)
-                {
-                    bookGenreDropDown.Items.Add(genre.Genre);
-                }
                 string searchKey = Request.QueryString["search"];
-
-                
                 if (searchKey != null)
                 {
+                    bookGenreDropDown.Items.Add(new ListItem("---Select---", "0"));
+                    lblSearchResult.Text = "Search Result for: " + searchKey;
+                    lblSearchResult.Visible = true;
                     var content = BooksRepository.GetSearchedBooks(searchKey);
 
                     if (content != null && content.Any())
@@ -37,23 +31,28 @@ namespace TheModernBibliotheca.Templates
                         bookRepeater.DataBind();
                     }
                     else noResultsMessage.Visible = true;
-
-
-
                 }
                 else { viewAllBooks(); }
+                bookGenreDropDown.ClearSelection();
+                bookGenreDropDown.Items.Add("ALL");
+                var genres = GenreRepository.GetGenres();
+                foreach (GenreViewModel genre in genres)
+                {
+                    bookGenreDropDown.Items.Add(genre.Genre);
+                }
+                
             }
-
-            
-
         }
+
         private void viewAllBooks()
         {
             bookRepeater.DataSource = ManageBooksRepository.GetBooks();
             bookRepeater.DataBind();
         }
+
         protected void bookGenreDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lblSearchResult.Visible = false;
             noResultsMessage.Visible = false;
             if (bookGenreDropDown.SelectedValue.ToString() == "ALL")
             {
