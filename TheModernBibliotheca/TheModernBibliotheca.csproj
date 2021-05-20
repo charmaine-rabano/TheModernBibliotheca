@@ -1548,6 +1548,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="CreateAccount.aspx" />
+    <Content Include="Librarian\Login.aspx" />
     <Content Include="Test\BackgroundProcess.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -1754,6 +1755,13 @@
     </Compile>
     <Compile Include="Librarian\Borrows\History.aspx.designer.cs">
       <DependentUpon>History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test\BackgroundProcess.aspx.cs">
       <DependentUpon>BackgroundProcess.aspx</DependentUpon>

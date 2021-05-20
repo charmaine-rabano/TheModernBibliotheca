@@ -35,7 +35,7 @@ namespace TheModernBibliotheca._Code.App.Background
                 {
                     string books = borrows.Aggregate(new StringBuilder(),
                         (builder, item) => builder
-                        .AppendFormat("BorrowId: {0}, InstanceId: {1}, DateBorrowd: {2}; ",
+                        .AppendFormat("BorrowId: {0}, InstanceId: {1}, DateBorrowed: {2}; ",
                         item.BorrowID, item.BookInstance.InstanceID, item.DateBorrowed)).ToString();
 
                     log.Debug($"Marked {count} books on {lost_start} as lost: {books}");
