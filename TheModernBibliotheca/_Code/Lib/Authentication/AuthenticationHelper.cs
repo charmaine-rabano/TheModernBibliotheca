@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System.Threading.Tasks;
+using System.Web;
+using TheModernBibliotheca._Code.App.Background;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca._Code.Lib.Authentication
@@ -72,6 +74,9 @@ namespace TheModernBibliotheca._Code.Lib.Authentication
             {
                 return false;
             }
+
+            // TRIGGER BACKGROUND PROCESSES
+            BackgroundProcessRunner.Instance.Trigger();
 
             SessionId = sessionId;
             return true;

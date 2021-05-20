@@ -16,7 +16,6 @@
         }
 
         .borrow-status {
-            background-color: #f2efe9;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -31,7 +30,6 @@
             }
 
                 .borrow-status .status-container .status-message {
-                    background-color: lightgray;
                     padding: 10px 20px;
                     font-size: 1.2rem;
                     border-radius: 80px;
@@ -48,13 +46,33 @@
             }
 
         .empty-message {
-            font-size:1.6em;
+            font-size: 1.6em;
+        }
+
+        .status-requested {
+            background-color: #fcf7ca;
+        }
+
+        .status-approved {
+            background-color: #cafcd0;
+        }
+
+        .status-rejected {
+            background-color: #fcd9d9;
+        }
+
+        .status-borrowed {
+            background-color: #aed6f5;
+        }
+
+        .status-returned {
+            background-color: #e3e3e3;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="borrow-container">
-        <h4>Current Borrow</h4>
+        <h4>Latest Borrow</h4>
 
         <%if (model != null) %>
         <%{%>
@@ -73,7 +91,12 @@
             <div class="col-lg-4 col-12 borrow-status">
                 <div class="status-container">
                     <span>Status</span>
-                    <div class="status-message">
+                    <div class='<%=(
+                            model.Status == "Requested" ? "status-message status-requested" :
+                            model.Status == "Approved" ? "status-message status-approved" : 
+                            model.Status == "Rejected" ? "status-message status-rejected" : 
+                            model.Status == "Borrowed" ? "status-message status-borrowed": 
+                            model.Status == "Returned" ? "status-message status-returned" : "status-message")%>'>
                         <span><%= model.Status %></span>
                     </div>
                 </div>

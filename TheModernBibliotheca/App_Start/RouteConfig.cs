@@ -11,7 +11,7 @@ namespace TheModernBibliotheca
         public static void RegisterRoutes(RouteCollection routes)
         {
             var settings = new FriendlyUrlSettings();
-            settings.AutoRedirectMode = RedirectMode.Permanent;
+            settings.AutoRedirectMode = RedirectMode.Off;
             routes.EnableFriendlyUrls(settings);
             RegisterCustomRoutes(routes);
         }
@@ -19,6 +19,7 @@ namespace TheModernBibliotheca
         public static void RegisterCustomRoutes(RouteCollection routes) {
             routes.MapPageRoute("ModifyAccount", "Admin/Users/{id}/Modify", "~/Admin/Users/Modify.aspx");
             routes.MapPageRoute("Books", "Books/{id}", "~/Books.aspx");
+            routes.MapPageRoute("ConfirmReturn", "Librarian/Borrows/{id}/ConfirmReturn", "~/Librarian/Borrows/ConfirmReturn.aspx");
 
         }
     }

@@ -17,6 +17,7 @@ namespace TheModernBibliotheca._Code.App.Admin
                     .Where(e => 
                         e.AccountStatus == Constants.LibraryUser.ACTIVE_STATUS &&
                         e.UserID != loggedInUserId)
+                    .OrderByDescending(e=>e.DateCreated)
                     .ToList();
         }
 

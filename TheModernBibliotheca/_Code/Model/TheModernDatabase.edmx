@@ -36,6 +36,7 @@
           <Property Name="SiteType" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="BorrowState" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="ReturnDate" Type="datetime" />
+          <Property Name="DateCreated" Type="datetime" />
         </EntityType>
         <EntityType Name="LibraryUser">
           <Key>
@@ -257,6 +258,7 @@
           <NavigationProperty Name="Reservation" Relationship="TheModermDatabaseModel.FK__Reservati__Borro__1AD3FDA4" FromRole="Borrow" ToRole="Reservation" />
           <NavigationProperty Name="Violations" Relationship="TheModermDatabaseModel.FK__Violation__Borro__114A936A" FromRole="Borrow" ToRole="Violation" />
           <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="LibraryUser">
           <Key>
@@ -405,6 +407,7 @@
           <EntitySetMapping Name="Borrows">
             <EntityTypeMapping TypeName="TheModermDatabaseModel.Borrow">
               <MappingFragment StoreEntitySet="Borrow">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
                 <ScalarProperty Name="BorrowState" ColumnName="BorrowState" />
                 <ScalarProperty Name="SiteType" ColumnName="SiteType" />
