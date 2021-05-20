@@ -16,24 +16,11 @@ namespace TheModernBibliotheca
         {
             if (AuthenticationHelper.GetBorrowerAuth().IsLoggedIn())
             {
-                string searchKey = Request.QueryString["search"];
-                string statusKey = Request.QueryString["status"];
-                IEnumerable<BookInformation> books;
-
-                if (searchKey != null)
+                if (!Page.IsPostBack)
                 {
-                    books = BooksRepository.GetSearchedBooks(searchKey);
+                    Repeater1.DataSource = BooksRepository.GetBooks();
+                    Repeater1.DataBind();
                 }
-                else if (statusKey == "True")
-                {
-                    books = BooksRepository.GetAvailableBooks();
-                }
-                else
-                {
-                    books = BooksRepository.GetBooks();
-                }
-                Repeater1.DataSource = books;
-                Repeater1.DataBind();
             }
             else
             {
@@ -41,20 +28,52 @@ namespace TheModernBibliotheca
             }
         }
 
-        protected void SeeAvailable_Click(object sender, EventArgs e)
-        {
-            bool statusAvailable = true;
-            Response.Redirect($"~/Default.aspx?status={statusAvailable}");
-        }
-
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            Response.Redirect($"~/Default.aspx?search={HttpUtility.UrlEncode(txtSearch.Text)}");
+            IEnumerable<BookInformation> books;
+            string searchKey = txtSearch.Text;
+            if (AvailabilityDdl.SelectedValue == "All")
+            {
+                books = BooksRepository.SearchBooks(searchKey);
+            }
+            else if (AvailabilityDdl.SelectedValue == "Available")
+            {
+                books = BooksRepository.SearchAvailableBooks(searchKey);
+            }
+            else
+            {
+                books = BooksRepository.SearchUnavailableBooks(searchKey);
+            }
+            Repeater1.DataSource = books;
+            Repeater1.DataBind();
         }
 
         public string FormatString(string s, int len)
         {
-            return s.Length > len ? s.Substring(0, len) + "..." : s; 
+            return s.Length > len ? s.Substring(0, len) + "..." : s;
+        }
+
+        public string GetAvailablility(string isbn)
+        {
+            return BooksRepository.IsBookAvailable(isbn) ? "Available" : "Unavailable";
+        }
+
+        protected void AvailabilityDdl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IEnumerable<BookInformation> books;
+            if (AvailabilityDdl.SelectedValue == "All")
+            {
+                books = BooksRepository.GetBooks();
+            }
+            else if (AvailabilityDdl.SelectedValue == "Available") {
+                books = BooksRepository.GetAvailableBooks();
+            }
+            else
+            {
+                books = BooksRepository.GetUnavailableBooks();
+            }
+            Repeater1.DataSource = books;
+            Repeater1.DataBind();
         }
     }
 }
