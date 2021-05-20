@@ -1,9 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="Menu.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.Menu" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         button {
             padding: 20px 30px 20px 30px;
@@ -11,7 +8,9 @@
             background: none;
         }
     </style>
+</asp:Content>
 
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container" style="margin-top: 60px">
         <h3>Offsite Borrowing</h3>
         <a href="Offsite/Approve.aspx"><button><img src="/Content/bootstrap-icons/check2-square.svg" width="32" height="32" />&emsp;Approve Reservations</button></a>

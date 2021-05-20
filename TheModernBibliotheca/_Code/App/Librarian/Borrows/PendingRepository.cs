@@ -27,7 +27,7 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
             using (var context = new TheModernDatabaseEntities())
             {
                 var borrow = context.Borrows.FirstOrDefault(b => b.BorrowID == id);
-                borrow.BorrowState = "Borrowed";
+                borrow.BorrowState = Constants.Borrow.BORROWED_STATE;
                 borrow.DateBorrowed = DateTime.Now;
                 borrow.ReturnDate = DateTime.Now.AddDays(7);
                 context.SaveChanges();

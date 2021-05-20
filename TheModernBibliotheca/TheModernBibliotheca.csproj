@@ -1548,6 +1548,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Librarian\Borrows\ConfirmReturn.aspx" />
     <Content Include="Librarian\Borrows\History.aspx" />
     <Content Include="Librarian\Borrows\Menu.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Approve.aspx" />
@@ -1732,6 +1733,13 @@
     </Compile>
     <Compile Include="Borrows.aspx.designer.cs">
       <DependentUpon>Borrows.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Borrows\ConfirmReturn.aspx.cs">
+      <DependentUpon>ConfirmReturn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\ConfirmReturn.aspx.designer.cs">
+      <DependentUpon>ConfirmReturn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Librarian\Borrows\History.aspx.cs">
       <DependentUpon>History.aspx</DependentUpon>

@@ -25,8 +25,8 @@ namespace TheModernBibliotheca.Librarian.Borrows
         {
             if (e.CommandName == "Return")
             {
-                ReturnRepository.ReturnBook(int.Parse(e.CommandArgument.ToString()));
-                Bind();
+                int borrowId = int.Parse(e.CommandArgument.ToString());
+                Response.Redirect("~/Librarian/Borrows/" + borrowId + "/ConfirmReturn");
             }
         }
     }
