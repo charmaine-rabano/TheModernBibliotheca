@@ -23,6 +23,15 @@ namespace TheModernBibliotheca
             }
             string ISBN = Request.QueryString["ID"];
             model = BooksRepository.GetBook(ISBN);
+
+            int quantity = BooksRepository.GetQuantity(ISBN);
+            lblBookQuantity.Text = quantity.ToString();
+            available_tag.InnerHtml = quantity > 0 ? "Available" : "Unavailable";
+
+            if (quantity == 0)
+            {
+                btnCreateReservation.Enabled = false;
+            }
         }
 
         protected void btnCreateReservation_Click(object sender, EventArgs e)

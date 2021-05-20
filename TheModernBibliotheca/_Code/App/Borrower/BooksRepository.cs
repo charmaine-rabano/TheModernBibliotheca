@@ -34,14 +34,14 @@ namespace TheModernBibliotheca._Code.App.Borrower
 
         public static IEnumerable<BookInformation> GetAvailableBooks()
         {
-            var state = new List<string>{ Constants.Borrow.RETURNED_STATE, Constants.Borrow.REJECTED_STATE};
+            var state = new List<string> { Constants.Borrow.RETURNED_STATE, Constants.Borrow.REJECTED_STATE };
 
             using (var context = new TheModernDatabaseEntities())
                 return context.BookInformations
-                    .Where(e => 
+                    .Where(e =>
                         e.BookInstances.Count > 0 &&                // Must have instance
                         e.BookInstances
-                            .Any(f => 
+                            .Any(f =>
                                 f.InCirculation &&                  // Instance must be incirculation
                                 (
                                     f.Borrows.Count == 0 ||         // Instance not borrowed yet
@@ -50,6 +50,28 @@ namespace TheModernBibliotheca._Code.App.Borrower
                                             .BorrowState)           // Borrow is returned or rejected
                                 )))
                     .ToList();
+        }
+
+        public static bool IsBookAvailable(string ISBN)
+        {
+            return GetQuantity(ISBN) > 0;
+        }
+
+        public static int GetQuantity(string ISBN)
+        {
+            var state = new List<string> { Constants.Borrow.RETURNED_STATE, Constants.Borrow.REJECTED_STATE };
+            using (var context = new TheModernDatabaseEntities())
+                return context.BookInstances
+                    .Where(e => e.ISBN == ISBN)
+                    .Where(e =>
+                            e.InCirculation &&                  // Instance must be incirculation
+                            (
+                                e.Borrows.Count == 0 ||         // Instance not borrowed yet
+                                state.Contains(e.Borrows.OrderByDescending(f => f.DateCreated)
+                                    .FirstOrDefault()
+                                        .BorrowState)           // Borrow is returned or rejected
+                            ))
+                    .Count();
         }
 
     }

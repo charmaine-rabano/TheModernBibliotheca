@@ -20,14 +20,22 @@
     <div class="row" style="text-align: center;">
         <asp:Repeater ID="Repeater1" runat="server">
             <ItemTemplate>
-                <div class="col-3 p-2">
-                    <div class="card" style="min-height: 250px">
+                <div class="col-3 p-3">
+                    <div class="card h-100" style="text-align:left">
                         <br />
                         <img class="card-img-top" src='<%# Eval("BookCover")%>' alt="<Picture Object>" />
-                        <div class="card-body" style="display: flex; flex-direction: column;">
-                            <h5 class="card-title"><%# Eval("Title")%></h5>
-                            <div style="margin-top: auto;">
-                                <a href='Books?ID=<%# Eval("ISBN")%>' class="btn btn-secondary" style="background-color: burlywood">Details</a>
+                        <div class="card-body" style="display: flex; flex-direction: column; height:">
+                            <h5 class="card-title">
+                                <%# FormatString(Eval("Title").ToString(), 15) %>
+                            </h5>
+                            <b>
+                                <%# FormatString(Eval("Author").ToString(), 20) %>
+                            </b>
+                            <p class="">
+                                <%# FormatString(Eval("Summary").ToString(), 70) %>
+                            </p>
+                            <div style="margin-top: auto; margin-right: auto;">
+                                <a href='Books?ID=<%# Eval("ISBN")%>' class="btn btn-secondary" style="">Details</a>
                             </div>
                         </div>
                     </div>

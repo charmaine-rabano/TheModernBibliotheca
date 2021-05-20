@@ -51,5 +51,10 @@ namespace TheModernBibliotheca
         {
             Response.Redirect($"~/Default.aspx?search={HttpUtility.UrlEncode(txtSearch.Text)}");
         }
+
+        public string FormatString(string s, int len)
+        {
+            return s.Length > len ? s.Substring(0, len) + "..." : s; 
+        }
     }
 }

@@ -51,6 +51,15 @@ namespace TheModernBibliotheca
         protected global::System.Web.UI.WebControls.Label txtSummary;
 
         /// <summary>
+        /// available_tag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell available_tag;
+
+        /// <summary>
         /// btnCreateReservation control.
         /// </summary>
         /// <remarks>

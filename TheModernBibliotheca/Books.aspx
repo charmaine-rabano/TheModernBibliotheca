@@ -9,9 +9,10 @@
     <br />
     <div class="row">
         <div class="col-3" style="display: flex; flex-direction: column; align-items: center; padding-right: 15px;">
-            <img class="img-thumbnail" src="<%#Eval("ImgUrl")%>" alt="hello" />
+            <img class="img-thumbnail" src="<%= model.BookCover %>" alt="hello" />
             <br />
-            <asp:Label ID="lblBookQuantity" runat="server">Quantity: 123</asp:Label>
+            <span>Quantity: </span>
+            <asp:Label ID="lblBookQuantity" runat="server"></asp:Label>
         </div>
         <div class="col-9">
             <h2>
@@ -35,7 +36,7 @@
                     <tr>
                         <td><%=model.ISBN%></td>
                         <td><%=model.Genre%></td>
-                        <td>Available</td>
+                        <td runat="server" id="available_tag"></td>
                     </tr>
                 </tbody>
             </table>
