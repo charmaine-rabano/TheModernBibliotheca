@@ -19,9 +19,9 @@ namespace TheModernBibliotheca.Librarian
         {
             if (!Page.IsValid) { return; }
 
-            if (AuthenticationHelper.GetBorrowerAuth().Authenticate(EmailTxt.Text, PasswordTxt.Text))
+            if (AuthenticationHelper.GetLibrarianAuth().Authenticate(EmailTxt.Text, PasswordTxt.Text))
             {
-                Response.Redirect("~/Admin");
+                Response.Redirect("~/Librarian/Homepage");
             }
             else
             {

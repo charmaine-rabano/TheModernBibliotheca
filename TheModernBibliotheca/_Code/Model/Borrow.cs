@@ -28,6 +28,7 @@ namespace TheModernBibliotheca._Code.Model
         public string SiteType { get; set; }
         public string BorrowState { get; set; }
         public Nullable<System.DateTime> ReturnDate { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
     
         public virtual BookInstance BookInstance { get; set; }
         public virtual LibraryUser LibraryUser { get; set; }

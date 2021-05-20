@@ -1861,8 +1861,6 @@
     <Compile Include="_Code\App\Librarian\Books\InstancesViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Books\ManageBooksRepository.cs" />
     <Compile Include="_Code\App\Librarian\Books\ManageBooksViewModel.cs" />
-    <Compile Include="_Code\App\Librarian\Borrows\ApproveRepository.cs" />
-    <Compile Include="_Code\App\Librarian\Borrows\ApproveViewModel.cs" />
     <Compile Include="Librarian\Borrows\Return.aspx.cs">
       <DependentUpon>Return.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

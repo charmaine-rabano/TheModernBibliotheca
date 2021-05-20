@@ -39,7 +39,7 @@
 
         <%-- Login Header --%>
         <div class="login-header">
-            <h3 class="my-3">Admin Sign In</h3>
+            <h3 class="my-3">Librarian Sign In</h3>
         </div>
         <div id="loginMessageDiv" class="alert alert-danger" role="alert" runat="server" visible="false">
             Please check your email and password
