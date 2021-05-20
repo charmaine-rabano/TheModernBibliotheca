@@ -66,6 +66,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -1545,6 +1548,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="CreateAccount.aspx" />
+    <Content Include="Test\BackgroundProcess.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -1727,12 +1731,20 @@
     <Compile Include="Admin\Activity.aspx.designer.cs">
       <DependentUpon>Activity.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\BackgroundProcessConfig.cs" />
     <Compile Include="Borrows.aspx.cs">
       <DependentUpon>Borrows.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Borrows.aspx.designer.cs">
       <DependentUpon>Borrows.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\BackgroundProcess.aspx.cs">
+      <DependentUpon>BackgroundProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\BackgroundProcess.aspx.designer.cs">
+      <DependentUpon>BackgroundProcess.aspx</DependentUpon>
     </Compile>
     <Compile Include="Librarian\Borrows\Onsite\Borrow.aspx.cs">
       <DependentUpon>Borrow.aspx</DependentUpon>
@@ -1790,6 +1802,10 @@
     <Compile Include="Librarian\Books\Menu.aspx.designer.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="_Code\App\Background\BackgroundProcessRunner.cs" />
+    <Compile Include="_Code\App\Background\Processes\ClearExpiredReservations.cs" />
+    <Compile Include="_Code\App\Background\IBackgroundProcess.cs" />
+    <Compile Include="_Code\App\Background\Processes\MarkLostBooks.cs" />
     <Compile Include="_Code\App\Borrower\BorrowHistoryItemModel.cs" />
     <Compile Include="_Code\App\Borrower\BorrowsRepository.cs" />
     <Compile Include="_Code\App\Borrower\CurrentBorrowViewModel.cs" />
