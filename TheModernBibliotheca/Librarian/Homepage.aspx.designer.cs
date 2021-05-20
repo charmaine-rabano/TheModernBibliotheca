@@ -15,15 +15,6 @@ namespace TheModernBibliotheca.Templates
     {
 
         /// <summary>
-        /// librarian control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton librarian;
-
-        /// <summary>
         /// books control.
         /// </summary>
         /// <remarks>
@@ -31,5 +22,14 @@ namespace TheModernBibliotheca.Templates
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton books;
+
+        /// <summary>
+        /// borrows control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton borrows;
     }
 }

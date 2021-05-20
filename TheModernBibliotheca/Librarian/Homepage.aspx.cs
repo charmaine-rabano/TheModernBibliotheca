@@ -13,16 +13,5 @@ namespace TheModernBibliotheca.Templates
         {
 
         }
-
-        protected void librarian_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("/Librarian/Borrows/Menu.aspx");
-        }
-
-        protected void books_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("/Librarian/Books/Menu.aspx");
-        }
-
     }
 }
