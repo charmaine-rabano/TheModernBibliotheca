@@ -47,7 +47,7 @@
         <asp:Label CssClass="col-sm-3 col-12" Text="Email Address" runat="server" />
         <div class="col-sm-9 col-12">
             <asp:TextBox runat="server" ID="EmailAddressTb" CssClass="form-control" TextMode="Email"  MaxLength="127"/>
-            <asp:RequiredFieldValidator ErrorMessage="This is a required field" ControlToValidate="FirstNameTb" runat="server" CssClass="validation-message" Display="Dynamic" />
+            <asp:RequiredFieldValidator ErrorMessage="This is a required field" ControlToValidate="EmailAddressTb" runat="server" CssClass="validation-message" Display="Dynamic" />
             <asp:RegularExpressionValidator ErrorMessage="Please enter a valid email address" ControlToValidate="EmailAddressTb" runat="server" CssClass="validation-message" Display="Dynamic" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" />
             <asp:CustomValidator ID="EmailAddressCv" ErrorMessage="" ControlToValidate="EmailAddressTb" runat="server" OnServerValidate="EmailAddressCv_ServerValidate" CssClass="validation-message" Display="Dynamic" />
         </div>
@@ -85,8 +85,13 @@
     </div>
 
     <div class="form-action">
-        <asp:Button Text="Delete" runat="server" ID="DeleteBtn" OnClick="DeleteBtn_Click" CssClass="btn btn-danger alternative-action" />
+        <asp:Button Text="Delete" runat="server" ID="DeleteBtn" OnClick="DeleteBtn_Click" CssClass="btn btn-danger alternative-action" OnClientClick="return ConfirmDelete()" UseSubmitBehavior="false"/>
 
         <asp:Button Text="Submit" runat="server" ID="SubmitBtn" OnClick="SubmitBtn_Click" CssClass="btn btn-primary primary-action" />
     </div>
+    <script>
+        function ConfirmDelete() {
+            return confirm("Are you sure you want to delete this account?");
+        }
+    </script>
 </asp:Content>

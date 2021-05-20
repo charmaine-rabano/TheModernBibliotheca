@@ -1728,7 +1728,6 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
-    <Content Include="Templates\Site.Mobile.Master" />
     <EntityDeploy Include="_Code\Model\TheModernDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TheModernDatabase.Designer.cs</LastGenOutput>
@@ -2021,13 +2020,6 @@
     </Compile>
     <Compile Include="Templates\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Templates\Site.Mobile.Master.designer.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
