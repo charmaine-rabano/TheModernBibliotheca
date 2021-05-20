@@ -15,25 +15,6 @@ namespace TheModernBibliotheca._Code.App.Librarian.Books
                 return context.BookInformations.FirstOrDefault(e => e.ISBN == ISBN);
         }
 
-        public static string UploadFile(string filename, string containerName, HttpPostedFile file, bool overwrite = true)
-        {
-            if (file == null) { throw new ArgumentException("File must not be null"); }
-
-            file.InputStream.Position = 0;
-            BlobClient blobClient = GetBlobContainerClient(containerName).GetBlobClient(filename);
-            using (var inputStream = file.InputStream)
-            {
-                blobClient.Upload(inputStream, overwrite: overwrite);
-            }
-            return blobClient.Uri.AbsoluteUri;
-        }
-
-        private static BlobContainerClient GetBlobContainerClient(string containerName)
-        {
-            BlobServiceClient blobServiceClient = new BlobServiceClient("DefaultEndpointsProtocol=https;AccountName=bookcover;AccountKey=ia3YjLBqu0jYBCyiSot38jNZUgprUHKC3yTxvUxXpeFItY6FMkFqgs5Bmobv/pvtJowiULBk/wn79uXcovkYDA==;EndpointSuffix=core.windows.net");
-            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
-            return containerClient;
-        }
 
         public static void ModifyBook(string ISBN, BookInformation modifiedBook)
         {
