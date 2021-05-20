@@ -11,21 +11,19 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="width: 100%; display: table; padding-top:3%;">
-        <div style="display: table-row; height: 500px;">
-            <div style="width: 50%; display: table-cell;  align-content:center;text-align:center;" >
-                <asp:ImageButton ID="librarian" runat="server" CssClass="responsive" ImageUrl="/Content/bootstrap-icons/person.svg" OnClick="librarian_Click" />
+    <div class="row" padding-top:3%; height: 500px;">
+            <div style="align-content:center; text-align:center;" class="col"> 
+                <asp:ImageButton ID="books" runat="server" CssClass="responsive" ImageUrl="/Content/bootstrap-icons/book.svg"  PostBackUrl="~/Librarian/Books/Menu.aspx" />
                 <br />
-                Librarian
-
-            </div>
-            <div style="display: table-cell;  align-content:center; text-align:center;"> 
-                <asp:ImageButton ID="books" runat="server" CssClass="responsive" ImageUrl="/Content/bootstrap-icons/book.svg" OnClick="books_Click"  />
-                <br />
-                Books
+                <h2>Books</h2>
  
             </div>
-        </div>
+            <div style="align-content:center; text-align:center;" class="col" >
+                <asp:ImageButton ID="borrows" runat="server" CssClass="responsive" ImageUrl="/Content/bootstrap-icons/people.svg" PostBackUrl="~/Librarian/Borrows/Menu.aspx" />
+                <br />
+                <h2>Borrows</h2>
+
+            </div>
     </div>
     
 </asp:Content>
