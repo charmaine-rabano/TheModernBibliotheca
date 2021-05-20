@@ -79,6 +79,7 @@ namespace TheModernBibliotheca.Templates
             BookRepository.ModifyBook(txtISBN.Text, book);
                         
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "$('#modalEdit').modal('show')", true);
+            InitializeFormValues();
         }
     }
 }

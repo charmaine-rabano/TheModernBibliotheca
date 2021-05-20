@@ -32,7 +32,7 @@ namespace TheModernBibliotheca._Code.App.Librarian.Books
                     ISBN = e.ISBN,
                     Title = e.Title,
                     BookCover = e.BookCover,
-                    Summary = e.BookCover
+                    Summary = e.Summary
                 }).ToList();
             }
         }

@@ -42,7 +42,8 @@
       <div class="row">
         <div class="col-sm-4" style="padding-left:0px;">
             <asp:Image ID="previewImg" runat="server" AlternateText="Image" style="background-color:gray; width:200px; height:200px;" ImageUrl="https://t4.ftcdn.net/jpg/02/07/87/79/360_F_207877921_BtG6ZKAVvtLyc5GWpBNEIlIxsffTtWkv.jpg" />
-            <asp:FileUpload ID="fileUploadImg" runat="server" style="padding-top:10px;font-size:small;" onchange="ShowImagePreview(this);" />
+            <asp:FileUpload ID="fileUploadImg" runat="server" style="padding-top:10px;font-size:small;" onchange="ShowImagePreview(this);" /><br />
+            <asp:RequiredFieldValidator ID="rfvFile"  runat="server" ControlToValidate="fileUploadImg" ErrorMessage="Please upload book cover" CssClass="validation-message" Display="Dynamic"></asp:RequiredFieldValidator>
             <br />
             <br />
             <asp:Label Text="Quantity" runat="server"></asp:Label>

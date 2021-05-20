@@ -54,7 +54,7 @@
                  <Columns>
                 <asp:TemplateField HeaderText="" >
                         <ItemTemplate>
-                            <asp:LinkButton runat="server" Text="ADD BACK TO BOOKSHELF" CommandName="ADD" CommandArgument='<%#Eval("InstanceID")%>' CssClass="btn btn-success" />
+                            <asp:LinkButton runat="server" Text="ADD BACK TO CIRCULATION" CommandName="ADD" CommandArgument='<%#Eval("InstanceID")%>' CssClass="btn btn-success" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 <asp:BoundField DataField="InstanceID" HeaderText="Instance ID" />
@@ -70,7 +70,7 @@
                  <Columns>
                 <asp:TemplateField HeaderText="" >
                         <ItemTemplate>
-                            <asp:LinkButton runat="server" Text="REMOVE FROM BOOKSHELF" CommandName="REMOVE" CommandArgument='<%#Eval("InstanceID")%>' CssClass="btn btn-danger" />
+                            <asp:LinkButton runat="server" Text="REMOVE FROM CIRCULATION" CommandName="REMOVE" CommandArgument='<%#Eval("InstanceID")%>' CssClass="btn btn-danger" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 <asp:BoundField DataField="InstanceID" HeaderText="Instance ID" />
