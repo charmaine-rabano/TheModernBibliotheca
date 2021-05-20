@@ -26,8 +26,7 @@ namespace TheModernBibliotheca
                 }
                 else if (statusKey == "True")
                 {
-                    bool key = true;
-                    books = BooksRepository.GetAvailableBooks(key);
+                    books = BooksRepository.GetAvailableBooks();
                 }
                 else
                 {

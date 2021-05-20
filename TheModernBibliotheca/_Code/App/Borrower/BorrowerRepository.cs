@@ -52,6 +52,25 @@ namespace TheModernBibliotheca._Code.App.Borrower
             }
         }
 
+        public static bool IsBookAvailable(string ISBN)
+        {
+            var state = new List<string> { Constants.Borrow.RETURNED_STATE, Constants.Borrow.REJECTED_STATE };
+            using (var context = new TheModernDatabaseEntities())
+                return context.BookInformations
+                    .Where(e=>e.ISBN == ISBN)
+                    .Any(e =>
+                        e.BookInstances.Count > 0 &&                // Must have instance
+                        e.BookInstances
+                            .Any(f =>
+                                f.InCirculation &&                  // Instance must be incirculation
+                                (
+                                    f.Borrows.Count == 0 ||         // Instance not borrowed yet
+                                    state.Contains(f.Borrows.OrderByDescending(g => g.DateCreated)
+                                        .FirstOrDefault()
+                                            .BorrowState)           // Borrow is returned or rejected
+                                )));
+        }
+
         internal static void CreateReservation(string ISBN, int userID)
         {
             using (var context = new TheModernDatabaseEntities())
@@ -62,9 +81,14 @@ namespace TheModernBibliotheca._Code.App.Borrower
                     Constants.Borrow.RETURNED_STATE
                 };
 
-                var varInstance = context.BookInstances.Where(e => e.ISBN == ISBN).Where(e =>
-                    e.Borrows.Count == 0 ||
-                        states.Contains(e.Borrows.OrderByDescending(f => f.DateBorrowed).First().BorrowState)).First();
+                var varInstance = context.BookInstances
+                    .Where(e => e.ISBN == ISBN)
+                    .Where(e =>
+                        e.Borrows.Count == 0 ||
+                            states.Contains(e.Borrows.OrderByDescending(f => f.DateBorrowed)
+                                .First()
+                                    .BorrowState))
+                    .First();
 
                 Borrow borrow = new Borrow()
                 {
