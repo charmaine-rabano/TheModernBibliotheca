@@ -15,6 +15,15 @@ namespace TheModernBibliotheca
     {
 
         /// <summary>
+        /// cancelLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor cancelLink;
+
+        /// <summary>
         /// lblBookQuantity control.
         /// </summary>
         /// <remarks>
@@ -24,40 +33,13 @@ namespace TheModernBibliotheca
         protected global::System.Web.UI.WebControls.Label lblBookQuantity;
 
         /// <summary>
-        /// txtTitle control.
+        /// availableTag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtTitle;
-
-        /// <summary>
-        /// txtAuthor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtAuthor;
-
-        /// <summary>
-        /// txtSummary control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtSummary;
-
-        /// <summary>
-        /// available_tag control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell available_tag;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl availableTag;
 
         /// <summary>
         /// btnCreateReservation control.
@@ -69,12 +51,21 @@ namespace TheModernBibliotheca
         protected global::System.Web.UI.WebControls.Button btnCreateReservation;
 
         /// <summary>
-        /// btnHomePage control.
+        /// txtTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHomePage;
+        protected global::System.Web.UI.WebControls.Label txtTitle;
+
+        /// <summary>
+        /// txtSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtSummary;
     }
 }

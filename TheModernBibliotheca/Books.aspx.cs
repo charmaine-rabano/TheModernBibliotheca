@@ -26,9 +26,9 @@ namespace TheModernBibliotheca
 
             int quantity = BooksRepository.GetQuantity(ISBN);
             lblBookQuantity.Text = quantity.ToString();
-            available_tag.InnerHtml = quantity > 0 ? "Available" : "Unavailable";
-
-            if (quantity == 0)
+            availableTag.InnerHtml = quantity > 0 ? "Available" : "Unavailable";
+            bool userCanBorrow = BooksRepository.CanUserBorrow(AuthenticationHelper.GetBorrowerAuth().GetUser().UserID);
+            if (quantity == 0 || !userCanBorrow)
             {
                 btnCreateReservation.Enabled = false;
             }

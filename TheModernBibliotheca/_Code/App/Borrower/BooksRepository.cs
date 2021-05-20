@@ -32,6 +32,20 @@ namespace TheModernBibliotheca._Code.App.Borrower
                 return context.BookInformations.Where(e => e.Title.ToLower().Contains(searchText)).ToList();
         }
 
+        internal static bool CanUserBorrow(int userID)
+        {
+            var state = new List<string> { Constants.Borrow.RETURNED_STATE, Constants.Borrow.REJECTED_STATE };
+
+            using (var context = new TheModernDatabaseEntities())
+            {
+                var borrows = context.LibraryUsers.First(e => e.UserID == userID).Borrows.OrderByDescending(e => e.DateCreated);
+
+                if (borrows.Count() == 0) { return true; }
+
+                return state.Contains(borrows.First().BorrowState);
+            }
+        }
+
         public static IEnumerable<BookInformation> GetAvailableBooks()
         {
             var state = new List<string> { Constants.Borrow.RETURNED_STATE, Constants.Borrow.REJECTED_STATE };

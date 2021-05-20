@@ -4,8 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-
-        <h1 style="font-size: 45px;">Account Details</h1>
+        <h2 style="font-size: 45px;">Account Details</h2>
 
         <div class="row" style="margin-left: auto;">
             <div class="col-sm-6 col-12" style="margin-top: 50px;">
