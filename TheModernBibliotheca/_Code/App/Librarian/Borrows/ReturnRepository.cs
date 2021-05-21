@@ -63,6 +63,8 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
                         BorrowID = id,
                         ViolationType = Constants.Violation.DAMAGE_TYPE
                     });
+
+                    borrow.BookInstance.InCirculation = false;
                 }
 
                 if (lost)
@@ -72,6 +74,8 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
                         BorrowID = id,
                         ViolationType = Constants.Violation.LOST_TYPE
                     });
+
+                    borrow.BookInstance.InCirculation = false;
                 }
 
                 context.SaveChanges();
