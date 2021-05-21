@@ -32,7 +32,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     
-        <div style="display: flex; margin-bottom:30px; margin-top:10px;">
+        <div style="display: flex; margin-bottom:10px; margin-top:10px;">
             <a href="Default.aspx"><img src="/Content/bootstrap-icons/arrow-left.svg" width="40" height="40"  /></a>
             <div style="display: flex; margin-left: auto; justify-content: right; align-items: center;">
                 <asp:LinkButton ID="instanceLinkButton" runat="server" OnClick="instanceLinkButton_Click" CssClass="btn btn-secondary" style="background-color:	#D3D3D3 ;" >Instance <img src="/Content/bootstrap-icons/arrow-right.svg" width="40" height="40"  /> </asp:LinkButton>                  
