@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Librarian;
 using TheModernBibliotheca._Code.Model;
 using TheModernBibliotheca.Librarian.Report;
-
+using TheModernBibliotheca._Code.Lib.Authentication;
 
 namespace TheModernBibliotheca.Templates
 {
@@ -17,6 +17,11 @@ namespace TheModernBibliotheca.Templates
         {
             if (!this.IsPostBack)
             {
+                if (!AuthenticationHelper.GetLibrarianAuth().IsLoggedIn())
+                {
+                    Response.Redirect("~/Librarian/Login");
+                }
+
                 IEnumerable<reportOverallModel> model = GetGenres();
                 reportOverallView view = new reportOverallView();
                 reportOverallController controller = new reportOverallController(model, view, ddlOverall);
