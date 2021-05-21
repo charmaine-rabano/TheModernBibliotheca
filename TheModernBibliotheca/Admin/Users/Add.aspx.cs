@@ -49,7 +49,6 @@ namespace TheModernBibliotheca.Admin.Accounts
             {
                 validator.Text = "Another user has already been associated with this email";
                 args.IsValid = false;
-
             }
             else
             {

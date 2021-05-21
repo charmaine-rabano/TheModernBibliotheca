@@ -30,16 +30,21 @@ namespace TheModernBibliotheca._Code.App.Background
                 });
                 context.SaveChanges();
 
-                int count = borrows.Count;
-                if (count > 0)
-                {
-                    string books = borrows.Aggregate(new StringBuilder(),
-                        (builder, item) => builder
-                        .AppendFormat("BorrowId: {0}, InstanceId: {1}, DateReserved: {2}; ",
-                        item.BorrowID, item.BookInstance.InstanceID, item.Reservation.DateReserved)).ToString();
+                LogChanges(borrows);
+            }
+        }
 
-                    log.Debug($"Cleared {count} reservations that were expired: {books}");
-                }
+        private void LogChanges(List<Borrow> borrows)
+        {
+            int count = borrows.Count;
+            if (count > 0)
+            {
+                string books = borrows.Aggregate(new StringBuilder(),
+                    (builder, item) => builder
+                    .AppendFormat("BorrowId: {0}, InstanceId: {1}, DateReserved: {2}; ",
+                    item.BorrowID, item.BookInstance.InstanceID, item.Reservation.DateReserved)).ToString();
+                string message = $"Cleared {count} reservations that were expired: {books}";
+                log.Debug(message);
             }
         }
     }

@@ -30,18 +30,24 @@ namespace TheModernBibliotheca._Code.App.Background
                 });
 
                 context.SaveChanges();
-                int count = borrows.Count;
-                if (count > 0)
-                {
-                    string books = borrows.Aggregate(new StringBuilder(),
-                        (builder, item) => builder
-                        .AppendFormat("BorrowId: {0}, InstanceId: {1}, DateBorrowed: {2}; ",
-                        item.BorrowID, item.BookInstance.InstanceID, item.DateBorrowed)).ToString();
-
-                    log.Debug($"Marked {count} books on {lost_start} as lost: {books}");
-                }
+                LogChanges(lost_start, borrows);
             }
+        }
 
+        private void LogChanges(DateTime lost_start, List<Borrow> borrows)
+        {
+            int count = borrows.Count;
+            if (count > 0)
+            {
+                string books = borrows.Aggregate(new StringBuilder(),
+                    (builder, item) => builder
+                    .AppendFormat(
+                        "BorrowId: {0}, InstanceId: {1}, DateBorrowed: {2}; ", item.BorrowID,
+                        item.BookInstance.InstanceID, item.DateBorrowed)).ToString();
+
+                string message = $"Marked {count} books on {lost_start} as lost: {books}";
+                log.Debug(message);
+            }
         }
     }
 }
