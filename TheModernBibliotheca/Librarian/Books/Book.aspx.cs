@@ -8,6 +8,7 @@ using TheModernBibliotheca._Code.Helper;
 using TheModernBibliotheca._Code.App.Librarian.Books;
 using TheModernBibliotheca._Code.Model;
 using TheModernBibliotheca._Code.App.Librarian;
+using TheModernBibliotheca._Code.Lib.Authentication;
 
 namespace TheModernBibliotheca.Templates
 {
@@ -15,6 +16,11 @@ namespace TheModernBibliotheca.Templates
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!AuthenticationHelper.GetLibrarianAuth().IsLoggedIn())
+            {
+                Response.Redirect("~/Librarian/Login");
+            }
+
             if (!Page.IsPostBack)
             {
                 InitializeFormValues();

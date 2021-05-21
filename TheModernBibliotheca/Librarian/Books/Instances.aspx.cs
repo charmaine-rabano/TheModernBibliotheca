@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Librarian.Books;
 using TheModernBibliotheca._Code.Model;
+using TheModernBibliotheca._Code.Lib.Authentication;
 
 namespace TheModernBibliotheca.Templates
 {
@@ -14,7 +15,11 @@ namespace TheModernBibliotheca.Templates
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!AuthenticationHelper.GetLibrarianAuth().IsLoggedIn())
+            {
+                Response.Redirect("~/Librarian/Login");
+            }
+
         }
 
         protected void backButton_Click(object sender, EventArgs e)
