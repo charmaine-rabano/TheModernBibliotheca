@@ -21,12 +21,16 @@ namespace TheModernBibliotheca
                 Response.Redirect("~/Login");
             }
 
-            FirstNameTxt.Text = BorrowerRepository.GetFirstName(currentID);
-            LastNameTxt.Text = BorrowerRepository.GetLastName(currentID);
+            if (!Page.IsPostBack)
+            {
+                FirstNameTxt.Text = BorrowerRepository.GetFirstName(currentID);
+                LastNameTxt.Text = BorrowerRepository.GetLastName(currentID);
+            }
         }
 
         protected void SaveNameBtn_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid) { return; }
             var user = new LibraryUser()
             {
                 FirstName = FirstNameTxt.Text,
@@ -34,16 +38,25 @@ namespace TheModernBibliotheca
             };
             bool passwordChanged = false;
             BorrowerRepository.ModifyName(currentID, user, passwordChanged);
+            nameChangedMessage.Visible = true;
         }
 
         protected void SavePasswordBtn_Click(object sender, EventArgs e)
         {
-            var user = new LibraryUser()
+            if (Page.IsValid)
             {
-                AccountPassword = ConfirmPasswordTb.Text
-            };
-            bool passwordChanged = true;
-            BorrowerRepository.ModifyPassword(currentID, user, passwordChanged);
+                var user = new LibraryUser()
+                {
+                    AccountPassword = ConfirmPasswordTb.Text
+                };
+                bool passwordChanged = true;
+                BorrowerRepository.ModifyPassword(currentID, user, passwordChanged);
+                passwordChangedMessage.Visible = true;
+            }
+
+            ConfirmPasswordTb.Text = "";
+            CurrPasswordTxt.Text = "";
+            NewPasswordTxt.Text = "";
         }
 
         protected void DeactivateAccount_Click(object sender, EventArgs e)
@@ -55,6 +68,11 @@ namespace TheModernBibliotheca
         {
             // Idea: Implement modal for lesser risk of accidental deactivation
             UsersRepository.DeleteAccount(currentID);
+        }
+
+        protected void CurrentPasswordCv_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = UsersRepository.IsCurrentPassword(currentID, CurrPasswordTxt.Text);
         }
     }
 }

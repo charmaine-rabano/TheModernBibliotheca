@@ -39,7 +39,7 @@ namespace TheModernBibliotheca
             string ISBN = Request.QueryString["ID"];
             BorrowerRepository.CreateReservation(ISBN, AuthenticationHelper.GetBorrowerAuth().GetUser().UserID);
             Response.Write("<script>alert('Reservation Request Placed!');</script>");
-            Response.Redirect("~/Default.aspx");
+            Response.Redirect("~/Borrows.aspx");
         }
 
         protected void btnHomePage_Click(object sender, EventArgs e)

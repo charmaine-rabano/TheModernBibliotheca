@@ -62,13 +62,15 @@ namespace TheModernBibliotheca._Code.App.Borrower
                     Constants.Borrow.RETURNED_STATE
                 };
 
+                // Select first available book
                 var varInstance = context.BookInstances
                     .Where(e => e.ISBN == ISBN)
                     .Where(e =>
-                        e.Borrows.Count == 0 ||
+                        e.InCirculation &&
+                        (e.Borrows.Count == 0 ||
                             states.Contains(e.Borrows.OrderByDescending(f => f.DateBorrowed)
-                                .First()
-                                    .BorrowState))
+                            .FirstOrDefault()
+                            .BorrowState)))
                     .First();
 
                 Borrow borrow = new Borrow()
@@ -76,7 +78,9 @@ namespace TheModernBibliotheca._Code.App.Borrower
                     InstanceID = varInstance.InstanceID,
                     UserID = userID,
                     SiteType = Constants.Borrow.OFFSITE_SITE_TYPE,
-                    BorrowState = Constants.Borrow.REQUESTED_STATE
+                    BorrowState = Constants.Borrow.REQUESTED_STATE,
+                    ReturnDate = DateTime.Now.AddDays(7),
+                    DateCreated = DateTime.Now
                 };
                 context.Borrows.Add(borrow);
                 context.SaveChanges();

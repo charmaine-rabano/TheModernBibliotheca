@@ -28,5 +28,10 @@ namespace TheModernBibliotheca
             BorrowHistoryTableRepeater.DataSource = itemModels;
             BorrowHistoryTableRepeater.DataBind();
         }
+
+        public string FormatSummary(string value, int length)
+        {
+            return value.Length > length ? value.Substring(0, length) + "..." : value;
+        }
     }
 }

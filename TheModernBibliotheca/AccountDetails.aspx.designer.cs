@@ -15,6 +15,15 @@ namespace TheModernBibliotheca
     {
 
         /// <summary>
+        /// nameChangedMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nameChangedMessage;
+
+        /// <summary>
         /// FirstNameTxt control.
         /// </summary>
         /// <remarks>
@@ -42,6 +51,15 @@ namespace TheModernBibliotheca
         protected global::System.Web.UI.WebControls.Button SaveNameBtn;
 
         /// <summary>
+        /// passwordChangedMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl passwordChangedMessage;
+
+        /// <summary>
         /// CurrPasswordTxt control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace TheModernBibliotheca
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox CurrPasswordTxt;
+
+        /// <summary>
+        /// CurrentPasswordCv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CurrentPasswordCv;
 
         /// <summary>
         /// NewPasswordTxt control.

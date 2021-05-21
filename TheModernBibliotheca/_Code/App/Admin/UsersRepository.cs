@@ -88,5 +88,11 @@ namespace TheModernBibliotheca._Code.App.Admin
             using (var context = new TheModernDatabaseEntities())
                 return context.LibraryUsers.Any(e => e.Email.ToLower() == email.ToLower() && e.UserID != id);
         }
+
+        public static bool IsCurrentPassword(int id, string password)
+        {
+            using (var context = new TheModernDatabaseEntities())
+                return context.LibraryUsers.Where(e => e.UserID == id).FirstOrDefault().AccountPassword == password;
+        }
     }
 }

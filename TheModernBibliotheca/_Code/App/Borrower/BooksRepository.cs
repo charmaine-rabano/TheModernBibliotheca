@@ -57,12 +57,10 @@ namespace TheModernBibliotheca._Code.App.Borrower
                         e.BookInstances
                             .Any(f =>
                                 f.InCirculation &&                  // Instance must be incirculation
-                                (
-                                    f.Borrows.Count == 0 ||         // Instance not borrowed yet
+                                (f.Borrows.Count == 0 ||            // Instance not borrowed yet
                                     state.Contains(f.Borrows.OrderByDescending(g => g.DateCreated)
-                                        .FirstOrDefault()
-                                            .BorrowState)           // Borrow is returned or rejected
-                                )))
+                                    .FirstOrDefault()
+                                    .BorrowState))))                // Borrow is returned or rejected
                     .ToList();
         }
 

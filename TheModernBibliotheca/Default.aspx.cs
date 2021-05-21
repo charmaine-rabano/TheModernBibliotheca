@@ -48,9 +48,9 @@ namespace TheModernBibliotheca
             Repeater1.DataBind();
         }
 
-        public string FormatString(string s, int len)
+        public string FormatString(string value, int length)
         {
-            return s.Length > len ? s.Substring(0, len) + "..." : s;
+            return value.Length > length ? value.Substring(0, length) + "..." : value;
         }
 
         public string GetAvailablility(string isbn)
