@@ -72,7 +72,6 @@
         <div class="col-sm-9 col-12">
             <asp:TextBox runat="server" ID="PasswordTb" CssClass="form-control" TextMode="Password"  MaxLength="255"/>
             <asp:RegularExpressionValidator ErrorMessage="Password must have at least 5 characters" ControlToValidate="PasswordTb" runat="server" ValidationExpression="^.{5,}$" CssClass="validation-message" Display="Dynamic" />
-              <asp:CustomValidator ErrorMessage="Please check your current password" ControlToValidate="PasswordTb" runat="server" id="CurrentPasswordCv" OnServerValidate="CurrentPasswordCv_ServerValidate" CssClass="validation-message" Display="Dynamic"/>
         </div>
     </div>
 

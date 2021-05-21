@@ -102,10 +102,5 @@ namespace TheModernBibliotheca.Admin.Accounts
 
             args.IsValid = isValid;
         }
-
-        protected void CurrentPasswordCv_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            args.IsValid = UsersRepository.IsCurrentPassword(Id, PasswordTb.Text);
-        }
     }
 }

@@ -46,9 +46,9 @@
                 <%-- Current Password --%>
                 <div class="form-group">
                     <asp:Label Text="Current Password" runat="server" />
-                    <asp:TextBox ID="CurrPasswordTxt" runat="server" CssClass="form-control" type="password" MaxLength="100" />
+                    <asp:TextBox ID="CurrPasswordTxt" runat="server" CssClass="form-control" type="password" MaxLength="255" />
                     <asp:RequiredFieldValidator ErrorMessage="Please enter your current password" ValidationGroup="PasswordGroup" ControlToValidate="CurrPasswordTxt" runat="server" CssClass="validation-message" Display="Dynamic" />
-                    <asp:CustomValidator ErrorMessage="Please check your current password" ControlToValidate="CurrPasswordTxt" runat="server" id="CurrentPasswordCv" OnServerValidate="CurrentPasswordCv_ServerValidate" CssClass="validation-message" Display="Dynamic"/>
+                    <asp:CustomValidator ErrorMessage="Please check your current password" ControlToValidate="CurrPasswordTxt" runat="server" id="CurrentPasswordCv" OnServerValidate="CurrentPasswordCv_ServerValidate" CssClass="validation-message" Display="Dynamic" ValidateEmptyText="true" ValidationGroup="PasswordGroup"/>
                 </div>
 
                 <%-- New Password --%>

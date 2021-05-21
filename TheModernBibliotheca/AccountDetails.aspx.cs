@@ -30,6 +30,7 @@ namespace TheModernBibliotheca
 
         protected void SaveNameBtn_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid) { return; }
             var user = new LibraryUser()
             {
                 FirstName = FirstNameTxt.Text,
@@ -42,13 +43,20 @@ namespace TheModernBibliotheca
 
         protected void SavePasswordBtn_Click(object sender, EventArgs e)
         {
-            var user = new LibraryUser()
+            if (Page.IsValid)
             {
-                AccountPassword = ConfirmPasswordTb.Text
-            };
-            bool passwordChanged = true;
-            BorrowerRepository.ModifyPassword(currentID, user, passwordChanged);
-            passwordChangedMessage.Visible = true;
+                var user = new LibraryUser()
+                {
+                    AccountPassword = ConfirmPasswordTb.Text
+                };
+                bool passwordChanged = true;
+                BorrowerRepository.ModifyPassword(currentID, user, passwordChanged);
+                passwordChangedMessage.Visible = true;
+            }
+
+            ConfirmPasswordTb.Text = "";
+            CurrPasswordTxt.Text = "";
+            NewPasswordTxt.Text = "";
         }
 
         protected void DeactivateAccount_Click(object sender, EventArgs e)
