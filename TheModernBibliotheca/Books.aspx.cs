@@ -23,13 +23,23 @@ namespace TheModernBibliotheca
             }
             string ISBN = Request.QueryString["ID"];
             model = BooksRepository.GetBook(ISBN);
+
+            int quantity = BooksRepository.GetQuantity(ISBN);
+            lblBookQuantity.Text = quantity.ToString();
+            availableTag.InnerHtml = quantity > 0 ? "Available" : "Unavailable";
+            bool userCanBorrow = BooksRepository.CanUserBorrow(AuthenticationHelper.GetBorrowerAuth().GetUser().UserID);
+            if (quantity == 0 || !userCanBorrow)
+            {
+                btnCreateReservation.Enabled = false;
+            }
         }
 
         protected void btnCreateReservation_Click(object sender, EventArgs e)
         {
-            int instanceID = int.Parse(Request.QueryString["ID"]);
-            BorrowerRepository.CreateReservation(instanceID, AuthenticationHelper.GetBorrowerAuth().GetUser().UserID);
+            string ISBN = Request.QueryString["ID"];
+            BorrowerRepository.CreateReservation(ISBN, AuthenticationHelper.GetBorrowerAuth().GetUser().UserID);
             Response.Write("<script>alert('Reservation Request Placed!');</script>");
+            Response.Redirect("~/Default.aspx");
         }
 
         protected void btnHomePage_Click(object sender, EventArgs e)

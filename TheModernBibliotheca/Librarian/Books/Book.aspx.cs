@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.Helper;
 using TheModernBibliotheca._Code.App.Librarian.Books;
 using TheModernBibliotheca._Code.Model;
+using TheModernBibliotheca._Code.App.Librarian;
 
 namespace TheModernBibliotheca.Templates
 {
@@ -50,7 +51,7 @@ namespace TheModernBibliotheca.Templates
             var book = new BookInformation();
             if (fileUploadImg.HasFile)
             {
-                var linkName = BookRepository.UploadFile(txtISBN.Text, "book-cover", fileUploadImg.PostedFile, true);
+                var linkName = FileSystemHelper.UploadFile(txtISBN.Text, "bookcovers", fileUploadImg.PostedFile, true);
 
                 book = new BookInformation()
                 {

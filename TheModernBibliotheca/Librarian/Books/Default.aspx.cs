@@ -23,11 +23,11 @@ namespace TheModernBibliotheca.Templates
                     bookGenreDropDown.Items.Add(new ListItem("---Select---", "0"));
                     lblSearchResult.Text = "Search Result for: " + searchKey;
                     lblSearchResult.Visible = true;
-                    var content = BooksRepository.GetSearchedBooks(searchKey);
+                    var content = BooksRepository.SearchBooks(searchKey);
 
                     if (content != null && content.Any())
                     {
-                        bookRepeater.DataSource = BooksRepository.GetSearchedBooks(searchKey);
+                        bookRepeater.DataSource = BooksRepository.SearchBooks(searchKey);
                         bookRepeater.DataBind();
                     }
                     else noResultsMessage.Visible = true;

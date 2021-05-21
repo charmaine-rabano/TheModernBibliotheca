@@ -4,8 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-
-        <h1 style="font-size: 45px;">Account Details</h1>
+        <h2 style="font-size: 45px;">Account Details</h2>
 
         <div class="row" style="margin-left: auto;">
             <div class="col-sm-6 col-12" style="margin-top: 50px;">
@@ -52,7 +51,7 @@
                 <div class="form-group">
                     <asp:Label Text="Confirm Password" runat="server" />
                     <asp:TextBox runat="server" ID="ConfirmPasswordTb" CssClass="form-control" TextMode="Password" MaxLength="255" />
-                    <asp:RequiredFieldValidator ErrorMessage="This is a required field" ControlToValidate="ConfirmPasswordTb" runat="server" CssClass="validation-message" Display="Dynamic" />
+                    <asp:RequiredFieldValidator ErrorMessage="This is a required field" ControlToValidate="ConfirmPasswordTb" ValidationGroup="PasswordGroup" runat="server" CssClass="validation-message" Display="Dynamic" />
                     <asp:CompareValidator ErrorMessage="Passwords need to match" ControlToValidate="ConfirmPasswordTb" ValidationGroup="PasswordGroup" runat="server" ControlToCompare="NewPasswordTxt" CssClass="validation-message" Display="Dynamic" Operator="Equal" />
                 </div>
 

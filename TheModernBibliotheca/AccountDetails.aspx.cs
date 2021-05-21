@@ -20,6 +20,9 @@ namespace TheModernBibliotheca
             {
                 Response.Redirect("~/Login");
             }
+
+            FirstNameTxt.Text = BorrowerRepository.GetFirstName(currentID);
+            LastNameTxt.Text = BorrowerRepository.GetLastName(currentID);
         }
 
         protected void SaveNameBtn_Click(object sender, EventArgs e)

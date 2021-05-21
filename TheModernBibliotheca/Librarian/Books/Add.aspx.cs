@@ -25,7 +25,7 @@ namespace TheModernBibliotheca.Templates
         {
             if (!Page.IsValid) return;
 
-            var linkName = AddBookRepository.UploadFile(txtISBN.Text, "book-cover", fileUploadImg.PostedFile, true);
+            var linkName = FileSystemHelper.UploadFile(txtISBN.Text, "bookcovers", fileUploadImg.PostedFile, true);
             AddBookRepository.AddBook(new BookInformation
             {
                 ISBN = txtISBN.Text,

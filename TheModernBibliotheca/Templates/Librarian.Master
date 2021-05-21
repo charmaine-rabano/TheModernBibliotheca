@@ -77,7 +77,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <asp:LinkButton Text="Sign Out" runat="server" ID="SignoutLb" OnClick="SignoutLb_Click" CssClass="dropdown-item"/>
+                                <asp:LinkButton Text="Sign Out" runat="server" ID="SignoutLb" OnClick="SignoutLb_Click" CssClass="dropdown-item"  CausesValidation="false"/>
                             </div>
 
                         </li>
