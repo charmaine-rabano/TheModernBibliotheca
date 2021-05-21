@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Librarian.Borrows;
+using TheModernBibliotheca._Code.Lib.Authentication;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca.Librarian.Borrows.Onsite
@@ -13,6 +14,11 @@ namespace TheModernBibliotheca.Librarian.Borrows.Onsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!AuthenticationHelper.GetLibrarianAuth().IsLoggedIn())
+            {
+                Response.Redirect("~/Librarian/Login");
+            }
+
             if (!Page.IsPostBack)
             {
                 SuccessAlert.Visible = false;
