@@ -21,8 +21,11 @@ namespace TheModernBibliotheca
                 Response.Redirect("~/Login");
             }
 
-            FirstNameTxt.Text = BorrowerRepository.GetFirstName(currentID);
-            LastNameTxt.Text = BorrowerRepository.GetLastName(currentID);
+            if (!Page.IsPostBack)
+            {
+                FirstNameTxt.Text = BorrowerRepository.GetFirstName(currentID);
+                LastNameTxt.Text = BorrowerRepository.GetLastName(currentID);
+            }
         }
 
         protected void SaveNameBtn_Click(object sender, EventArgs e)
@@ -34,6 +37,7 @@ namespace TheModernBibliotheca
             };
             bool passwordChanged = false;
             BorrowerRepository.ModifyName(currentID, user, passwordChanged);
+            nameChangedMessage.Visible = true;
         }
 
         protected void SavePasswordBtn_Click(object sender, EventArgs e)
@@ -44,6 +48,7 @@ namespace TheModernBibliotheca
             };
             bool passwordChanged = true;
             BorrowerRepository.ModifyPassword(currentID, user, passwordChanged);
+            passwordChangedMessage.Visible = true;
         }
 
         protected void DeactivateAccount_Click(object sender, EventArgs e)
@@ -55,6 +60,11 @@ namespace TheModernBibliotheca
         {
             // Idea: Implement modal for lesser risk of accidental deactivation
             UsersRepository.DeleteAccount(currentID);
+        }
+
+        protected void CurrentPasswordCv_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = UsersRepository.IsCurrentPassword(currentID, CurrPasswordTxt.Text);
         }
     }
 }

@@ -13,16 +13,17 @@ namespace TheModernBibliotheca._Code.App.Borrower
             using (var context = new TheModernDatabaseEntities())
                 return context.Borrows
                     .Where(e => e.UserID == userId)
-                    .OrderByDescending(e => e.DateBorrowed ?? e.Reservation.DateReserved).
+                    .OrderByDescending(e => e.DateCreated).
                     Select(e => new CurrentBorrowViewModel()
                     {
                         Author = e.BookInstance.BookInformation.Author,
-                        Blurb = e.BookInstance.BookInformation.Summary,
+                        Summary = e.BookInstance.BookInformation.Summary,
                         Title = e.BookInstance.BookInformation.Title,
                         Isbn = e.BookInstance.BookInformation.ISBN,
                         Image = e.BookInstance.BookInformation.BookCover,
                         ReturnDate = (DateTime)e.ReturnDate,
                         Status = e.BorrowState,
+                        Genre = e.BookInstance.BookInformation.Genre
                     })
                     .FirstOrDefault();
 

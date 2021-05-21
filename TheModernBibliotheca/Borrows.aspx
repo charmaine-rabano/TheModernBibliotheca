@@ -82,10 +82,15 @@
                     <img src='<%=model.Image %>' alt="Alternate Text" class="book-image" />
                 </div>
                 <div class="col-sm-9">
-                    <span>ISBN:<span><%= model.Isbn %></span></span>
-                    <h5 id="book-title"><%= model.Title %></h5>
-                    <span><%= model.Author %></span>
-                    <p><%= model.Blurb %></p>
+
+                    <h4 id="book-title"> <a href='/Books?ID=<%=model.Isbn%>'> <%= model.Title %> </a> </h4>
+
+                    <div><span><b>Author: </b><span><%=model.Author%></span></span></div>
+                    <div><span><b>ISBN: </b><span><%=model.Isbn%></span></span></div>
+                    <div><span><b>Genre: </b><span><%=model.Genre%></span></span></div>
+
+                    <p><%= FormatSummary(model.Summary, 150) %></p>
+
                 </div>
             </div>
             <div class="col-lg-4 col-12 borrow-status">

@@ -24,7 +24,7 @@
                     </div>
                     <div><span><b>Availability: </b><span runat="server" id="availableTag"></span></span></div>
                 </div>
-                <asp:Button class="btn btn-success" ID="btnCreateReservation" runat="server" Text="Create Reservation" OnClick="btnCreateReservation_Click" />
+                <asp:Button CssClass="btn btn-success" ID="btnCreateReservation" runat="server" Text="Create Reservation" OnClick="btnCreateReservation_Click" />
             </div>
 
         </div>
