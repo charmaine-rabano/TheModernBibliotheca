@@ -32,7 +32,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-         <div style="display: flex; margin-bottom:30px; margin-top:10px;">
+
+         <div style="display: flex; padding-bottom:5px;">
+             <a href="Menu.aspx" ><asp:Image ID="Image1" runat="server" ImageUrl ="/Content/bootstrap-icons/arrow-left.svg" style="width:40px; height:40px; margin-right:10px;"/></a>
             <h4>Manage Books</h4>
             <div style="display: flex; margin-left: auto; justify-content: right; align-items: center;">
                 <a href="Add.aspx"  class="btn btn-primary btn-block">Add New Book </a>

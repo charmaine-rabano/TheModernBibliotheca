@@ -33,7 +33,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-     <div style="padding-top:3%; padding-bottom:3%;">
+     <div style="padding-top:1%; padding-bottom:1%;">
             <a href="Default.aspx">
                 <img src="/Content/bootstrap-icons/arrow-left.svg" width="40" height="40"  /></a></div>
     <h5>Add New Book</h5>
