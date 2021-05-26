@@ -79,7 +79,6 @@ namespace TheModernBibliotheca._Code.App.Borrower
                     UserID = userID,
                     SiteType = Constants.Borrow.OFFSITE_SITE_TYPE,
                     BorrowState = Constants.Borrow.REQUESTED_STATE,
-                    ReturnDate = DateTime.Now.AddDays(7),
                     DateCreated = DateTime.Now
                 };
                 context.Borrows.Add(borrow);

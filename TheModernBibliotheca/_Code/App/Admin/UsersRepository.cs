@@ -34,6 +34,7 @@ namespace TheModernBibliotheca._Code.App.Admin
                 context.LibraryUsers.Add(account);
                 context.SaveChanges();
             }
+
         }
 
         public static void ModifyAccount(int userId, LibraryUser modifiedUser, bool passwordChanged)

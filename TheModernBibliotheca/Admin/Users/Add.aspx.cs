@@ -29,6 +29,7 @@ namespace TheModernBibliotheca.Admin.Accounts
         protected void SubmitBtn_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) return;
+
             UsersRepository.AddAccount(new LibraryUser
             {
                 FirstName = FirstNameTb.Text,
@@ -39,6 +40,7 @@ namespace TheModernBibliotheca.Admin.Accounts
                 UserType = UserTypeDdl.SelectedValue,
                 AccountStatus = Constants.LibraryUser.ACTIVE_STATUS,
             });
+
             Response.Redirect("~/Admin/Users");
         }
 
