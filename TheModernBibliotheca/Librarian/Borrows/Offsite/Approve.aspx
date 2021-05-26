@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="Approve.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.Offsite.Approve" EnableEventValidation="False" %>
+﻿<%@ Page Title="Approve Offsite" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="Approve.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.Offsite.Approve" EnableEventValidation="False" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
 </asp:Content>

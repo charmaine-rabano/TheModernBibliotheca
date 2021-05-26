@@ -55,9 +55,10 @@ namespace TheModernBibliotheca
                 bool passwordChanged = true;
                 BorrowerRepository.ModifyPassword(currentID, user, passwordChanged);
                 passwordChangedMessage.Visible = true;
+                LoggingService.Log(AuthenticationHelper.GetBorrowerAuth().GetUser(), $"Password updated");
             }
 
-            LoggingService.Log(AuthenticationHelper.GetBorrowerAuth().GetUser(), $"Password updated");
+            
 
             ConfirmPasswordTb.Text = "";
             CurrPasswordTxt.Text = "";
@@ -74,6 +75,8 @@ namespace TheModernBibliotheca
             // Idea: Implement modal for lesser risk of accidental deactivation
             UsersRepository.DeleteAccount(currentID);
             LoggingService.Log(AuthenticationHelper.GetBorrowerAuth().GetUser(), $"Deactivated account");
+            AuthenticationHelper.GetBorrowerAuth().Signout();
+            Response.Redirect("~");
         }
 
         protected void CurrentPasswordCv_ServerValidate(object source, ServerValidateEventArgs args)

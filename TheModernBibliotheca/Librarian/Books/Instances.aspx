@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="Instances.aspx.cs" Inherits="TheModernBibliotheca.Templates.WebForm7" %>
+﻿<%@ Page Title="Instances" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="Instances.aspx.cs" Inherits="TheModernBibliotheca.Templates.WebForm7" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

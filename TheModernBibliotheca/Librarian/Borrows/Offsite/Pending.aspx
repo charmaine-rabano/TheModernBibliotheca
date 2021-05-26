@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="Pending.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.Offsite.Pending" %>
+﻿<%@ Page Title="Pending Offsite" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="Pending.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.Offsite.Pending" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
 </asp:Content>

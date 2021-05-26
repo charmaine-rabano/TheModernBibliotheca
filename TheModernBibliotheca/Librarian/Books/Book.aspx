@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="Book.aspx.cs" Inherits="TheModernBibliotheca.Templates.WebForm5" %>
+﻿<%@ Page Title="Book" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="Book.aspx.cs" Inherits="TheModernBibliotheca.Templates.WebForm5" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
     <style>
         .form-control {

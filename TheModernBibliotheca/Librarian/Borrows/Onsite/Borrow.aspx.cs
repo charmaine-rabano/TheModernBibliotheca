@@ -101,7 +101,8 @@ namespace TheModernBibliotheca.Librarian.Borrows.Onsite
                 DateBorrowed = DateTime.Now,
                 SiteType = Constants.Borrow.ONSITE_SITE_TYPE,
                 BorrowState = Constants.Borrow.BORROWED_STATE,
-                ReturnDate = DateTime.Now.AddDays(7)
+                ReturnDate = DateTime.Now.AddDays(7),
+                DateCreated = DateTime.Now
             };
             BorrowRepository.AddBorrowRecord(borrow);
             LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Recorded onsite borrow with id {borrow.BorrowID}");

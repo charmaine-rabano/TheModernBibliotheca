@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="ConfirmReturn.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.ConfirmReturn" %>
+﻿<%@ Page Title="Confirm Return" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="ConfirmReturn.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.ConfirmReturn" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
 </asp:Content>
