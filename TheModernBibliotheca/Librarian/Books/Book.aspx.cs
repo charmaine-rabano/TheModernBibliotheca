@@ -9,6 +9,7 @@ using TheModernBibliotheca._Code.App.Librarian.Books;
 using TheModernBibliotheca._Code.Model;
 using TheModernBibliotheca._Code.App.Librarian;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 
 namespace TheModernBibliotheca.Templates
 {
@@ -86,6 +87,9 @@ namespace TheModernBibliotheca.Templates
             BookRepository.ModifyBook(txtISBN.Text, book);
                         
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "$('#modalEdit').modal('show')", true);
+
+            LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Modified book with isbn {book.ISBN}");
+
             InitializeFormValues();
         }
     }

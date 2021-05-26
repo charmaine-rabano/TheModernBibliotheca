@@ -14,6 +14,7 @@ namespace TheModernBibliotheca._Code.Model
     
     public partial class UserActivity
     {
+        public int UserActivityId { get; set; }
         public int UserID { get; set; }
         public System.DateTime TransactionDate { get; set; }
         public string Remarks { get; set; }

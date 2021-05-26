@@ -8,6 +8,7 @@ using TheModernBibliotheca._Code.App.Librarian;
 using TheModernBibliotheca._Code.App.Librarian.Books;
 using TheModernBibliotheca._Code.Model;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 
 namespace TheModernBibliotheca.Templates
 {
@@ -32,7 +33,7 @@ namespace TheModernBibliotheca.Templates
             if (!Page.IsValid) return;
 
             var linkName = FileSystemHelper.UploadFile(txtISBN.Text, "bookcovers", fileUploadImg.PostedFile, true);
-            AddBookRepository.AddBook(new BookInformation
+            BookInformation book = new BookInformation
             {
                 ISBN = txtISBN.Text,
                 Title = txtTitle.Text,
@@ -40,7 +41,8 @@ namespace TheModernBibliotheca.Templates
                 Author = txtAuthor.Text,
                 Summary = txtSummary.Text,
                 BookCover = linkName
-            });
+            };
+            AddBookRepository.AddBook(book);
             int qty = int.Parse(txtQuantity.Text);
             AddBookRepository.AddBookInstance(qty, new BookInstance
             {
@@ -57,6 +59,8 @@ namespace TheModernBibliotheca.Templates
             previewImg.ImageUrl = "https://t4.ftcdn.net/jpg/02/07/87/79/360_F_207877921_BtG6ZKAVvtLyc5GWpBNEIlIxsffTtWkv.jpg";
             
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "$('#modalEdit').modal('show')", true);
+
+            LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Added new book with isbn {book.ISBN}");
         }
 
         protected void ISBNCv_ServerValidate(object source, ServerValidateEventArgs args)

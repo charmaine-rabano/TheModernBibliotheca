@@ -66,7 +66,7 @@ namespace TheModernBibliotheca.Admin.Accounts
 
             bool passwordChanged = PasswordTb.Text != "";
             UsersRepository.ModifyAccount(Id, user, passwordChanged);
-            LoggingService.Log(AuthenticationHelper.GetAdminAuth().GetUser(), $"Modified information of user with id {user.UserID}");
+            LoggingService.Log(AuthenticationHelper.GetAdminAuth().GetUser(), $"Modified information of user with id {Id}");
 
             Response.Redirect("/Admin/Users");
         }

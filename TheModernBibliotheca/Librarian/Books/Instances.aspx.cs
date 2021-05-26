@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Librarian.Books;
 using TheModernBibliotheca._Code.Model;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 
 namespace TheModernBibliotheca.Templates
 {
@@ -67,8 +68,11 @@ namespace TheModernBibliotheca.Templates
                 ISBN = ISBN,
                 InCirculation = true
             });
+
             txtQuantity.Text = "1";
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "$('#modalEdit').modal('show')", true);
+
+            LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Aded {qty} new instanced for book with isbn {ISBN}");
 
         }
 
@@ -80,6 +84,8 @@ namespace TheModernBibliotheca.Templates
                 InstancesRepository.RemoveInCirculation(int.Parse(e.CommandArgument.ToString()));
                 gvInCirculation.DataSource =  InstancesRepository.GetInCirculation(ISBN);
                 gvInCirculation.DataBind();
+
+                LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Removed book instance id with {ISBN} from circulation");
             }
         }
 
@@ -91,6 +97,8 @@ namespace TheModernBibliotheca.Templates
                 InstancesRepository.AddInCirculation(int.Parse(e.CommandArgument.ToString()));
                 gvNotInCirculation.DataSource = InstancesRepository.GetNotInCirculation(ISBN);
                 gvNotInCirculation.DataBind();
+
+                LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Added book instance id with {ISBN} to circulation");
             }
         }
     }
