@@ -12,7 +12,9 @@ namespace TheModernBibliotheca.Librarian
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (AuthenticationHelper.GetLibrarianAuth().IsLoggedIn()) { 
+                Response.Redirect("~/Librarian");
+            }
         }
 
         protected void SubmitBtn_Click(object sender, EventArgs e)
@@ -21,7 +23,7 @@ namespace TheModernBibliotheca.Librarian
 
             if (AuthenticationHelper.GetLibrarianAuth().Authenticate(EmailTxt.Text, PasswordTxt.Text))
             {
-                Response.Redirect("~/Librarian/Homepage");
+                Response.Redirect("~/Librarian");
             }
             else
             {

@@ -12,6 +12,10 @@ namespace TheModernBibliotheca.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (AuthenticationHelper.GetAdminAuth().IsLoggedIn())
+            {
+                Response.Redirect("~/Admin");
+            }
         }
 
         protected void SubmitBtn_Click(object sender, EventArgs e)

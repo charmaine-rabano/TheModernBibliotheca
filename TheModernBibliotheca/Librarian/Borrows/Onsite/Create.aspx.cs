@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Admin;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca.Librarian.Borrows.Onsite
@@ -46,7 +47,7 @@ namespace TheModernBibliotheca.Librarian.Borrows.Onsite
         {
             if (!Page.IsValid) return;
 
-            UsersRepository.AddAccount(new LibraryUser
+            var user = new LibraryUser
             {
                 FirstName = FirstNameTb.Text,
                 LastName = LastNameTb.Text,
@@ -55,7 +56,10 @@ namespace TheModernBibliotheca.Librarian.Borrows.Onsite
                 Email = EmailAddressTb.Text,
                 UserType = Constants.LibraryUser.BORROWER_TYPE,
                 AccountStatus = Constants.LibraryUser.ACTIVE_STATUS
-            });
+            };
+            UsersRepository.AddAccount(user);
+
+            LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Created borrower with id {user.UserID}");
 
             AlertEmail.Text = EmailAddressTb.Text;
             SuccessAlert.Visible = true;

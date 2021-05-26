@@ -12,7 +12,10 @@ namespace TheModernBibliotheca
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (AuthenticationHelper.GetBorrowerAuth().IsLoggedIn())
+            {
+                Response.Redirect("~");
+            }
         }
 
         protected void SubmitBtn_Click(object sender, EventArgs e)

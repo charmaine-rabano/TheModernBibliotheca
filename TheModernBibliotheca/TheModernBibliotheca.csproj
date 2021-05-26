@@ -1621,7 +1621,7 @@
     <Content Include="Librarian\Books\Book.aspx" />
     <Content Include="Librarian\Books\Add.aspx" />
     <Content Include="Librarian\Books\Instances.aspx" />
-    <Content Include="Librarian\Homepage.aspx" />
+    <Content Include="Librarian\Default.aspx" />
     <Content Include="Librarian\Books\Menu.aspx" />
     <Content Include="_Code\Model\TheModernDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1843,12 +1843,12 @@
     <Compile Include="Librarian\Books\Instances.aspx.designer.cs">
       <DependentUpon>Instances.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Librarian\Homepage.aspx.cs">
-      <DependentUpon>Homepage.aspx</DependentUpon>
+    <Compile Include="Librarian\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Librarian\Homepage.aspx.designer.cs">
-      <DependentUpon>Homepage.aspx</DependentUpon>
+    <Compile Include="Librarian\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Librarian\Books\Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>

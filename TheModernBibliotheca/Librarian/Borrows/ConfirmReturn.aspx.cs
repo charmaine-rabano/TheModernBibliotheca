@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Librarian.Borrows;
 using TheModernBibliotheca._Code.Helper;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 
 namespace TheModernBibliotheca.Librarian.Borrows
 {
@@ -61,6 +62,8 @@ namespace TheModernBibliotheca.Librarian.Borrows
                 lost = true;
 
             ReturnRepository.ReturnBook(BorrowId, late, damaged, lost);
+            
+            LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Processed book return with borrow id {BorrowId}");
 
             Response.Redirect("~/Librarian/Borrows/Return.aspx");
         }

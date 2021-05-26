@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Admin;
 using TheModernBibliotheca._Code.App.Borrower;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca
@@ -39,6 +40,8 @@ namespace TheModernBibliotheca
             bool passwordChanged = false;
             BorrowerRepository.ModifyName(currentID, user, passwordChanged);
             nameChangedMessage.Visible = true;
+
+            LoggingService.Log(AuthenticationHelper.GetBorrowerAuth().GetUser(), $"Updated name");
         }
 
         protected void SavePasswordBtn_Click(object sender, EventArgs e)
@@ -54,6 +57,8 @@ namespace TheModernBibliotheca
                 passwordChangedMessage.Visible = true;
             }
 
+            LoggingService.Log(AuthenticationHelper.GetBorrowerAuth().GetUser(), $"Password updated");
+
             ConfirmPasswordTb.Text = "";
             CurrPasswordTxt.Text = "";
             NewPasswordTxt.Text = "";
@@ -68,6 +73,7 @@ namespace TheModernBibliotheca
         {
             // Idea: Implement modal for lesser risk of accidental deactivation
             UsersRepository.DeleteAccount(currentID);
+            LoggingService.Log(AuthenticationHelper.GetBorrowerAuth().GetUser(), $"Deactivated account");
         }
 
         protected void CurrentPasswordCv_ServerValidate(object source, ServerValidateEventArgs args)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using TheModernBibliotheca._Code.Lib.Logging;
 using TheModernBibliotheca._Code.Model;
 namespace TheModernBibliotheca._Code.App.Admin
 {
@@ -34,7 +35,6 @@ namespace TheModernBibliotheca._Code.App.Admin
                 context.LibraryUsers.Add(account);
                 context.SaveChanges();
             }
-
         }
 
         public static void ModifyAccount(int userId, LibraryUser modifiedUser, bool passwordChanged)
