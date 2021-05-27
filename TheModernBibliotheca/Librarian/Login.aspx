@@ -35,7 +35,7 @@
     <div class="signin-form">
 
         <%-- Brand Logo --%>
-        <asp:Image ImageUrl="~/Content/Images/lokal_logo_puzzle_O.png" runat="server" CssClass="login-brand-logo" Style="width: 220px; height: auto; margin: 40px;" />
+        <asp:Image ImageUrl="~/Pictures/Logo.png" runat="server" CssClass="login-brand-logo" Style="margin-top: 100px; margin-bottom: 20px; padding: 30px;" BackColor="#F2E2CE" />
 
         <%-- Login Header --%>
         <div class="login-header">
