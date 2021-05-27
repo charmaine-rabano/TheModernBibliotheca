@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Admin;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca.Admin.Accounts
@@ -29,7 +30,8 @@ namespace TheModernBibliotheca.Admin.Accounts
         protected void SubmitBtn_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) return;
-            UsersRepository.AddAccount(new LibraryUser
+
+            var user = new LibraryUser
             {
                 FirstName = FirstNameTb.Text,
                 LastName = LastNameTb.Text,
@@ -38,7 +40,10 @@ namespace TheModernBibliotheca.Admin.Accounts
                 Email = EmailAddressTb.Text,
                 UserType = UserTypeDdl.SelectedValue,
                 AccountStatus = Constants.LibraryUser.ACTIVE_STATUS,
-            });
+            };
+            UsersRepository.AddAccount(user);
+
+            LoggingService.Log(AuthenticationHelper.GetAdminAuth().GetUser(), $"Added new user with id {user.UserID}");
             Response.Redirect("~/Admin/Users");
         }
 
@@ -49,7 +54,6 @@ namespace TheModernBibliotheca.Admin.Accounts
             {
                 validator.Text = "Another user has already been associated with this email";
                 args.IsValid = false;
-
             }
             else
             {

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Borrower;
 using TheModernBibliotheca._Code.Helper;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca
@@ -38,6 +39,9 @@ namespace TheModernBibliotheca
         {
             string ISBN = Request.QueryString["ID"];
             BorrowerRepository.CreateReservation(ISBN, AuthenticationHelper.GetBorrowerAuth().GetUser().UserID);
+
+            LoggingService.Log(AuthenticationHelper.GetBorrowerAuth().GetUser(), $"Created borrow for book with isbn {ISBN}");
+
             Response.Write("<script>alert('Reservation Request Placed!');</script>");
             Response.Redirect("~/Borrows.aspx");
         }

@@ -18,6 +18,7 @@ namespace TheModernBibliotheca._Code.Model
         public LibraryUser()
         {
             this.Borrows = new HashSet<Borrow>();
+            this.UserActivities = new HashSet<UserActivity>();
         }
     
         public int UserID { get; set; }
@@ -34,6 +35,7 @@ namespace TheModernBibliotheca._Code.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Borrow> Borrows { get; set; }
-        public virtual UserActivity UserActivity { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserActivity> UserActivities { get; set; }
     }
 }

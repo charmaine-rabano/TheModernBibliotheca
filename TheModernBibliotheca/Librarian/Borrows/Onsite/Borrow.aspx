@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="Borrow.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.Onsite.Borrow" %>
+﻿<%@ Page Title="Borrow Onsite" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="Borrow.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.Onsite.Borrow" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
     <style>

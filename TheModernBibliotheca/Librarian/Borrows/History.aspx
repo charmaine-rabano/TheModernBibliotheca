@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="History.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.History" %>
+﻿<%@ Page Title="History" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="History.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.History" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
 </asp:Content>

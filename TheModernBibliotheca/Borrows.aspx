@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div class="return-date">
-                    <span>Return Date: <span><%= model.ReturnDate.ToString("MMM dd, yyyy") %></span></span>
+                    <span>Return Date: <span><%= model.ReturnDate == null ? "N/A" :model.ReturnDate.Value.ToString("MMM dd, yyyy") %></span></span>
                 </div>
             </div>
         </div>

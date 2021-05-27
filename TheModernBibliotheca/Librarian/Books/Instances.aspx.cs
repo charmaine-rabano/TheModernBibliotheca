@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Librarian.Books;
 using TheModernBibliotheca._Code.Model;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 
 namespace TheModernBibliotheca.Templates
 {
@@ -67,8 +68,11 @@ namespace TheModernBibliotheca.Templates
                 ISBN = ISBN,
                 InCirculation = true
             });
+
             txtQuantity.Text = "1";
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "$('#modalEdit').modal('show')", true);
+
+            LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Added {qty} new instances for book with isbn {ISBN}");
 
         }
 
@@ -77,9 +81,12 @@ namespace TheModernBibliotheca.Templates
             string ISBN = Request.QueryString["ISBN"];
             if (e.CommandName == "REMOVE")
             {
-                InstancesRepository.RemoveInCirculation(int.Parse(e.CommandArgument.ToString()));
+                int instanceid = int.Parse(e.CommandArgument.ToString());
+                InstancesRepository.RemoveInCirculation(instanceid);
                 gvInCirculation.DataSource =  InstancesRepository.GetInCirculation(ISBN);
                 gvInCirculation.DataBind();
+
+                LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Removed book instance with id {instanceid} and isbn {ISBN} from circulation");
             }
         }
 
@@ -88,9 +95,12 @@ namespace TheModernBibliotheca.Templates
             string ISBN = Request.QueryString["ISBN"];
             if (e.CommandName == "ADD")
             {
-                InstancesRepository.AddInCirculation(int.Parse(e.CommandArgument.ToString()));
+                int instanceid = int.Parse(e.CommandArgument.ToString());
+                InstancesRepository.AddInCirculation(instanceid);
                 gvNotInCirculation.DataSource = InstancesRepository.GetNotInCirculation(ISBN);
                 gvNotInCirculation.DataBind();
+
+                LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Added book instance with id {instanceid} and with isbn {ISBN} to circulation");
             }
         }
     }

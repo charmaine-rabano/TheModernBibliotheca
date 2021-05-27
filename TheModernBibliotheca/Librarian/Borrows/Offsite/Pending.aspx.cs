@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Librarian.Borrows;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 
 namespace TheModernBibliotheca.Librarian.Borrows.Offsite
 {
@@ -31,7 +32,9 @@ namespace TheModernBibliotheca.Librarian.Borrows.Offsite
         {
             if (e.CommandName == "Claim")
             {
-                PendingRepository.ClaimReservation(int.Parse(e.CommandArgument.ToString()));
+                int id = int.Parse(e.CommandArgument.ToString());
+                PendingRepository.ClaimReservation(id);
+                LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Processed borrow claim with id {id}");
                 Bind();
             }
         }

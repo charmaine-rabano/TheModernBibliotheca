@@ -21,7 +21,7 @@ namespace TheModernBibliotheca._Code.App.Borrower
                         Title = e.BookInstance.BookInformation.Title,
                         Isbn = e.BookInstance.BookInformation.ISBN,
                         Image = e.BookInstance.BookInformation.BookCover,
-                        ReturnDate = (DateTime)e.ReturnDate,
+                        ReturnDate = e.ReturnDate,
                         Status = e.BorrowState,
                         Genre = e.BookInstance.BookInformation.Genre
                     })

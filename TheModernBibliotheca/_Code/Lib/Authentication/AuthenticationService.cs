@@ -36,6 +36,8 @@ namespace TheModernBibliotheca._Code.Lib.Authentication
                 // If user didn't find user, then user is invalid, 
                 if (user == null) { return false; }
 
+                if (user.AccountPassword != password) { return false; }
+
                 sessionId = CreateSessionId();
                 var expiryDate = DateTime.Now.AddHours(5);
 

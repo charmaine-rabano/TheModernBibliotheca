@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Admin;
 using TheModernBibliotheca._Code.Helper;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca.Admin.Accounts
@@ -46,6 +47,7 @@ namespace TheModernBibliotheca.Admin.Accounts
         protected void DeleteBtn_Click(object sender, EventArgs e)
         {
             UsersRepository.DeleteAccount(Id);
+            LoggingService.Log(AuthenticationHelper.GetAdminAuth().GetUser(), $"Deactivated user with id {Id}");
             Response.Redirect("/Admin/Users");
         }
 
@@ -64,6 +66,7 @@ namespace TheModernBibliotheca.Admin.Accounts
 
             bool passwordChanged = PasswordTb.Text != "";
             UsersRepository.ModifyAccount(Id, user, passwordChanged);
+            LoggingService.Log(AuthenticationHelper.GetAdminAuth().GetUser(), $"Modified information of user with id {Id}");
 
             Response.Redirect("/Admin/Users");
         }

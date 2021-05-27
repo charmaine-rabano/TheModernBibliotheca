@@ -12,7 +12,7 @@
         </div>
 
     </div>
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-sm-4" style="display: flex; flex-direction: column; align-items: center; padding-right: 15px;">
             <img class="img-thumbnail" src="<%= model.BookCover %>" alt="hello" />
             <br />

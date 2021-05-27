@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Librarian.Borrows;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca.Librarian.Borrows.Onsite
@@ -93,15 +94,18 @@ namespace TheModernBibliotheca.Librarian.Borrows.Onsite
             int bookInstance = BorrowRepository.GetInstance(BookISBNTb.Text);
             int borrowerUserID = BorrowRepository.GetBorrowerUserID(BorrowerEmailTb.Text);
 
-            BorrowRepository.AddBorrowRecord(new _Code.Model.Borrow
+            var borrow = new _Code.Model.Borrow
             {
                 InstanceID = bookInstance,
                 UserID = borrowerUserID,
                 DateBorrowed = DateTime.Now,
                 SiteType = Constants.Borrow.ONSITE_SITE_TYPE,
                 BorrowState = Constants.Borrow.BORROWED_STATE,
-                ReturnDate = DateTime.Now.AddDays(7)
-            });
+                ReturnDate = DateTime.Now.AddDays(7),
+                DateCreated = DateTime.Now
+            };
+            BorrowRepository.AddBorrowRecord(borrow);
+            LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Recorded onsite borrow with id {borrow.BorrowID}");
 
             AlertISBN.Text = BookISBNTb.Text;
             AlertEmail.Text = BorrowerEmailTb.Text;

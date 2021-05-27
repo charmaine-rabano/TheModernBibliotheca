@@ -14,7 +14,7 @@ namespace TheModernBibliotheca._Code.App.Borrower
         public string Summary{ get; set; }
         public string Status{ get; set; }
         public string Genre { get; set; }
-        public DateTime ReturnDate { get; set; }
+        public DateTime? ReturnDate { get; set; }
 
     }
 }

@@ -17,7 +17,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="header-group">
-        <h3>Add User</h3>
+        <h3>Modify User</h3>
         <div class="header-actions">
             <a class="btn btn-secondary" href="~/Admin/Users" runat="server">
                 Back
@@ -85,13 +85,27 @@
     </div>
 
     <div class="form-action">
-        <asp:Button Text="Delete" runat="server" ID="DeleteBtn" OnClick="DeleteBtn_Click" CssClass="btn btn-danger alternative-action" OnClientClick="return ConfirmDelete()" UseSubmitBehavior="false"/>
+        <asp:Button Text="Delete" runat="server" ID="DeleteBtn" OnClick="DeleteBtn_Click" CssClass="btn btn-danger alternative-action" OnClientClick="return ConfirmDelete();" />
 
-        <asp:Button Text="Submit" runat="server" ID="SubmitBtn" OnClick="SubmitBtn_Click" CssClass="btn btn-primary primary-action" />
+        <asp:Button Text="Submit" runat="server" ID="SubmitBtn" OnClick="SubmitBtn_Click" CssClass="btn btn-primary primary-action" OnClientClick="return ConfirmEdit();"/>
     </div>
     <script>
         function ConfirmDelete() {
             return confirm("Are you sure you want to delete this account?");
+        }
+
+        function ConfirmEdit() {
+            return confirm("Are you sure you want to save your modifications to this account?");
+        }
+
+        document.onkeydown = function (e) {
+            e = e || window.event;
+            switch (e.which || e.keyCode) {
+                case 13:
+                    e.preventDefault();
+                    document.querySelector(".primary-action").click();
+                    break;
+            }
         }
     </script>
 </asp:Content>

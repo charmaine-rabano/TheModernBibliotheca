@@ -19,7 +19,7 @@
     <div class="container">
         <br />
         <br />
-        <h1 style="font-size: 60px;">Create your account</h1>
+        <h3>Create your account</h3>
         <br />
         <br />
 
