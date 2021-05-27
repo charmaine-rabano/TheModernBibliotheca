@@ -17,7 +17,7 @@ namespace TheModernBibliotheca._Code.App.Admin
                     Description = e.Remarks,
                     TimeStamp = e.TransactionDate,
                     UserType = e.LibraryUser.UserType
-                }).ToList();
+                }).OrderByDescending(e=>e.TimeStamp).ToList();
         }
     }
 }

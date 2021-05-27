@@ -16,7 +16,6 @@
         }
 
         .borrow-status {
-            background-color: #f2efe9;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -31,7 +30,6 @@
             }
 
                 .borrow-status .status-container .status-message {
-                    background-color: lightgray;
                     padding: 10px 20px;
                     font-size: 1.2rem;
                     border-radius: 80px;
@@ -48,13 +46,33 @@
             }
 
         .empty-message {
-            font-size:1.6em;
+            font-size: 1.6em;
+        }
+
+        .status-requested {
+            background-color: #fcf7ca;
+        }
+
+        .status-approved {
+            background-color: #cafcd0;
+        }
+
+        .status-rejected {
+            background-color: #fcd9d9;
+        }
+
+        .status-borrowed {
+            background-color: #aed6f5;
+        }
+
+        .status-returned {
+            background-color: #e3e3e3;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="borrow-container">
-        <h4>Current Borrow</h4>
+        <h4>Latest Borrow</h4>
 
         <%if (model != null) %>
         <%{%>
@@ -64,21 +82,31 @@
                     <img src='<%=model.Image %>' alt="Alternate Text" class="book-image" />
                 </div>
                 <div class="col-sm-9">
-                    <span>ISBN:<span><%= model.Isbn %></span></span>
-                    <h5 id="book-title"><%= model.Title %></h5>
-                    <span><%= model.Author %></span>
-                    <p><%= model.Blurb %></p>
+
+                    <h4 id="book-title"> <a href='/Books?ID=<%=model.Isbn%>'> <%= model.Title %> </a> </h4>
+
+                    <div><span><b>Author: </b><span><%=model.Author%></span></span></div>
+                    <div><span><b>ISBN: </b><span><%=model.Isbn%></span></span></div>
+                    <div><span><b>Genre: </b><span><%=model.Genre%></span></span></div>
+
+                    <p><%= FormatSummary(model.Summary, 150) %></p>
+
                 </div>
             </div>
             <div class="col-lg-4 col-12 borrow-status">
                 <div class="status-container">
                     <span>Status</span>
-                    <div class="status-message">
+                    <div class='<%=(
+                            model.Status == "Requested" ? "status-message status-requested" :
+                            model.Status == "Approved" ? "status-message status-approved" : 
+                            model.Status == "Rejected" ? "status-message status-rejected" : 
+                            model.Status == "Borrowed" ? "status-message status-borrowed": 
+                            model.Status == "Returned" ? "status-message status-returned" : "status-message")%>'>
                         <span><%= model.Status %></span>
                     </div>
                 </div>
                 <div class="return-date">
-                    <span>Return Date: <span><%= model.ReturnDate.ToString("MMM dd, yyyy") %></span></span>
+                    <span>Return Date: <span><%= model.ReturnDate == null ? "N/A" :model.ReturnDate.Value.ToString("MMM dd, yyyy") %></span></span>
                 </div>
             </div>
         </div>

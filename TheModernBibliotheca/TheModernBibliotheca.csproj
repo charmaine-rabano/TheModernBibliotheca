@@ -66,6 +66,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -138,6 +141,10 @@
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
@@ -160,6 +167,30 @@
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -1545,9 +1576,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="CreateAccount.aspx" />
+    <Content Include="Librarian\Login.aspx" />
+    <Content Include="Test\BackgroundProcess.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Librarian\Borrows\ConfirmReturn.aspx" />
+    <Content Include="Librarian\Borrows\History.aspx" />
     <Content Include="Librarian\Borrows\Menu.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Approve.aspx" />
     <Content Include="Librarian\Borrows\Offsite\Pending.aspx" />
@@ -1586,6 +1621,8 @@
     <Content Include="Librarian\Books\Book.aspx" />
     <Content Include="Librarian\Books\Add.aspx" />
     <Content Include="Librarian\Books\Instances.aspx" />
+    <Content Include="Librarian\Default.aspx" />
+    <Content Include="Librarian\Books\Menu.aspx" />
     <Content Include="_Code\Model\TheModernDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TheModernDatabase.Context.cs</LastGenOutput>
@@ -1701,7 +1738,6 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
-    <Content Include="Templates\Site.Mobile.Master" />
     <EntityDeploy Include="_Code\Model\TheModernDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TheModernDatabase.Designer.cs</LastGenOutput>
@@ -1725,12 +1761,45 @@
     <Compile Include="Admin\Activity.aspx.designer.cs">
       <DependentUpon>Activity.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Api\UserActivityController.cs" />
+    <Compile Include="App_Start\BackgroundProcessConfig.cs" />
     <Compile Include="Borrows.aspx.cs">
       <DependentUpon>Borrows.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Borrows.aspx.designer.cs">
       <DependentUpon>Borrows.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Borrows\ConfirmReturn.aspx.cs">
+      <DependentUpon>ConfirmReturn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\ConfirmReturn.aspx.designer.cs">
+      <DependentUpon>ConfirmReturn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Borrows\History.aspx.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Borrows\History.aspx.designer.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Report\reportOverallController.cs" />
+    <Compile Include="Librarian\Report\reportOverallModel.cs" />
+    <Compile Include="Librarian\Report\reportOverallView.cs" />
+    <Compile Include="Librarian\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\BackgroundProcess.aspx.cs">
+      <DependentUpon>BackgroundProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\BackgroundProcess.aspx.designer.cs">
+      <DependentUpon>BackgroundProcess.aspx</DependentUpon>
     </Compile>
     <Compile Include="Librarian\Borrows\Onsite\Borrow.aspx.cs">
       <DependentUpon>Borrow.aspx</DependentUpon>
@@ -1774,15 +1843,35 @@
     <Compile Include="Librarian\Books\Instances.aspx.designer.cs">
       <DependentUpon>Instances.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Librarian\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Books\Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Books\Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_Code\App\Background\BackgroundProcessRunner.cs" />
+    <Compile Include="_Code\App\Background\Processes\ClearExpiredReservations.cs" />
+    <Compile Include="_Code\App\Background\IBackgroundProcess.cs" />
+    <Compile Include="_Code\App\Background\Processes\MarkLostBooks.cs" />
     <Compile Include="_Code\App\Borrower\BorrowHistoryItemModel.cs" />
     <Compile Include="_Code\App\Borrower\BorrowsRepository.cs" />
     <Compile Include="_Code\App\Borrower\CurrentBorrowViewModel.cs" />
+    <Compile Include="_Code\App\Librarian\Books\AddBookRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Books\AddBookViewModel.cs" />
+    <Compile Include="_Code\App\Librarian\Books\BookRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Books\BookViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Books\InstancesRepository.cs" />
     <Compile Include="_Code\App\Librarian\Books\InstancesViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Books\ManageBooksRepository.cs" />
     <Compile Include="_Code\App\Librarian\Books\ManageBooksViewModel.cs" />
-    <Compile Include="_Code\App\Librarian\Borrows\ApproveRepository.cs" />
-    <Compile Include="_Code\App\Librarian\Borrows\ApproveViewModel.cs" />
     <Compile Include="Librarian\Borrows\Return.aspx.cs">
       <DependentUpon>Return.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1798,12 +1887,14 @@
       <DependentUpon>Librarian.master</DependentUpon>
     </Compile>
     <Compile Include="_Code\App\Librarian\Borrows\BorrowRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\HistoryRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Borrows\HistoryViewModel.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ReturnRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ReturnViewModel.cs" />
     <Compile Include="_Code\App\Borrower\BorrowerRepository.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationHelper.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationService.cs" />
-    <Compile Include="App_Start\FileSystemHelper.cs" />
+    <Compile Include="_Code\App\Librarian\FileSystemHelper.cs" />
     <Compile Include="CreateAccount.aspx.cs">
       <DependentUpon>CreateAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1939,13 +2030,6 @@
     <Compile Include="Templates\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Templates\Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Templates\Site.Mobile.Master.designer.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2037,7 +2121,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\reportOverall\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

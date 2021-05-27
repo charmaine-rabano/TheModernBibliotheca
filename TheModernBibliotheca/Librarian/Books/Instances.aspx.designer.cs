@@ -15,49 +15,49 @@ namespace TheModernBibliotheca.Templates
     {
 
         /// <summary>
-        /// LinkButton1 control.
+        /// backButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton backButton;
 
         /// <summary>
-        /// LinkButton2 control.
+        /// instanceButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        protected global::System.Web.UI.WebControls.LinkButton instanceButton;
 
         /// <summary>
-        /// LinkButton3 control.
+        /// notInCirculation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
+        protected global::System.Web.UI.WebControls.LinkButton notInCirculation;
 
         /// <summary>
-        /// LinkButton4 control.
+        /// inCirculationButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
+        protected global::System.Web.UI.WebControls.LinkButton inCirculationButton;
 
         /// <summary>
-        /// Panel1 control.
+        /// instancePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel instancePanel;
 
         /// <summary>
         /// txtQuantity control.
@@ -78,13 +78,13 @@ namespace TheModernBibliotheca.Templates
         protected global::System.Web.UI.WebControls.Button btnAdd;
 
         /// <summary>
-        /// Panel2 control.
+        /// notInCirculationPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel2;
+        protected global::System.Web.UI.WebControls.Panel notInCirculationPanel;
 
         /// <summary>
         /// gvNotInCirculation control.
@@ -96,13 +96,13 @@ namespace TheModernBibliotheca.Templates
         protected global::System.Web.UI.WebControls.GridView gvNotInCirculation;
 
         /// <summary>
-        /// Panel3 control.
+        /// inCirculationPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel3;
+        protected global::System.Web.UI.WebControls.Panel inCirculationPanel;
 
         /// <summary>
         /// gvInCirculation control.

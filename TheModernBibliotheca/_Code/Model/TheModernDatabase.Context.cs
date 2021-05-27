@@ -30,7 +30,7 @@ namespace TheModernBibliotheca._Code.Model
         public virtual DbSet<Borrow> Borrows { get; set; }
         public virtual DbSet<LibraryUser> LibraryUsers { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
-        public virtual DbSet<UserActivity> UserActivities { get; set; }
         public virtual DbSet<Violation> Violations { get; set; }
+        public virtual DbSet<UserActivity> UserActivities { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using TheModernBibliotheca._Code.Lib.Logging;
 using TheModernBibliotheca._Code.Model;
 namespace TheModernBibliotheca._Code.App.Admin
 {
@@ -17,6 +18,7 @@ namespace TheModernBibliotheca._Code.App.Admin
                     .Where(e => 
                         e.AccountStatus == Constants.LibraryUser.ACTIVE_STATUS &&
                         e.UserID != loggedInUserId)
+                    .OrderByDescending(e=>e.DateCreated)
                     .ToList();
         }
 
@@ -86,6 +88,12 @@ namespace TheModernBibliotheca._Code.App.Admin
         {
             using (var context = new TheModernDatabaseEntities())
                 return context.LibraryUsers.Any(e => e.Email.ToLower() == email.ToLower() && e.UserID != id);
+        }
+
+        public static bool IsCurrentPassword(int id, string password)
+        {
+            using (var context = new TheModernDatabaseEntities())
+                return context.LibraryUsers.Where(e => e.UserID == id).FirstOrDefault().AccountPassword == password;
         }
     }
 }

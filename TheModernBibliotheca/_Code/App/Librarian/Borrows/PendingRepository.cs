@@ -16,7 +16,7 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
                 {
                     ApprovalDate = b.Reservation.DateProcessed,
                     BookName = b.BookInstance.BookInformation.Title,
-                    BorrowerName = b.LibraryUser.FirstName + " " + b.LibraryUser.LastName,
+                    BorrowerName = b.LibraryUser.FullName + " (" + b.LibraryUser.Email + ")",
                     BorrowID = b.BorrowID
                 }).ToList();
             }
@@ -27,8 +27,9 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
             using (var context = new TheModernDatabaseEntities())
             {
                 var borrow = context.Borrows.FirstOrDefault(b => b.BorrowID == id);
-                borrow.BorrowState = "Borrowed";
+                borrow.BorrowState = Constants.Borrow.BORROWED_STATE;
                 borrow.DateBorrowed = DateTime.Now;
+                borrow.ReturnDate = DateTime.Now.AddDays(7);
                 context.SaveChanges();
             }
         }

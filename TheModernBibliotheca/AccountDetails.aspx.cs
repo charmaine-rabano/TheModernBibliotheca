@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Admin;
 using TheModernBibliotheca._Code.App.Borrower;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca
@@ -20,10 +21,17 @@ namespace TheModernBibliotheca
             {
                 Response.Redirect("~/Login");
             }
+
+            if (!Page.IsPostBack)
+            {
+                FirstNameTxt.Text = BorrowerRepository.GetFirstName(currentID);
+                LastNameTxt.Text = BorrowerRepository.GetLastName(currentID);
+            }
         }
 
         protected void SaveNameBtn_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid) { return; }
             var user = new LibraryUser()
             {
                 FirstName = FirstNameTxt.Text,
@@ -31,16 +39,30 @@ namespace TheModernBibliotheca
             };
             bool passwordChanged = false;
             BorrowerRepository.ModifyName(currentID, user, passwordChanged);
+            nameChangedMessage.Visible = true;
+
+            LoggingService.Log(AuthenticationHelper.GetBorrowerAuth().GetUser(), $"Updated name");
         }
 
         protected void SavePasswordBtn_Click(object sender, EventArgs e)
         {
-            var user = new LibraryUser()
+            if (Page.IsValid)
             {
-                AccountPassword = ConfirmPasswordTb.Text
-            };
-            bool passwordChanged = true;
-            BorrowerRepository.ModifyPassword(currentID, user, passwordChanged);
+                var user = new LibraryUser()
+                {
+                    AccountPassword = ConfirmPasswordTb.Text
+                };
+                bool passwordChanged = true;
+                BorrowerRepository.ModifyPassword(currentID, user, passwordChanged);
+                passwordChangedMessage.Visible = true;
+                LoggingService.Log(AuthenticationHelper.GetBorrowerAuth().GetUser(), $"Password updated");
+            }
+
+            
+
+            ConfirmPasswordTb.Text = "";
+            CurrPasswordTxt.Text = "";
+            NewPasswordTxt.Text = "";
         }
 
         protected void DeactivateAccount_Click(object sender, EventArgs e)
@@ -52,6 +74,14 @@ namespace TheModernBibliotheca
         {
             // Idea: Implement modal for lesser risk of accidental deactivation
             UsersRepository.DeleteAccount(currentID);
+            LoggingService.Log(AuthenticationHelper.GetBorrowerAuth().GetUser(), $"Deactivated account");
+            AuthenticationHelper.GetBorrowerAuth().Signout();
+            Response.Redirect("~");
+        }
+
+        protected void CurrentPasswordCv_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = UsersRepository.IsCurrentPassword(currentID, CurrPasswordTxt.Text);
         }
     }
 }

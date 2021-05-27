@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Librarian.Borrows;
+using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 
 namespace TheModernBibliotheca.Librarian.Borrows.Offsite
 {
@@ -12,6 +14,11 @@ namespace TheModernBibliotheca.Librarian.Borrows.Offsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!AuthenticationHelper.GetLibrarianAuth().IsLoggedIn())
+            {
+                Response.Redirect("~/Librarian/Login");
+            }
+
             if (!Page.IsPostBack) { Bind(); }
         }
 
@@ -25,13 +32,17 @@ namespace TheModernBibliotheca.Librarian.Borrows.Offsite
         {
             if (e.CommandName == "Approve")
             {
-                ApproveRepository.ApproveRequest(int.Parse(e.CommandArgument.ToString()));
+                int id = int.Parse(e.CommandArgument.ToString());
+                ApproveRepository.ApproveRequest(id);
+                LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Approved offsite request with id {id}");
                 Bind();
             }
             
             else if (e.CommandName == "Disapprove")
             {
+                int id = int.Parse(e.CommandArgument.ToString());
                 ApproveRepository.DisapproveRequest(int.Parse(e.CommandArgument.ToString()));
+                LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Disapproved offsite request with id {id}");
                 Bind();
             }
         }

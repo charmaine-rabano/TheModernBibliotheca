@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Borrower;
 using TheModernBibliotheca._Code.Helper;
 using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 using TheModernBibliotheca._Code.Model;
 
 namespace TheModernBibliotheca
@@ -23,13 +24,26 @@ namespace TheModernBibliotheca
             }
             string ISBN = Request.QueryString["ID"];
             model = BooksRepository.GetBook(ISBN);
+
+            int quantity = BooksRepository.GetQuantity(ISBN);
+            lblBookQuantity.Text = quantity.ToString();
+            availableTag.InnerHtml = quantity > 0 ? "Available" : "Unavailable";
+            bool userCanBorrow = BooksRepository.CanUserBorrow(AuthenticationHelper.GetBorrowerAuth().GetUser().UserID);
+            if (quantity == 0 || !userCanBorrow)
+            {
+                btnCreateReservation.Enabled = false;
+            }
         }
 
         protected void btnCreateReservation_Click(object sender, EventArgs e)
         {
-            int instanceID = int.Parse(Request.QueryString["ID"]);
-            BorrowerRepository.CreateReservation(instanceID, AuthenticationHelper.GetBorrowerAuth().GetUser().UserID);
+            string ISBN = Request.QueryString["ID"];
+            BorrowerRepository.CreateReservation(ISBN, AuthenticationHelper.GetBorrowerAuth().GetUser().UserID);
+
+            LoggingService.Log(AuthenticationHelper.GetBorrowerAuth().GetUser(), $"Created borrow for book with isbn {ISBN}");
+
             Response.Write("<script>alert('Reservation Request Placed!');</script>");
+            Response.Redirect("~/Borrows.aspx");
         }
 
         protected void btnHomePage_Click(object sender, EventArgs e)

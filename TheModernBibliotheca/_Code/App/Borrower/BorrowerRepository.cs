@@ -8,6 +8,30 @@ namespace TheModernBibliotheca._Code.App.Borrower
 {
     public class BorrowerRepository
     {
+        public static string GetFirstName(int userId)
+        {
+            string FirstName;
+            using (var context = new TheModernDatabaseEntities())
+            {
+                var user = context.LibraryUsers.Where(e => e.UserID == userId).First();
+                FirstName = user.FirstName;
+            }
+
+            return FirstName;
+        }
+
+        public static string GetLastName(int userId)
+        {
+            string LastName;
+            using (var context = new TheModernDatabaseEntities())
+            {
+                var user = context.LibraryUsers.Where(e => e.UserID == userId).First();
+                LastName = user.LastName;
+            }
+
+            return LastName;
+        }
+
         public static void ModifyName(int userId, LibraryUser modifiedUser, bool passwordChanged)
         {
             using (var context = new TheModernDatabaseEntities())
@@ -28,16 +52,34 @@ namespace TheModernBibliotheca._Code.App.Borrower
             }
         }
 
-        internal static void CreateReservation(int instanceID, int userID)
+        internal static void CreateReservation(string ISBN, int userID)
         {
             using (var context = new TheModernDatabaseEntities())
             {
+                var states = new List<string>
+                {
+                    Constants.Borrow.REJECTED_STATE,
+                    Constants.Borrow.RETURNED_STATE
+                };
+
+                // Select first available book
+                var varInstance = context.BookInstances
+                    .Where(e => e.ISBN == ISBN)
+                    .Where(e =>
+                        e.InCirculation &&
+                        (e.Borrows.Count == 0 ||
+                            states.Contains(e.Borrows.OrderByDescending(f => f.DateBorrowed)
+                            .FirstOrDefault()
+                            .BorrowState)))
+                    .First();
+
                 Borrow borrow = new Borrow()
                 {
-                    InstanceID = instanceID,
+                    InstanceID = varInstance.InstanceID,
                     UserID = userID,
                     SiteType = Constants.Borrow.OFFSITE_SITE_TYPE,
-                    BorrowState = Constants.Borrow.REQUESTED_STATE
+                    BorrowState = Constants.Borrow.REQUESTED_STATE,
+                    DateCreated = DateTime.Now
                 };
                 context.Borrows.Add(borrow);
                 context.SaveChanges();

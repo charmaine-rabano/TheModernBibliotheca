@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheModernBibliotheca._Code.App.Librarian.Books;
 using TheModernBibliotheca._Code.Model;
+using TheModernBibliotheca._Code.Lib.Authentication;
+using TheModernBibliotheca._Code.Lib.Logging;
 
 namespace TheModernBibliotheca.Templates
 {
@@ -14,41 +16,44 @@ namespace TheModernBibliotheca.Templates
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string ISBN = Request.QueryString["ISBN"];
-            
+            if (!AuthenticationHelper.GetLibrarianAuth().IsLoggedIn())
+            {
+                Response.Redirect("~/Librarian/Login");
+            }
+
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        protected void backButton_Click(object sender, EventArgs e)
         {
             string ISBN = Request.QueryString["ISBN"];
-            Response.Redirect("Book?ISBN=" + ISBN);
+            Response.Redirect($"/Librarian/Books/Book.aspx?ISBN={ISBN}");
         }
 
-        protected void LinkButton2_Click(object sender, EventArgs e)
+        protected void instanceButton_Click(object sender, EventArgs e)
         {
-            Panel1.Visible = true;
-            Panel2.Visible = false;
-            Panel3.Visible = false;
+            instancePanel.Visible = true;
+            notInCirculationPanel.Visible = false;
+            inCirculationPanel.Visible = false;
         }
 
-        protected void LinkButton3_Click(object sender, EventArgs e)
+        protected void notInCirculation_Click(object sender, EventArgs e)
         {
             string ISBN = Request.QueryString["ISBN"];
-            Panel1.Visible = false;
-            Panel2.Visible = true;
-            Panel3.Visible = false;
+            instancePanel.Visible = false;
+            notInCirculationPanel.Visible = true;
+            inCirculationPanel.Visible = false;
 
             gvNotInCirculation.DataSource = InstancesRepository.GetNotInCirculation(ISBN);
             gvNotInCirculation.DataBind();
         }
 
-        protected void LinkButton4_Click(object sender, EventArgs e)
+        protected void inCirculationButton_Click(object sender, EventArgs e)
         {
             string ISBN = Request.QueryString["ISBN"];
 
-            Panel1.Visible = false;
-            Panel2.Visible = false;
-            Panel3.Visible = true;
+            instancePanel.Visible = false;
+            notInCirculationPanel.Visible = false;
+            inCirculationPanel.Visible = true;
 
             gvInCirculation.DataSource = InstancesRepository.GetInCirculation(ISBN);
             gvInCirculation.DataBind();
@@ -63,7 +68,12 @@ namespace TheModernBibliotheca.Templates
                 ISBN = ISBN,
                 InCirculation = true
             });
-            /// add saved message
+
+            txtQuantity.Text = "1";
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "$('#modalEdit').modal('show')", true);
+
+            LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Added {qty} new instances for book with isbn {ISBN}");
+
         }
 
         protected void gvInCirculation_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -71,9 +81,26 @@ namespace TheModernBibliotheca.Templates
             string ISBN = Request.QueryString["ISBN"];
             if (e.CommandName == "REMOVE")
             {
-                InstancesRepository.RemoveInCirculation(int.Parse(e.CommandArgument.ToString()));
+                int instanceid = int.Parse(e.CommandArgument.ToString());
+                InstancesRepository.RemoveInCirculation(instanceid);
                 gvInCirculation.DataSource =  InstancesRepository.GetInCirculation(ISBN);
                 gvInCirculation.DataBind();
+
+                LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Removed book instance with id {instanceid} and isbn {ISBN} from circulation");
+            }
+        }
+
+        protected void gvNotInCirculation_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string ISBN = Request.QueryString["ISBN"];
+            if (e.CommandName == "ADD")
+            {
+                int instanceid = int.Parse(e.CommandArgument.ToString());
+                InstancesRepository.AddInCirculation(instanceid);
+                gvNotInCirculation.DataSource = InstancesRepository.GetNotInCirculation(ISBN);
+                gvNotInCirculation.DataBind();
+
+                LoggingService.Log(AuthenticationHelper.GetLibrarianAuth().GetUser(), $"Added book instance with id {instanceid} and with isbn {ISBN} to circulation");
             }
         }
     }

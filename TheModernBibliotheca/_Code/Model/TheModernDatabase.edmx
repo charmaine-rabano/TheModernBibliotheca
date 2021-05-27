@@ -36,6 +36,7 @@
           <Property Name="SiteType" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="BorrowState" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="ReturnDate" Type="datetime" />
+          <Property Name="DateCreated" Type="datetime" />
         </EntityType>
         <EntityType Name="LibraryUser">
           <Key>
@@ -63,11 +64,12 @@
         </EntityType>
         <EntityType Name="UserActivity">
           <Key>
-            <PropertyRef Name="UserID" />
+            <PropertyRef Name="UserActivityId" />
           </Key>
+          <Property Name="UserActivityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="TransactionDate" Type="datetime" Nullable="false" />
-          <Property Name="Remarks" Type="nvarchar" MaxLength="30" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="Violation">
           <Key>
@@ -127,7 +129,7 @@
         </Association>
         <Association Name="FK__UserActiv__UserI__17F790F9">
           <End Role="LibraryUser" Type="Self.LibraryUser" Multiplicity="1" />
-          <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="0..1" />
+          <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LibraryUser">
               <PropertyRef Name="UserID" />
@@ -192,7 +194,6 @@
           <EntitySet Name="Borrows" EntityType="TheModermDatabaseModel.Borrow" />
           <EntitySet Name="LibraryUsers" EntityType="TheModermDatabaseModel.LibraryUser" />
           <EntitySet Name="Reservations" EntityType="TheModermDatabaseModel.Reservation" />
-          <EntitySet Name="UserActivities" EntityType="TheModermDatabaseModel.UserActivity" />
           <EntitySet Name="Violations" EntityType="TheModermDatabaseModel.Violation" />
           <AssociationSet Name="FK__Book__ISBN__75A278F5" Association="TheModermDatabaseModel.FK__Book__ISBN__75A278F5">
             <End Role="BookInformation" EntitySet="BookInformations" />
@@ -214,6 +215,7 @@
             <End Role="Borrow" EntitySet="Borrows" />
             <End Role="Violation" EntitySet="Violations" />
           </AssociationSet>
+          <EntitySet Name="UserActivities" EntityType="TheModermDatabaseModel.UserActivity" />
           <AssociationSet Name="FK__UserActiv__UserI__17F790F9" Association="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9">
             <End Role="LibraryUser" EntitySet="LibraryUsers" />
             <End Role="UserActivity" EntitySet="UserActivities" />
@@ -257,6 +259,7 @@
           <NavigationProperty Name="Reservation" Relationship="TheModermDatabaseModel.FK__Reservati__Borro__1AD3FDA4" FromRole="Borrow" ToRole="Reservation" />
           <NavigationProperty Name="Violations" Relationship="TheModermDatabaseModel.FK__Violation__Borro__114A936A" FromRole="Borrow" ToRole="Violation" />
           <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="LibraryUser">
           <Key>
@@ -272,9 +275,9 @@
           <Property Name="SessionId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="SessionExpiry" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Borrows" Relationship="TheModermDatabaseModel.FK__Borrow__UserID__04E4BC85" FromRole="LibraryUser" ToRole="Borrow" />
-          <NavigationProperty Name="UserActivity" Relationship="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9" FromRole="LibraryUser" ToRole="UserActivity" />
           <Property Name="AccountStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FullName" Type="String" Nullable="false" MaxLength="257" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="UserActivities" Relationship="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9" FromRole="LibraryUser" ToRole="UserActivity" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
@@ -284,15 +287,6 @@
           <Property Name="DateReserved" Type="DateTime" Precision="3" />
           <Property Name="DateProcessed" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Borrow" Relationship="TheModermDatabaseModel.FK__Reservati__Borro__1AD3FDA4" FromRole="Reservation" ToRole="Borrow" />
-        </EntityType>
-        <EntityType Name="UserActivity">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Remarks" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="LibraryUser" Relationship="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9" FromRole="UserActivity" ToRole="LibraryUser" />
         </EntityType>
         <EntityType Name="Violation">
           <Key>
@@ -363,9 +357,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="UserActivity">
+          <Key>
+            <PropertyRef Name="UserActivityId" />
+          </Key>
+          <Property Name="UserActivityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LibraryUser" Relationship="TheModermDatabaseModel.FK__UserActiv__UserI__17F790F9" FromRole="UserActivity" ToRole="LibraryUser" />
+        </EntityType>
         <Association Name="FK__UserActiv__UserI__17F790F9">
           <End Type="TheModermDatabaseModel.LibraryUser" Role="LibraryUser" Multiplicity="1" />
-          <End Type="TheModermDatabaseModel.UserActivity" Role="UserActivity" Multiplicity="0..1" />
+          <End Type="TheModermDatabaseModel.UserActivity" Role="UserActivity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LibraryUser">
               <PropertyRef Name="UserID" />
@@ -405,6 +409,7 @@
           <EntitySetMapping Name="Borrows">
             <EntityTypeMapping TypeName="TheModermDatabaseModel.Borrow">
               <MappingFragment StoreEntitySet="Borrow">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
                 <ScalarProperty Name="BorrowState" ColumnName="BorrowState" />
                 <ScalarProperty Name="SiteType" ColumnName="SiteType" />
@@ -442,21 +447,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserActivities">
-            <EntityTypeMapping TypeName="TheModermDatabaseModel.UserActivity">
-              <MappingFragment StoreEntitySet="UserActivity">
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Violations">
             <EntityTypeMapping TypeName="TheModermDatabaseModel.Violation">
               <MappingFragment StoreEntitySet="Violation">
                 <ScalarProperty Name="ViolationType" ColumnName="ViolationType" />
                 <ScalarProperty Name="BorrowID" ColumnName="BorrowID" />
                 <ScalarProperty Name="ViolationId" ColumnName="ViolationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserActivities">
+            <EntityTypeMapping TypeName="TheModermDatabaseModel.UserActivity">
+              <MappingFragment StoreEntitySet="UserActivity">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserActivityId" ColumnName="UserActivityId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

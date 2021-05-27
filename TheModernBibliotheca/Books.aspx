@@ -3,50 +3,45 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <br />
-    <h1 style="font-size: 60px;">Book Details</h1>
-    <br />
-    <br />
-    <div class="row">
-        <div class="col-3" style="display: flex; flex-direction: column; align-items: center; padding-right: 15px;">
-            <img class="img-thumbnail" src="<%#Eval("ImgUrl")%>" alt="hello" />
-            <br />
-            <asp:Label ID="lblBookQuantity" runat="server">Quantity: 123</asp:Label>
+    <div style="display: flex; margin-bottom:12px; flex-wrap:wrap;">
+        <h2>Book Details</h2>
+        <div style="margin-left: auto">
+            <a href="~" runat="server" id="cancelLink" class="btn btn-secondary">
+                Back
+            </a>
         </div>
-        <div class="col-9">
-            <h2>
-                <asp:Label ID="txtTitle" runat="server"><%=model.Title%></asp:Label></h2>
-            <h4>
-                <asp:Label ID="txtAuthor" runat="server"><%=model.Author%></asp:Label></h4>
-            <br />
-            <h5>Summary</h5>
-            <asp:Label ID="txtSummary" style="font-weight: 400;" runat="server"><%=model.Summary%></asp:Label>
-            <br />
-            <br />
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">ISBN</th>
-                        <th scope="col">Genre</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody style="background-color: #E1D9D9;">
-                    <tr>
-                        <td><%=model.ISBN%></td>
-                        <td><%=model.Genre%></td>
-                        <td>Available</td>
-                    </tr>
-                </tbody>
-            </table>
 
+    </div>
+    <div class="row mb-5">
+        <div class="col-sm-4" style="display: flex; flex-direction: column; align-items: center; padding-right: 15px;">
+            <img class="img-thumbnail" src="<%= model.BookCover %>" alt="hello" />
             <br />
-            <br />
+            <div>
+                <div class="pb-2">
+                    <div>
+                        <span><b>Quantity: </b>
+                            <asp:Label ID="lblBookQuantity" runat="server"></asp:Label></span>
+                    </div>
+                    <div><span><b>Availability: </b><span runat="server" id="availableTag"></span></span></div>
+                </div>
+                <asp:Button CssClass="btn btn-success" ID="btnCreateReservation" runat="server" Text="Create Reservation" OnClick="btnCreateReservation_Click" />
+            </div>
 
-            <div style="display: flex; justify-content: flex-end;">
-                <asp:Button class="btn btn-success" ID="btnCreateReservation" runat="server" Text="Create Reservation" OnClick="btnCreateReservation_Click"/>&nbsp;&nbsp;
-                <asp:Button class="btn btn-secondary" ID="btnHomePage" runat="server" Text="Back To Home Page" OnClick="btnHomePage_Click"/>
-            </div>    
+        </div>
+        <div class="col-sm-8 mt-3 mt-sm-0">
+            <h3>
+                <asp:Label ID="txtTitle" runat="server"><%=model.Title%></asp:Label>
+            </h3>
+            <div>
+                <div><span><b>Author: </b><span><%=model.Author%></span></span> </div>
+                <div><span><b>ISBN: </b><span><%=model.ISBN%></span></span> </div>
+                <div><span><b>Genre: </b><span><%=model.Genre%></span></span> </div>
+            </div>
+
+            <div class="my-4">
+                <h5>Summary</h5>
+                <asp:Label ID="txtSummary" Style="font-weight: 400;" runat="server"><%=model.Summary%></asp:Label>
+            </div>
         </div>
     </div>
 </asp:Content>

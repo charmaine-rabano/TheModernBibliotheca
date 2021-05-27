@@ -3,16 +3,13 @@ using System;
 using System.Configuration;
 using System.Web;
 
-namespace LokalMusic._Code.Helpers
+namespace TheModernBibliotheca._Code.App.Librarian
 {
     public class FileSystemHelper
     {
-        public const string PICTURE_CONTAINER_NAME = "profilepictures";
-        public const string ALBUMCOVER_CONTAINER_NAME = "albumcover";
-        public const string TRACKS_CONTAINER_NAME = "tracks";
-        public const string CLIPS_CONTAINER_NAME = "clips";
+        public const string PICTURE_CONTAINER_NAME = "bookcovers";
+        private const string CONNECTION_STRING_NAME = "modernbibliotheca-fs";
 
-        private const string CONNECTION_STRING_NAME = "lokalmusic-fs";
 
         public static string GetConnectionString()
         {

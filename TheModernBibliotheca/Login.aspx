@@ -24,11 +24,6 @@
             max-width: 100%;
             width: 100%
         }
-
-        .submit-btn {
-            margin-left: auto;
-            width: 14ch;
-        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -69,15 +64,15 @@
             <asp:RequiredFieldValidator ErrorMessage="Please enter your password" ControlToValidate="PasswordTxt" runat="server" CssClass="validation-message" Display="Dynamic" />
         </div>
 
-        <%-- Submit Button --%>
-        <div style="display: flex; flex-direction: row;">
-            <asp:Button ID="SubmitBtn" Text="Sign In" runat="server" CssClass="submit-btn btn btn-primary" OnClick="SubmitBtn_Click" />
-        </div>
-
-        <!-- Create Account-->
-        <div class="col-sm-6 col-12">
+        <div style="display:flex; flex-direction:column; align-items: center;">
+            <%-- Submit Button --%>
+            <asp:Button ID="SubmitBtn" Text="Sign In" runat="server" CssClass="submit-btn btn btn-primary w-100 mt-3" OnClick="SubmitBtn_Click" />
+            <span class="my-2">or</span>
+            <!-- Create Account-->
             <asp:LinkButton ID="CreateAccount" runat="server" CausesValidation="false" OnClick="CreateAccount_Click">Create Account</asp:LinkButton>
         </div>
+
+
     </div>
     <br />
     <br />
