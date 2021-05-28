@@ -24,7 +24,7 @@ namespace TheModernBibliotheca
 
             model = BorrowsRepository.GetCurrentlyBorrowedModel(userId);
             itemModels = BorrowsRepository.GetBorrowsHistory(userId);
-
+            if (itemModels == null || !itemModels.Any()) lbl.Visible = true;
             BorrowHistoryTableRepeater.DataSource = itemModels;
             BorrowHistoryTableRepeater.DataBind();
         }
