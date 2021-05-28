@@ -61,6 +61,9 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div style="padding-top:2px; padding-bottom:2px">
+        <a href="../Default.aspx"><img src="/Content/bootstrap-icons/arrow-left.svg" width="40" height="40" style="margin-right: 10px" /></a>
+    </div>
     <div class="menu-group-container">
         <div>
             <p class="menu-group-header">Books</p>

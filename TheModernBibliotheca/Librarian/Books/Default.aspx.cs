@@ -49,7 +49,10 @@ namespace TheModernBibliotheca.Templates
                 
             }
         }
-
+        public string FormatString(string value, int length)
+        {
+            return value.Length > length ? value.Substring(0, length) + "..." : value;
+        }
         private void viewAllBooks()
         {
             bookRepeater.DataSource = ManageBooksRepository.GetBooks();
