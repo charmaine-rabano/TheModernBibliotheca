@@ -1577,6 +1577,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="CreateAccount.aspx" />
     <Content Include="Librarian\Login.aspx" />
+    <Content Include="Pictures\logo-small.png" />
     <Content Include="Pictures\logo.png" />
     <Content Include="Test\BackgroundProcess.aspx" />
     <Content Include="Default.aspx" />

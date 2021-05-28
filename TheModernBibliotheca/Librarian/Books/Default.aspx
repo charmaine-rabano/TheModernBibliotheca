@@ -52,8 +52,8 @@
    <asp:Label ID="lblSearchResult" runat="server" Visible="false" style="font-size:medium; text-align:center; padding-top:2em;"></asp:Label>
 
  
-        <div class="container" style="background-color:white;">
-            <div class="jumbotron" style="background-color:white;">
+        <div class="container">
+            <div class="jumbotron" style="background-color: #F2E2CE;">
                 <div class="g-3">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <asp:Repeater ID="bookRepeater" runat="server" >

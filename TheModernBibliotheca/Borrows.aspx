@@ -39,7 +39,7 @@
 
             .borrow-status .return-date {
                 margin-top: auto;
-                background-color: #ede6d3;
+                background-color: #D9C5A0;
                 width: 100%;
                 padding: 10px;
                 text-align: center;
