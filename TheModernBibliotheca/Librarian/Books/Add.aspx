@@ -12,10 +12,17 @@
             max-width: 100%;
             width: 100%;
         }
-
-        @media screen and (max-width: 750px) {
+        .responsive {
+          width: 100%;
+          max-width: 200px;
+          height: auto;
+        }
+        @media screen and (max-width: 800px) {
             .form-control {
                 width: 100%;
+            }
+            .responsive{
+                max-width:120px;
             }
         }
     </style>
@@ -49,10 +56,10 @@
             </div>
         </div>
     <br />
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4" style="padding-left: 0px;">
-                <asp:Image ID="previewImg" runat="server" AlternateText="Image" Style="background-color: gray; width: 200px; height: 200px;" ImageUrl="https://t4.ftcdn.net/jpg/02/07/87/79/360_F_207877921_BtG6ZKAVvtLyc5GWpBNEIlIxsffTtWkv.jpg" />
+                <asp:Image ID="previewImg" runat="server" AlternateText="Image" CssClass="responsive" Style="background-color: gray;" ImageUrl="https://t4.ftcdn.net/jpg/02/07/87/79/360_F_207877921_BtG6ZKAVvtLyc5GWpBNEIlIxsffTtWkv.jpg" /><br />
                 <asp:FileUpload ID="fileUploadImg" runat="server" Style="padding-top: 10px; font-size: small;" onchange="ShowImagePreview(this);" /><br />
                 <asp:RequiredFieldValidator ID="rfvFile" runat="server" ControlToValidate="fileUploadImg" ErrorMessage="Please upload book cover" CssClass="validation-message" Display="Dynamic"></asp:RequiredFieldValidator>
                 <br />
