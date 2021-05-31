@@ -42,7 +42,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div style="display: flex; padding-bottom:5px;">
+    <div style="display: flex; padding-bottom:5px; margin-top: 60px;">
              <a href="Menu.aspx" ><asp:Image ID="Image1" runat="server" ImageUrl ="/Content/bootstrap-icons/arrow-left.svg" style="width:40px; height:40px; margin-right:10px;"/></a>
             <div class="col-xs-6" >
                 <ul class="nav nav-tabs">

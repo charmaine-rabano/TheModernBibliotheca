@@ -6,7 +6,7 @@
 
 
     <div class="container" style="padding-top:1%;padding-bottom:3%;">
-        <div class="row">
+        <div class="row" style="margin-top: 60px;">
             <div class="col-xs-6" style="margin-right: 15px;">
                 <asp:LinkButton ID="backButton" runat="server" OnClick="backButton_Click"  ><img src="/Content/bootstrap-icons/arrow-left.svg" width="40" height="40"  /></asp:LinkButton>
             </div>

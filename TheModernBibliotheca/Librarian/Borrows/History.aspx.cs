@@ -52,6 +52,7 @@ namespace TheModernBibliotheca.Librarian.Borrows
 
             BorrowerNameLbl.Text = HistoryRepository.GetBorrowerName(BorrowerEmailTb.Text);
 
+            BorrowerNameLbl.Visible = true;
             DisplayDiv.Visible = true;
         }
     }

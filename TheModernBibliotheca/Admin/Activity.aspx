@@ -8,7 +8,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="header">
+    <div class="header" style="margin-top: 50px; margin-bottom: 20px;">
         <div class="header-group">
             <h3>User Activity</h3>
             <div class="header-actions">
