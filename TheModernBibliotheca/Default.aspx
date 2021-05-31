@@ -74,7 +74,7 @@
                 </div>
             </ItemTemplate>
         </asp:Repeater>
-        <asp:Label ID="Label1" runat="server" Text="No Results Found." style="font-size:xx-large; align-content:center;"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="No Results Found." style="font-size:xx-large; align-content:center;" Visible="false"></asp:Label>
 
     </div>
 </asp:Content>
