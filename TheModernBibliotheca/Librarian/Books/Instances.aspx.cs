@@ -16,6 +16,9 @@ namespace TheModernBibliotheca.Templates
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            instanceButton.CssClass = "nav-link active";
+            notInCirculation.CssClass = "nav-link";
+            inCirculationButton.CssClass = "nav-link";
             if (!AuthenticationHelper.GetLibrarianAuth().IsLoggedIn())
             {
                 Response.Redirect("~/Librarian/Login");
@@ -31,6 +34,9 @@ namespace TheModernBibliotheca.Templates
 
         protected void instanceButton_Click(object sender, EventArgs e)
         {
+            instanceButton.CssClass = "nav-link active";
+            notInCirculation.CssClass = "nav-link";
+            inCirculationButton.CssClass = "nav-link";
             instancePanel.Visible = true;
             notInCirculationPanel.Visible = false;
             inCirculationPanel.Visible = false;
@@ -38,6 +44,9 @@ namespace TheModernBibliotheca.Templates
 
         protected void notInCirculation_Click(object sender, EventArgs e)
         {
+            instanceButton.CssClass = "nav-link";
+            notInCirculation.CssClass =  "nav-link active";
+            inCirculationButton.CssClass = "nav-link";
             string ISBN = Request.QueryString["ISBN"];
             instancePanel.Visible = false;
             notInCirculationPanel.Visible = true;
@@ -49,6 +58,9 @@ namespace TheModernBibliotheca.Templates
 
         protected void inCirculationButton_Click(object sender, EventArgs e)
         {
+            instanceButton.CssClass = "nav-link";
+            notInCirculation.CssClass = "nav-link";
+            inCirculationButton.CssClass =  "nav-link active";
             string ISBN = Request.QueryString["ISBN"];
 
             instancePanel.Visible = false;

@@ -30,6 +30,7 @@ namespace TheModernBibliotheca
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            Label1.Visible = false;
             IEnumerable<BookInformation> books;
             string searchKey = txtSearch.Text;
             if (AvailabilityDdl.SelectedValue == "All")
@@ -44,6 +45,7 @@ namespace TheModernBibliotheca
             {
                 books = BooksRepository.SearchUnavailableBooks(searchKey);
             }
+            if (books == null || !books.Any()) Label1.Visible = true;
             Repeater1.DataSource = books;
             Repeater1.DataBind();
         }
@@ -60,6 +62,7 @@ namespace TheModernBibliotheca
 
         protected void AvailabilityDdl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Label1.Visible = false;
             IEnumerable<BookInformation> books;
             if (AvailabilityDdl.SelectedValue == "All")
             {

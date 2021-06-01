@@ -16,7 +16,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="header-group">
+    <div class="header-group" style="margin-top: 50px; margin-bottom: 20px;">
         <h3>Modify User</h3>
         <div class="header-actions">
             <a class="btn btn-secondary" href="~/Admin/Users" runat="server">

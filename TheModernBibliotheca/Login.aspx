@@ -27,20 +27,10 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <br />
-    <br />
-    <br />
-    <div class="row">
-        <div class="container" style="background-color: aquamarine; text-align: center; font-size: 50px;">
-            <br />
-            <h1 style="font-size: 50px;">The Modern Bibliotheca</h1>
-            <br />
-        </div>
-    </div>
-    <br />
-    <br />
 
     <div class="signin-form col-sm-6 col-12">
+    
+        <asp:Image ImageUrl="~/Pictures/Logo.png" runat="server" CssClass="login-brand-logo" Style="margin-top: 100px; margin-bottom: 20px; padding: 30px;" BackColor="#D9C5A0" />
 
         <%-- Login Header --%>
         <div id="loginMessageDiv" class="alert alert-danger" role="alert" runat="server" visible="false">

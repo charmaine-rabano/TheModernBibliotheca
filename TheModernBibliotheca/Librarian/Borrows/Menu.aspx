@@ -18,7 +18,7 @@
         }
 
         .menu-group-header {
-            background-color: lightgray;
+            background-color: #D9C5A0;
             padding: .6rem 1rem;
             font-size: 1.6rem;
             margin-bottom: 1rem;
@@ -46,7 +46,7 @@
         .menu-icon-image {
             width: 3.5rem;
             height: 3.5rem;
-            background-color: lightgray;
+            background-color: #D9C5A0;
             margin: 0;
             margin-right: 1rem;
             border-radius: 100%;
@@ -64,6 +64,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div style="padding-top:2px; padding-bottom:2px; margin-bottom: 20px;">
+        <a href="../Default.aspx"><img src="/Content/bootstrap-icons/arrow-left.svg" width="40" height="40" style="margin-right: 10px" /></a>
+    </div>
     <div class="menu-group-container">
         <div>
             <p class="menu-group-header">Offsite Borrowing</p>

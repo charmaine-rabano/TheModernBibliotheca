@@ -26,7 +26,11 @@ namespace TheModernBibliotheca.Templates
             {
                 InitializeFormValues();
             }
-
+            var builder = new System.Text.StringBuilder();
+            var gnrs = GenreRepository.GetGenres();
+            foreach (GenreViewModel genre in gnrs)
+                builder.Append(String.Format("<option value='{0}'>", (genre.Genre).ToString()));
+            genres.InnerHtml = builder.ToString();
         }
         private void InitializeFormValues()
         {

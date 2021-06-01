@@ -39,7 +39,7 @@
 
             .borrow-status .return-date {
                 margin-top: auto;
-                background-color: #ede6d3;
+                background-color: #D9C5A0;
                 width: 100%;
                 padding: 10px;
                 text-align: center;
@@ -133,6 +133,7 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     <asp:Repeater runat="server" ID="BorrowHistoryTableRepeater">
                         <ItemTemplate>
                             <tr>
@@ -146,9 +147,9 @@
                     </asp:Repeater>
 
                 </tbody>
-
+                
             </table>
-
+            <asp:Label ID="lbl" runat="server" Text="No data to show."  visible="false"></asp:Label>
         </div>
     </div>
 </asp:Content>

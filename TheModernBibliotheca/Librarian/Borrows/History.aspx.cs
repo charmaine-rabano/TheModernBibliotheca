@@ -42,6 +42,9 @@ namespace TheModernBibliotheca.Librarian.Borrows
 
         protected void ViewBtn_Click(object sender, EventArgs e)
         {
+            DisplayDiv.Visible = false;
+            BorrowerNameLbl.Visible = false;
+
             if (!Page.IsValid) return;
 
             HistoryGV.DataSource = HistoryRepository.GetBorrowHistory(BorrowerEmailTb.Text);
@@ -49,6 +52,7 @@ namespace TheModernBibliotheca.Librarian.Borrows
 
             BorrowerNameLbl.Text = HistoryRepository.GetBorrowerName(BorrowerEmailTb.Text);
 
+            BorrowerNameLbl.Visible = true;
             DisplayDiv.Visible = true;
         }
     }

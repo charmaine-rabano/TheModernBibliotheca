@@ -29,7 +29,7 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
                 var borrow = context.Borrows.FirstOrDefault(b => b.BorrowID == id);
                 borrow.BorrowState = Constants.Borrow.BORROWED_STATE;
                 borrow.DateBorrowed = DateTime.Now;
-                borrow.ReturnDate = DateTime.Now.AddDays(7);
+                borrow.ReturnDate = DateTime.Today.AddDays(7) + new TimeSpan(22, 0, 0);
                 context.SaveChanges();
             }
         }

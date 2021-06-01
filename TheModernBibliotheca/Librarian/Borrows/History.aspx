@@ -1,11 +1,6 @@
 ﻿<%@ Page Title="History" Language="C#" MasterPageFile="~/Templates/Librarian.master" AutoEventWireup="true" CodeBehind="History.aspx.cs" Inherits="TheModernBibliotheca.Librarian.Borrows.History" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
-    <style>
-        div {
-            width: 100%;
-        }
-    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -17,7 +12,7 @@
         <div class="row" style="padding-top: 60px">
             <h3>View Borrow History</h3>
 
-            <div class="form-group row" style="margin-top: 40px;">
+            <div class="form-group row" style="margin-top: 40px; width: 100%;">
                 <asp:Label CssClass="col-sm-2 col-12" Text="Borrower's Email" runat="server" />
                 <div class="col-sm-4 col-12">
                     <asp:TextBox runat="server" ID="BorrowerEmailTb" CssClass="form-control" TextMode="Email"  MaxLength="127"/>
@@ -31,7 +26,7 @@
                 
             </div>
 
-            <div ID="DisplayDiv" runat="server" display="dynamic" style="margin-top: 40px;">
+            <div ID="DisplayDiv" runat="server" display="dynamic" style="margin-top: 40px; width: 100%;">
                 <p>Borrower's Name: <asp:Label ID="BorrowerNameLbl" runat="server" Text=""></asp:Label></p>
                 <div style="margin-top: 20px" class="table-responsive">
                     <asp:GridView ID="HistoryGV" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-hover" BorderWidth="0" EmptyDataText="Borrower has no borrow history yet." GridLines="None">

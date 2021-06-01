@@ -18,7 +18,7 @@
         }
 
         .menu-group-header {
-            background-color: lightgray;
+            background-color: #D9C5A0;
             padding: .6rem 1rem;
             font-size: 1.6rem;
             margin-bottom: 1rem;
@@ -46,7 +46,7 @@
         .menu-icon-image {
             width: 3.5rem;
             height: 3.5rem;
-            background-color: lightgray;
+            background-color: #D9C5A0;
             margin: 0;
             margin-right: 1rem;
             border-radius: 100%;
