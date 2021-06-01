@@ -24,6 +24,11 @@ namespace TheModernBibliotheca
             }
             string ISBN = Request.QueryString["ID"];
             model = BooksRepository.GetBook(ISBN);
+            
+            // Make sure model is valid
+            if (model == null) {
+                Response.Redirect("~/");
+            }
 
             int quantity = BooksRepository.GetQuantity(ISBN);
             lblBookQuantity.Text = quantity.ToString();
