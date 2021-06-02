@@ -119,6 +119,14 @@
                         <span>Borrowers With Penalty </span>
                     </div>
                 </a>
+                <a href="~/Librarian/Report/BookInventory.aspx" class="menu-item-container" runat="server">
+                    <div class="menu-item">
+                        <div class="menu-icon-image">
+                            <img src="/Content/bootstrap-icons/person-x.svg" alt="View Accounts" class="text-success" />
+                        </div>
+                        <span>Book Inventory </span>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

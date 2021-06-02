@@ -20,6 +20,9 @@
                     <li class="nav-item">
                       <a class="nav-link active" href="BorrowersWithPenalty.aspx" >Borrowers with Penalty</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="BookInventory.aspx">Book Inventory</a>
+                    </li>
                 </ul>
             </div>
         </div>
