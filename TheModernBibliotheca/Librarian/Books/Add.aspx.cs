@@ -32,7 +32,8 @@ namespace TheModernBibliotheca.Templates
         {
             if (!Page.IsValid) return;
 
-            var linkName = FileSystemHelper.UploadFile(txtISBN.Text, "bookcovers", fileUploadImg.PostedFile, true);
+            string cacheBust = DateTime.Now.Second.ToString();
+            var linkName = FileSystemHelper.UploadFile(txtISBN.Text+cacheBust, "bookcovers", fileUploadImg.PostedFile, true);
             BookInformation book = new BookInformation
             {
                 ISBN = txtISBN.Text,
