@@ -11,7 +11,7 @@ namespace TheModernBibliotheca._Code.App.Background
 {
     public class ClearExpiredReservations : IBackgroundProcess
     {
-        const int DAYS_FOR_EXPIRED = 7;
+        const int DAYS_FOR_EXPIRED = 3;
 
         static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -22,7 +22,7 @@ namespace TheModernBibliotheca._Code.App.Background
             {
                 var borrows = context.Borrows.Where(borrow =>
                     borrow.BorrowState == Constants.Borrow.REQUESTED_STATE &&
-                    expiry_start >= borrow.DateBorrowed)
+                    expiry_start >= borrow.DateCreated)
                     .ToList();
                 borrows.ForEach(e =>
                 {

@@ -25,8 +25,22 @@ namespace TheModernBibliotheca
             string ISBN = Request.QueryString["ID"];
             model = BooksRepository.GetBook(ISBN);
 
+            // Make sure model is valid
+            if (model == null)
+            {
+                Response.Redirect("~/");
+            }
+
+            InitalizeInterface(ISBN);
+        }
+
+        private void InitalizeInterface(string ISBN)
+        {
+            // Set Quantity
             int quantity = BooksRepository.GetQuantity(ISBN);
             lblBookQuantity.Text = quantity.ToString();
+
+            // Set Availability
             availableTag.InnerHtml = quantity > 0 ? "Available" : "Unavailable";
             bool userCanBorrow = BooksRepository.CanUserBorrow(AuthenticationHelper.GetBorrowerAuth().GetUser().UserID);
             if (quantity == 0 || !userCanBorrow)
