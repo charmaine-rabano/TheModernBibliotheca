@@ -12,13 +12,17 @@ namespace TheModernBibliotheca._Code.App.Librarian.Borrows
         {
             using (var context = new TheModernDatabaseEntities())
             {
-                return context.Reservations.Where(r => r.Borrow.BorrowState == Constants.Borrow.REQUESTED_STATE).Select(r => new ApproveViewModel
-                {
-                    ReservationDate = r.DateReserved,
-                    BookName = r.Borrow.BookInstance.BookInformation.Title,
-                    BorrowerName = r.Borrow.LibraryUser.FullName + " (" + r.Borrow.LibraryUser.Email + ")",
-                    BorrowID = r.BorrowID
-                }).ToList();
+                return context.Reservations
+                    .Where(r => r.Borrow.BorrowState == Constants.Borrow.REQUESTED_STATE)
+                    .OrderByDescending(r=>r.Borrow.DateCreated)
+                    .Select(r => new ApproveViewModel
+                        {
+                            ReservationDate = r.DateReserved,
+                            BookName = r.Borrow.BookInstance.BookInformation.Title,
+                            BorrowerName = r.Borrow.LibraryUser.FullName + " (" + r.Borrow.LibraryUser.Email + ")",
+                            BorrowID = r.BorrowID
+                        })
+                    .ToList();
             }
         }
 
