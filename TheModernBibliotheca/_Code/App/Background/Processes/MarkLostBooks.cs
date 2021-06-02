@@ -21,7 +21,7 @@ namespace TheModernBibliotheca._Code.App.Background
             {
                 var borrows = context.Borrows.Where(borrow =>
                     borrow.BorrowState == Constants.Borrow.BORROWED_STATE &&         // Book must be borrowed
-                    lost_start >= borrow.DateBorrowed // Date now must be past 90 days since borrowed
+                    lost_start >= borrow.ReturnDate             // Date now must be past 90 days since borrowed
                     )
                     .ToList();
                 borrows.ForEach(e =>
