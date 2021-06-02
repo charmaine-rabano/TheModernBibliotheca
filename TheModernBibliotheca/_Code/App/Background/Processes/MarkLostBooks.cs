@@ -21,12 +21,17 @@ namespace TheModernBibliotheca._Code.App.Background
             {
                 var borrows = context.Borrows.Where(borrow =>
                     borrow.BorrowState == Constants.Borrow.BORROWED_STATE &&         // Book must be borrowed
-                    lost_start >= borrow.ReturnDate             // Date now must be past 90 days since borrowed
+                    lost_start >= borrow.ReturnDate &&             // Date now must be past 90 days since borrowed
+                    borrow.BookInstance.InCirculation
                     )
                     .ToList();
                 borrows.ForEach(e =>
                 {
                     e.BookInstance.InCirculation = false;
+                    context.Violations.Add(new Violation() { 
+                        BorrowID = e.BorrowID,
+                        ViolationType = Constants.Violation.LOST_TYPE,
+                    });
                 });
 
                 context.SaveChanges();
