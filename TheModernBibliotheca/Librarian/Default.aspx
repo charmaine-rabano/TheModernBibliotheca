@@ -12,13 +12,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row" padding-top:3%; height: 500px;">
-            <div style="align-content:center; text-align:center;" class="col"> 
+            <div style="align-content:center; text-align:center;" class="col-sm-6 px-5 py-2"> 
                 <asp:ImageButton ID="books" runat="server" CssClass="responsive" ImageUrl="/Content/bootstrap-icons/book.svg"  PostBackUrl="~/Librarian/Books/Menu.aspx" />
                 <br />
                 <h2>Books</h2>
  
             </div>
-            <div style="align-content:center; text-align:center;" class="col" >
+            <div style="align-content:center; text-align:center;" class="col-sm-6 px-5 py-2" >
                 <asp:ImageButton ID="borrows" runat="server" CssClass="responsive" ImageUrl="/Content/bootstrap-icons/people.svg" PostBackUrl="~/Librarian/Borrows/Menu.aspx" />
                 <br />
                 <h2>Borrows</h2>

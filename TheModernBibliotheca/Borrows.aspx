@@ -68,6 +68,10 @@
         .status-returned {
             background-color: #e3e3e3;
         }
+
+        .borrow-card {
+            background-color:#f5eee6;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -76,7 +80,7 @@
 
         <%if (model != null) %>
         <%{%>
-        <div class="row m-sm-3 m-1 borrow-details">
+        <div class="row m-sm-3 m-1 borrow-details borrow-card">
             <div class="col-lg-8 row m-0 p-3">
                 <div class="col-sm-3 mb-sm-0 mb-3">
                     <img src='<%=model.Image %>' alt="Alternate Text" class="book-image" />

@@ -50,6 +50,7 @@
             border-radius: 100%;
             display: flex;
             flex-direction: column;
+            flex-shrink:0;
         }
 
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/Site.Master" AutoEventWireup="true" CodeBehind="CreateAccount.aspx.cs" Inherits="TheModernBibliotheca.CreateAccount" %>
+﻿<%@ Page Title="Create Account" Language="C#" MasterPageFile="~/Templates/Site.Master" AutoEventWireup="true" CodeBehind="CreateAccount.aspx.cs" Inherits="TheModernBibliotheca.CreateAccount" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
     <style>

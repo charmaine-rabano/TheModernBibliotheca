@@ -32,7 +32,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="signin-form">
+    <div class="signin-form px-2">
 
         <%-- Brand Logo --%>
         <asp:Image ImageUrl="~/Pictures/Logo.png" runat="server" CssClass="login-brand-logo" Style="margin-top: 100px; margin-bottom: 20px; padding: 30px;" BackColor="#D9C5A0" />
