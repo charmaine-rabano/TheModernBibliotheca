@@ -36,8 +36,8 @@
         <asp:GridView ID="gridviewOnshelf" runat="server" class="table w-100" AutoGenerateColumns="false" EmptyDataText="No Books are in Circulation" GridLines="None">
             <Columns>
                 <asp:BoundField DataField="Isbn" HeaderText="ISBN" />
+                <asp:BoundField DataField="Title" HeaderText="Title" />
                 <asp:BoundField DataField="Author" HeaderText="Author" />
-                <asp:BoundField DataField="Genre" HeaderText="Genre" />
                 <asp:BoundField DataField="TotalQuantity" HeaderText="Total Qty" />
                 <asp:BoundField DataField="AvailableQuantity" HeaderText="Available Qty" />
                 <asp:BoundField DataField="InCirculation" HeaderText="Qty In Circulation" />

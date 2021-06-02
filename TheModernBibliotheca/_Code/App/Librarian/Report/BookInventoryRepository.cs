@@ -23,7 +23,7 @@ namespace TheModernBibliotheca._Code.App.Librarian.Report
                                     .FirstOrDefault()
                                         .BorrowState)           // Borrow is returned or rejected
                             )).Count(),
-                        Genre = e.Genre,
+                        Title = e.Title,
                         InCirculation = e.BookInstances.Count(f=>f.InCirculation),
                         Isbn = e.ISBN,
                         TotalQuantity = e.BookInstances.Count()
@@ -52,7 +52,7 @@ namespace TheModernBibliotheca._Code.App.Librarian.Report
                                     .FirstOrDefault()
                                         .BorrowState)           // Borrow is returned or rejected
                             )).Count(),
-                        Genre = e.Genre,
+                        Title = e.Title,
                         InCirculation = e.BookInstances.Count(f => f.InCirculation),
                         Isbn = e.ISBN,
                         TotalQuantity = e.BookInstances.Count()
