@@ -22,7 +22,7 @@ namespace TheModernBibliotheca._Code.App.Background
             {
                 var borrows = context.Borrows.Where(borrow =>
                     borrow.BorrowState == Constants.Borrow.REQUESTED_STATE &&
-                    expiry_start >= borrow.DateCreated)
+                    expiry_start >= borrow.Reservation.DateReserved)
                     .ToList();
                 borrows.ForEach(e =>
                 {
