@@ -33,7 +33,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="">
                         <ItemTemplate>
-                            <asp:LinkButton runat="server" Text="Disapprove" CommandName="Disapprove" CommandArgument='<%#Eval("BorrowID")%>' CssClass="btn btn-block btn-outline-primary" />
+                            <asp:LinkButton runat="server" Text="Disapprove" CommandName="Disapprove" CommandArgument='<%#Eval("BorrowID")%>' CssClass="btn btn-block btn-primary" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
