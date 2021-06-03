@@ -16,7 +16,7 @@ namespace TheModernBibliotheca._Code.App.Librarian
                 {
                     BorrowerName = e.Borrow.LibraryUser.FirstName + " " + e.Borrow.LibraryUser.LastName,
                     Violation = e.ViolationType,
-                    ViolationDate = (DateTime)e.Borrow.DateReturned,
+                    ViolationDate = e.Borrow.DateReturned.ToString(),
                     BookTitle = e.Borrow.BookInstance.BookInformation.Title,
                 }).ToList();
             }
