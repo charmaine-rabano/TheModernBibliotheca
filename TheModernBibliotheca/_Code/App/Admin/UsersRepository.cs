@@ -68,6 +68,9 @@ namespace TheModernBibliotheca._Code.App.Admin
 
                 if (libraryUser == null) throw new Exception("Invalid user id");
 
+                libraryUser.SessionExpiry = null;
+                libraryUser.SessionId = null;
+
                 libraryUser.AccountStatus = Constants.LibraryUser.DEACTIVATED_STATUS;
                 context.SaveChanges();
             }

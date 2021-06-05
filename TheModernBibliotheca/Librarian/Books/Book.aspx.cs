@@ -32,6 +32,7 @@ namespace TheModernBibliotheca.Templates
                 builder.Append(String.Format("<option value='{0}'>", (genre.Genre).ToString()));
             genres.InnerHtml = builder.ToString();
         }
+
         private void InitializeFormValues()
         {
             string ISBN = Request.QueryString["ISBN"];
@@ -62,7 +63,8 @@ namespace TheModernBibliotheca.Templates
             var book = new BookInformation();
             if (fileUploadImg.HasFile)
             {
-                var linkName = FileSystemHelper.UploadFile(txtISBN.Text, "bookcovers", fileUploadImg.PostedFile, true);
+                string cacheBust = DateTime.Now.Second.ToString();
+                var linkName = FileSystemHelper.UploadFile(txtISBN.Text + cacheBust, "bookcovers", fileUploadImg.PostedFile, true);
 
                 book = new BookInformation()
                 {

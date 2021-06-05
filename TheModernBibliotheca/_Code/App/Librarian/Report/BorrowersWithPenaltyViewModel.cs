@@ -9,7 +9,7 @@ namespace TheModernBibliotheca._Code.App.Librarian
     {
         public string BorrowerName { get; set; }
         public string Violation { get; set; }
-        public DateTime ViolationDate { get; set; }
+        public string ViolationDate { get; set; }
         public string BookTitle { get; set; }
     }
 }

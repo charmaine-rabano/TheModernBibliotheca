@@ -1577,6 +1577,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="CreateAccount.aspx" />
     <Content Include="Librarian\Login.aspx" />
+    <Content Include="Librarian\Report\BookInventory.aspx" />
     <Content Include="Pictures\logo-small.png" />
     <Content Include="Pictures\logo.png" />
     <Content Include="Test\BackgroundProcess.aspx" />
@@ -1786,6 +1787,14 @@
     <Compile Include="Librarian\Borrows\History.aspx.designer.cs">
       <DependentUpon>History.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Librarian\Report\BookInventory.aspx.cs">
+      <DependentUpon>BookInventory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Librarian\Report\BookInventory.aspx.designer.cs">
+      <DependentUpon>BookInventory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_Code\App\Librarian\Report\BookInventoryRepository.cs" />
     <Compile Include="Librarian\Report\reportOverallController.cs" />
     <Compile Include="Librarian\Report\reportOverallModel.cs" />
     <Compile Include="Librarian\Report\reportOverallView.cs" />
@@ -1894,6 +1903,7 @@
     <Compile Include="_Code\App\Librarian\Borrows\ReturnRepository.cs" />
     <Compile Include="_Code\App\Librarian\Borrows\ReturnViewModel.cs" />
     <Compile Include="_Code\App\Borrower\BorrowerRepository.cs" />
+    <Compile Include="_Code\App\Librarian\Report\BookInventoryReport.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationHelper.cs" />
     <Compile Include="_Code\Lib\Authentication\AuthenticationService.cs" />
     <Compile Include="_Code\App\Librarian\FileSystemHelper.cs" />
